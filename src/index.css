@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+body {
+  @apply bg-surface text-textMain font-sans;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a, a:visited {
+  @apply text-textMain no-underline;
+}
+
+a:hover {
+  @apply text-accent;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-semibold text-textMain;
+}
+
+/* ✅ Buttons */
+.btn {
+  @apply inline-flex items-center gap-2 bg-accent text-white text-sm px-4 py-2 rounded hover:bg-neutral-900 transition;
+}
+
+/* ✅ Tags */
+.tag {
+  @apply px-2 py-1 rounded text-xs font-medium bg-gray-100 text-textSubtle hover:bg-accent hover:text-white transition;
+}
+
+/* ✅ Card */
+.card {
+  @apply bg-white border border-borderLight rounded-lg p-4 shadow-sm hover:shadow-md transition;
+}
+
+/* ✅ Section Backgrounds */
+.bg-section {
+  @apply bg-surface;
+}
+
+.bg-main {
+  @apply bg-white;
+}
+
+@keyframes scrollBarExact {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.animate-scroll-bar {
+  animation: scrollBarExact 1.5s ease-in-out infinite;
+}
+
+
+
+
