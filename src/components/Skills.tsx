@@ -1,16 +1,13 @@
-import {
-  FaCode,
-  FaServer,
-  FaTools,
-  FaShieldAlt,
-  FaVial,
-} from "react-icons/fa";
+import { FaCode, FaServer, FaLock, FaBug, FaTools } from "react-icons/fa";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
 
 const skills = [
   {
-    category: "Frontend",
+    title: "Frontend",
     icon: <FaCode />,
-    items: [
+    tags: [
       "React",
       "TypeScript",
       "JavaScript (ES6+)",
@@ -24,9 +21,9 @@ const skills = [
     ],
   },
   {
-    category: "Backend",
+    title: "Backend",
     icon: <FaServer />,
-    items: [
+    tags: [
       "Python",
       "Flask",
       "SQLAlchemy",
@@ -39,9 +36,19 @@ const skills = [
     ],
   },
   {
-    category: "Tools & DevOps",
+    title: "Authentication",
+    icon: <FaLock />,
+    tags: ["Auth0", "Firebase Auth", "JWT", "Context API"],
+  },
+  {
+    title: "Testing",
+    icon: <FaBug />,
+    tags: ["Vitest", "Jest", "React Testing Library", "Pytest"],
+  },
+  {
+    title: "Tools & DevOps",
     icon: <FaTools />,
-    items: [
+    tags: [
       "Git + GitHub",
       "Postman",
       "Vercel",
@@ -50,52 +57,74 @@ const skills = [
       "Prentus",
     ],
   },
-  {
-    category: "Authentication",
-    icon: <FaShieldAlt />,
-    items: ["Auth0", "Firebase Auth", "JWT", "Context API"],
-  },
-  {
-    category: "Testing",
-    icon: <FaVial />,
-    items: ["Vitest", "Jest", "React Testing Library", "Pytest"],
-  },
 ];
 
 const Skills = () => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  useEffect(() => {
+    if (inView) controls.start("visible");
+  }, [inView, controls]);
+
   return (
-    <section id="skills" className="py-24 px-6 bg-white">
+    <section id="skills" className="py-24 px-6 bg-main">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-2 text-textMain">
+        <h2 className="text-3xl font-bold mb-2 text-textMain dark:text-white">
           Skills & Technologies
         </h2>
-        <p className="text-sm text-textSubtle mb-10">
-          A comprehensive toolkit for building modern, scalable web applications from frontend to backend.
+        <p className="text-sm text-textSubtle dark:text-gray-300 mb-10">
+          A comprehensive toolkit for building modern, scalable web applications
+          from frontend to backend.
         </p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skills.map(({ category, icon, items }) => (
-            <div
-              key={category}
-              className="bg-white border border-borderLight p-5 rounded-xl text-left shadow-sm hover:shadow-md hover:scale-[1.01] transition-all duration-200"
+        <motion.div
+          ref={ref}
+          initial="hidden"
+          animate={controls}
+          variants={{
+            hidden: { opacity: 0, y: 40 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: {
+                staggerChildren: 0.1,
+              },
+            },
+          }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-left"
+        >
+          {skills.map((section) => (
+            <motion.div
+              key={section.title}
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              whileHover={{
+                scale: 1.03,
+                boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.2)",
+              }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="rounded-xl bg-white dark:bg-dark border border-borderLight dark:border-gray-700 p-6 cursor-default"
             >
-              <div className="flex items-center gap-2 text-textMain font-semibold mb-4">
-                <span className="text-lg">{icon}</span>
-                {category}
+              <div className="flex items-center gap-2 text-lg font-semibold mb-3 text-textMain dark:text-white">
+                {section.icon}
+                {section.title}
               </div>
               <div className="flex flex-wrap gap-2 text-xs">
-                {items.map((item) => (
+                {section.tags.map((tag) => (
                   <span
-                    key={item}
-                    className="px-2 py-1 rounded border border-gray-200 bg-white text-gray-700 hover:bg-black hover:text-white transition-colors duration-200"
+                    key={tag}
+                    className="px-2 py-1 rounded border border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-200"
                   >
-                    {item}
+                    {tag}
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

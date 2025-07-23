@@ -1,4 +1,7 @@
 import { FaShoppingCart, FaDatabase, FaBriefcase, FaGithub } from "react-icons/fa";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
 
 const projects = [
   {
@@ -38,31 +41,52 @@ const projects = [
 ];
 
 const Projects = () => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  useEffect(() => {
+    if (inView) controls.start("visible");
+  }, [inView, controls]);
+
   return (
-    <section id="projects" className="py-24 px-6 bg-sectionBg">
+    <section id="projects" className="py-24 px-6 bg-section dark:bg-dark">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-2 text-textMain">Featured Projects</h2>
-        <p className="text-sm text-textSubtle mb-10">
+        <h2 className="text-3xl font-bold mb-2 text-textMain dark:text-white">
+          Featured Projects
+        </h2>
+        <p className="text-sm text-textSubtle dark:text-gray-300 mb-10">
           A showcase of applications I’ve built using modern web technologies and best practices.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-6 text-left">
+        <motion.div
+          ref={ref}
+          initial="hidden"
+          animate={controls}
+          variants={{
+            hidden: { opacity: 0, y: 40 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="grid md:grid-cols-2 gap-6 text-left"
+        >
           {projects.map((project) => (
             <div
               key={project.title}
-              className="rounded-xl bg-white p-6 shadow hover:shadow-md transition border border-borderLight"
+              className="rounded-xl bg-white dark:bg-dark border border-borderLight dark:border-gray-700 p-6 transition-transform duration-300 transform hover:scale-[1.02] hover:shadow-lg"
             >
-              <div className="flex items-center gap-2 text-lg font-semibold mb-2 text-textMain">
+              <div className="flex items-center gap-2 text-lg font-semibold mb-2 text-textMain dark:text-white">
                 {project.icon}
                 {project.title}
               </div>
-              <p className="text-sm text-textSubtle mb-4">{project.desc}</p>
+              <p className="text-sm text-textSubtle dark:text-gray-300 mb-4">
+                {project.desc}
+              </p>
 
               <div className="flex flex-wrap gap-2 text-xs mb-4">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="bg-gray-100 text-gray-700 px-2 py-1 rounded border border-gray-200"
+                    className="px-2 py-1 rounded border border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:-translate-y-1 hover:shadow-md transition-transform"
                   >
                     {tag}
                   </span>
@@ -74,7 +98,7 @@ const Projects = () => {
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-black text-white px-3 py-1 rounded hover:bg-gray-800 transition"
+                  className="btn"
                 >
                   🔗 Live Demo
                 </a>
@@ -82,20 +106,20 @@ const Projects = () => {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 px-3 py-1 border rounded hover:bg-gray-100 transition"
+                  className="btn"
                 >
                   <FaGithub /> GitHub Repo
                 </a>
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
 
         <a
           href="https://github.com/noahragan"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-10 inline-flex items-center gap-2 text-sm px-4 py-2 border rounded hover:bg-gray-100 transition"
+          className="mt-10 btn"
         >
           <FaGithub /> View More on GitHub
         </a>

@@ -2,51 +2,110 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base styles */
-body {
-  @apply bg-surface text-textMain font-sans;
-}
-
+/* ✅ Base styles */
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
-a, a:visited {
-  @apply text-textMain no-underline;
+body {
+  @apply font-sans bg-surface text-textMain dark:bg-dark dark:text-white;
+}
+
+/* ✅ Links */
+a,
+a:visited {
+  @apply text-inherit no-underline;
 }
 
 a:hover {
   @apply text-accent;
 }
-
-h1, h2, h3, h4, h5, h6 {
-  @apply font-semibold text-textMain;
+:is(p, li, span, .rich-text) a:hover {
+  @apply dark:text-white;
 }
 
-/* ✅ Buttons */
-.btn {
-  @apply inline-flex items-center gap-2 bg-accent text-white text-sm px-4 py-2 rounded hover:bg-neutral-900 transition;
+/* ✅ Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-semibold text-textMain dark:text-white;
+}
+
+/* ✅ Buttons — consistent light/dark styling */
+.btn,
+.btn-solid {
+  @apply inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded transition-transform hover:-translate-y-1 hover:shadow-md;
+  background-color: black !important;
+  color: white !important;
+}
+
+.dark .btn,
+.dark .btn-solid {
+  background-color: white !important;
+  color: black !important;
+}
+
+.btn:hover,
+.btn-solid:hover {
+  background-color: #111 !important;
+  color: white !important;
+}
+
+.dark .btn:hover,
+.dark .btn-solid:hover {
+  background-color: #f4f4f4 !important;
+  color: black !important;
+}
+
+/* ✅ Icon-only buttons (GitHub, LinkedIn, etc.) */
+.btn-icon {
+  @apply inline-flex items-center justify-center w-10 h-10 rounded border transition-transform hover:-translate-y-1 hover:shadow-md;
+  @apply border-gray-300 bg-white text-black dark:border-gray-500 dark:bg-white dark:text-black;
+}
+
+/* ✅ Ensure icons inside buttons follow text color */
+.btn svg,
+.btn-solid svg,
+.btn-icon svg {
+  color: inherit !important;
+  fill: currentColor !important;
+}
+.dark .btn svg,
+.dark .btn-solid svg,
+.dark .btn-icon svg {
+  color: inherit !important;
+  fill: currentColor !important;
 }
 
 /* ✅ Tags */
 .tag {
-  @apply px-2 py-1 rounded text-xs font-medium bg-gray-100 text-textSubtle hover:bg-accent hover:text-white transition;
+  @apply px-2 py-1 rounded text-xs font-medium transition;
+  @apply bg-gray-100 text-textSubtle hover:bg-accent hover:text-white;
+  @apply dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-white dark:hover:text-black;
 }
 
 /* ✅ Card */
 .card {
   @apply bg-white border border-borderLight rounded-lg p-4 shadow-sm hover:shadow-md transition;
+  @apply dark:bg-dark dark:border-gray-700;
 }
 
 /* ✅ Section Backgrounds */
 .bg-section {
-  @apply bg-surface;
+  @apply bg-surface dark:bg-dark;
 }
 
 .bg-main {
-  @apply bg-white;
+  @apply bg-white dark:bg-dark;
 }
 
+/* ✅ Scroll animation */
 @keyframes scrollBarExact {
   0% {
     transform: translateY(0%);
@@ -64,7 +123,3 @@ h1, h2, h3, h4, h5, h6 {
 .animate-scroll-bar {
   animation: scrollBarExact 1.5s ease-in-out infinite;
 }
-
-
-
-

@@ -1,28 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaEnvelope, FaBriefcase } from "react-icons/fa";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const [errors, setErrors] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [errors, setErrors] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
-  const validateEmail = (email: string) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     setErrors((prev) => ({ ...prev, [name]: "" }));
@@ -45,10 +34,7 @@ const Contact = () => {
     try {
       const response = await fetch("https://formspree.io/f/mrbkdgvz", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(formData),
       });
 
@@ -66,100 +52,128 @@ const Contact = () => {
     }
   };
 
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  useEffect(() => {
+    if (inView) controls.start("visible");
+  }, [inView, controls]);
+
   return (
-    <section id="contact" className="py-24 px-6 bg-white">
+    <section id="contact" className="py-24 px-6 bg-white dark:bg-dark">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-2">Get In Touch</h2>
-        <p className="text-center text-sm text-gray-600 mb-10">
-          Interested in working together? Send me a message or email me directly at <br />
-          <span className="font-medium text-gray-800">noah.j.ragan@gmail.com</span>
-        </p>
+        <motion.div
+          ref={ref}
+          initial="hidden"
+          animate={controls}
+          variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <h2 className="text-3xl font-bold text-center mb-2 text-textMain dark:text-white">
+            Get In Touch
+          </h2>
+          <p className="text-center text-sm text-gray-600 dark:text-gray-300 mb-10">
+            Interested in working together? Send me a message or email me directly at <br />
+            <span className="font-medium text-gray-800 dark:text-white">noah.j.ragan@gmail.com</span>
+          </p>
+        </motion.div>
 
         <div className="flex flex-col md:flex-row gap-10 justify-between">
-          {/* Contact Info */}
-          <div className="md:w-1/2 text-sm text-gray-700 space-y-6">
+          <motion.div
+            className="md:w-1/2 text-sm text-gray-700 dark:text-gray-300 space-y-6"
+            initial={{ opacity: 0, x: -30 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+          >
             <div>
-              <h3 className="font-semibold text-md mb-2">Let’s Create Something Amazing</h3>
+              <h3 className="font-semibold text-md mb-2 text-textMain dark:text-white">
+                Let’s Create Something Amazing
+              </h3>
               <p>
-                I’m always excited to work on new projects and collaborate with fellow developers, designers, and entrepreneurs.
-                Whether you have a specific project in mind or just want to discuss ideas, I’d love to hear from you.
+                I’m always excited to work on new projects and collaborate with fellow developers,
+                designers, and entrepreneurs. Whether you have a specific project in mind or just
+                want to discuss ideas, I’d love to hear from you.
               </p>
             </div>
 
             <div className="flex items-start gap-3">
-              <FaEnvelope className="mt-1 text-gray-600" />
+              <FaEnvelope className="mt-1 text-gray-600 dark:text-gray-300" />
               <div>
-                <p className="font-medium">Email</p>
-                <p className="text-gray-700">noah.j.ragan@gmail.com</p>
+                <p className="font-medium text-textMain dark:text-white">Email</p>
+                <p className="text-gray-700 dark:text-gray-300">noah.j.ragan@gmail.com</p>
               </div>
             </div>
 
             <div className="flex items-start gap-3">
-              <FaBriefcase className="mt-1 text-gray-600" />
+              <FaBriefcase className="mt-1 text-gray-600 dark:text-gray-300" />
               <div>
-                <p className="font-medium">Available For</p>
-                <p className="text-gray-700">Full-time opportunities, freelance projects, and collaborations</p>
+                <p className="font-medium text-textMain dark:text-white">Available For</p>
+                <p className="text-gray-700 dark:text-gray-300">
+                  Full-time opportunities, freelance projects, and collaborations
+                </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Contact Form */}
-          <form
+          <motion.form
             onSubmit={handleSubmit}
             noValidate
-            className="md:w-1/2 space-y-4 bg-gray-50 p-6 rounded-lg shadow border"
+            className="md:w-1/2 space-y-4 bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow border border-gray-200 dark:border-gray-700"
+            initial={{ opacity: 0, x: 30 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
           >
-            <div>
-              <label className="text-xs font-medium text-gray-600 block mb-1">Your Name</label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                placeholder="Enter your name"
-                onChange={handleChange}
-                className="w-full px-4 py-2 border rounded text-sm bg-white text-gray-800"
-              />
-              {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
-            </div>
+            {[
+              { label: "Your Name", name: "name", type: "text" },
+              { label: "Your Email", name: "email", type: "email" },
+            ].map(({ label, name, type }) => (
+              <div key={name}>
+                <label className="text-xs font-medium text-gray-600 dark:text-gray-300 block mb-1">
+                  {label}
+                </label>
+                <input
+                  type={type}
+                  name={name}
+                  value={formData[name as keyof typeof formData]}
+                  onChange={handleChange}
+                  placeholder={`Enter your ${name}`}
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded text-sm bg-white dark:bg-dark text-gray-800 dark:text-white"
+                />
+                {errors[name as keyof typeof errors] && (
+                  <p className="text-red-500 text-xs mt-1">{errors[name as keyof typeof errors]}</p>
+                )}
+              </div>
+            ))}
 
             <div>
-              <label className="text-xs font-medium text-gray-600 block mb-1">Your Email</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                placeholder="Enter your email"
-                onChange={handleChange}
-                className="w-full px-4 py-2 border rounded text-sm bg-white text-gray-800"
-              />
-              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
-            </div>
-
-            <div>
-              <label className="text-xs font-medium text-gray-600 block mb-1">Your Message</label>
+              <label className="text-xs font-medium text-gray-600 dark:text-gray-300 block mb-1">
+                Your Message
+              </label>
               <textarea
                 name="message"
                 value={formData.message}
-                placeholder="Tell me about your project or say hello..."
-                rows={5}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded text-sm bg-white text-gray-800"
+                rows={5}
+                placeholder="Tell me about your project or say hello..."
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded text-sm bg-white dark:bg-dark text-gray-800 dark:text-white"
               />
               {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
             </div>
 
             {submitted && (
-              <p className="text-green-600 text-sm font-medium">✅ Message sent successfully!</p>
+              <p className="text-green-600 text-sm font-medium">
+                ✅ Message sent successfully!
+              </p>
             )}
 
             <button
               type="submit"
               disabled={submitting}
-              className="bg-gray-900 text-white px-4 py-2 rounded hover:bg-gray-800 transition text-sm w-full"
+              className="btn w-full"
             >
-              {submitting ? "Sending..." : " Send Message"}
+              {submitting ? "Sending..." : "Send Message"}
             </button>
-          </form>
+          </motion.form>
         </div>
       </div>
     </section>
