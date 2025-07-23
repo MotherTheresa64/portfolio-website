@@ -116,7 +116,7 @@ const Projects = () => {
         </motion.div>
 
         <a
-          href="https://github.com/noahragan"
+          href="https://github.com/MotherTheresa64"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-10 btn"
