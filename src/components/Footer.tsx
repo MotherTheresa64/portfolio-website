@@ -13,7 +13,7 @@ const Footer = () => {
         {/* Middle: Icons */}
         <div className="flex gap-4">
           <a
-            href="https://github.com/noahragan"
+            href="https://github.com/MotherTheresa64"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 border rounded hover:bg-gray-100"
@@ -21,7 +21,7 @@ const Footer = () => {
             <FaGithub size={16} />
           </a>
           <a
-            href="https://linkedin.com/in/noahragan"
+            href="https://www.linkedin.com/in/noahragan-dev/"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 border rounded hover:bg-gray-100"
