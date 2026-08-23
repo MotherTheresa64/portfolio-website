@@ -1,42 +1,32 @@
-import { FaShoppingCart, FaDatabase, FaBriefcase, FaGithub } from "react-icons/fa";
+import { FaChartLine, FaDatabase, FaCode, FaGithub } from "react-icons/fa";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 
 const projects = [
   {
-    title: "E-Commerce App",
-    icon: <FaShoppingCart />,
-    desc: "A React + Firebase + TypeScript web store with cart, checkout, and admin features.",
-    tags: ["React", "Redux Toolkit", "Firebase", "Tailwind"],
-    live: "#",
-    github: "#",
+    title: "Ledgerly",
+    icon: <FaChartLine />,
+    desc: "A deployed full-stack personal finance application with Firebase authentication, PostgreSQL-backed per-user data isolation, transaction tracking, monthly budgets, savings goals, CSV import/export, analytics, and responsive mobile UX.",
+    tags: ["React", "TypeScript", "Python", "Flask", "PostgreSQL", "Firebase", "Render", "Pytest"],
+    live: "https://ledgerly-web-knmt.onrender.com",
+    github: "https://github.com/MotherTheresa64/Ledgerly",
   },
   {
-    title: "Flask Service API",
+    title: "Advanced Service API",
     icon: <FaDatabase />,
-    desc: "REST API built with Flask, MySQL, Marshmallow, Blueprints, and token authentication.",
-    tags: ["Flask", "SQLAlchemy", "JWT", "Pytest"],
-    live: "#",
-    github: "#",
+    desc: "A deployed Flask REST API for managing mechanics and service tickets, with PostgreSQL persistence, SQLAlchemy models, Marshmallow serialization, Swagger documentation, automated tests, and CI/CD deployment.",
+    tags: ["Python", "Flask", "SQLAlchemy", "PostgreSQL", "Marshmallow", "Swagger", "Pytest", "CI/CD"],
+    live: "https://advanced-api-final.onrender.com/apidocs/",
+    github: "https://github.com/MotherTheresa64/Advanced-API-Final",
   },
   {
-    title: "PositionPro",
-    icon: <FaBriefcase />,
-    desc: "A modern, mobile-responsive Kanban-style job-application tracker built with React, TypeScript, Tailwind CSS & Vite, powered by @dnd-kit drag-and-drop, Firebase Authentication & Firestore backend.",
-    tags: [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Vite",
-      "@dnd-kit",
-      "Firebase Auth",
-      "Firestore",
-      "lucide-react",
-      "react-hot-toast",
-    ],
-    live: "#",
-    github: "#",
+    title: "Developer Portfolio",
+    icon: <FaCode />,
+    desc: "The responsive portfolio site you are viewing now, built with React and TypeScript to showcase production-style projects, technical skills, and deployed work across frontend and backend development.",
+    tags: ["React", "TypeScript", "Vite", "Tailwind CSS", "Framer Motion", "Responsive Design"],
+    live: "#home",
+    github: "https://github.com/MotherTheresa64/portfolio-website",
   },
 ];
 
@@ -55,7 +45,7 @@ const Projects = () => {
           Featured Projects
         </h2>
         <p className="text-sm text-textSubtle dark:text-gray-300 mb-10">
-          A showcase of applications I’ve built using modern web technologies and best practices.
+          Deployed applications and APIs built with modern frontend, backend, database, authentication, testing, and deployment workflows.
         </p>
 
         <motion.div
@@ -93,11 +83,11 @@ const Projects = () => {
                 ))}
               </div>
 
-              <div className="flex gap-2 text-sm">
+              <div className="flex gap-2 text-sm flex-wrap">
                 <a
                   href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={project.live.startsWith("http") ? "_blank" : undefined}
+                  rel={project.live.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="btn"
                 >
                   🔗 Live Demo
