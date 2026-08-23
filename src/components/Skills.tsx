@@ -14,7 +14,7 @@ const Skills = () => (
       <div className="max-w-2xl mb-10">
         <span className="text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400">CAPABILITIES</span>
         <h2 className="text-4xl font-bold mt-3 mb-3 text-textMain dark:text-white">Tools I use to build and ship.</h2>
-        <p className="text-textSubtle dark:text-gray-300">Focused on the technologies I use in deployed work rather than a giant checklist of everything I’ve touched once.</p>
+        <p className="text-textSubtle dark:text-gray-300">Focused on the technologies I use in deployed applications, APIs, testing, and production delivery.</p>
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
