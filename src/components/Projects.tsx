@@ -7,7 +7,7 @@ const Projects = () => {
         <div className="max-w-3xl mb-10">
           <span className="text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400">SELECTED WORK</span>
           <h2 className="text-4xl sm:text-5xl font-bold mt-3 mb-4 text-textMain dark:text-white">Deployed work you can inspect.</h2>
-          <p className="text-textSubtle dark:text-gray-300 text-lg">Live applications, source code, backend architecture, authentication, data modeling, testing, and deployment—not placeholder cards.</p>
+          <p className="text-textSubtle dark:text-gray-300 text-lg">Live applications, source code, backend architecture, authentication, data modeling, testing, and production deployment.</p>
         </div>
 
         <article className="rounded-3xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark p-7 sm:p-9 mb-6 shadow-sm">
