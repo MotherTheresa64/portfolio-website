@@ -17,7 +17,7 @@ const About = () => {
             <div className="space-y-4 text-textSubtle dark:text-gray-300 leading-relaxed">
               <p>I’m a Full Stack Software Engineer focused on React, TypeScript, Python, Flask, PostgreSQL, Firebase, and REST APIs.</p>
               <p>My recent work includes Ledgerly, a deployed multi-user personal-finance application, and a deployed Flask service API with PostgreSQL persistence, Swagger documentation, automated tests, and CI/CD.</p>
-              <p>I completed full-stack software engineering training through Coding Temple and continue building projects that force me to solve the parts that happen after the tutorial ends: ownership boundaries, validation, debugging, deployment, and maintainability.</p>
+              <p>I completed full-stack software engineering training through Coding Temple and continue building projects that strengthen my work in authorization boundaries, validation, debugging, deployment, maintainability, and production-minded development.</p>
             </div>
           </div>
           <div className="grid gap-4">
