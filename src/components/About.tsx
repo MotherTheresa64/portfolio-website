@@ -1,105 +1,33 @@
-import { FaEnvelope } from "react-icons/fa";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
+import { FaCode, FaUsers, FaRocket } from "react-icons/fa";
 
 const About = () => {
-  const controlsLeft = useAnimation();
-  const controlsRight = useAnimation();
-
-  const [refLeft, inViewLeft] = useInView({ triggerOnce: true, threshold: 0.15 });
-  const [refRight, inViewRight] = useInView({ triggerOnce: true, threshold: 0.15 });
-
-  useEffect(() => {
-    if (inViewLeft) controlsLeft.start("visible");
-    if (inViewRight) controlsRight.start("visible");
-  }, [controlsLeft, controlsRight, inViewLeft, inViewRight]);
+  const cards = [
+    { icon: <FaCode />, title: "Full-stack ownership", text: "I work across responsive interfaces, APIs, authentication, relational data, testing, and deployment instead of treating them as isolated exercises." },
+    { icon: <FaRocket />, title: "Ship-focused", text: "I like taking software beyond local development: documented, secured, tested, responsive, and deployed where someone else can actually use it." },
+    { icon: <FaUsers />, title: "User perspective", text: "My background in technical support, customer service, and operations helps me troubleshoot clearly and think about software from the end user's side." },
+  ];
 
   return (
-    <section id="about" className="py-24 px-6 bg-section dark:bg-dark">
+    <section id="about" className="py-24 px-6 bg-white dark:bg-dark">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12 text-textMain dark:text-white">
-          About Me
-        </h2>
-
-        <div className="flex flex-col md:flex-row justify-between items-start gap-10">
-          {/* Left Text */}
-          <motion.div
-            ref={refLeft}
-            initial="hidden"
-            animate={controlsLeft}
-            variants={{
-              hidden: { opacity: 0, x: -40 },
-              visible: { opacity: 1, x: 0 },
-            }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="md:w-1/2 text-sm leading-relaxed text-textSubtle dark:text-gray-300"
-          >
-            <p className="mb-4">
-              I'm Noah Ragan, a full stack software engineer with hands-on
-              experience building modern web applications using technologies
-              like React, TypeScript, Flask, and SQL. I’ve completed a
-              comprehensive full-stack bootcamp at Coding Temple, where I built
-              real-world projects and developed skills in REST APIs,
-              authentication, CI/CD, testing, and responsive design.
-            </p>
-            <p>
-              I’m passionate about crafting scalable applications, clean code,
-              and learning new technologies to solve real-world problems.
-              Whether it’s building elegant UIs or designing robust backend
-              systems, I love turning ideas into functional, user-friendly
-              applications.
-            </p>
-
-            <a
-              href="#contact"
-              className="mt-6 inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded transition-transform hover:-translate-y-1 hover:shadow-md
-                         bg-black text-white dark:bg-white dark:text-black"
-            >
-              <FaEnvelope size={14} className="text-white dark:text-black" />
-              <span className="text-white dark:text-black">Let’s Work Together</span>
-            </a>
-          </motion.div>
-
-          {/* Right Cards */}
-          <motion.div
-            ref={refRight}
-            initial="hidden"
-            animate={controlsRight}
-            variants={{
-              hidden: { opacity: 0, x: 40 },
-              visible: { opacity: 1, x: 0 },
-            }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-            className="grid grid-cols-1 gap-4 md:w-1/2"
-          >
-            {[
-              {
-                title: "Education",
-                desc: "Full-Stack Development Bootcamp at Coding Temple, where I mastered modern web development technologies and best practices.",
-              },
-              {
-                title: "Expertise",
-                desc: "Specializing in React, TypeScript, Python, and Flask to build scalable web apps with clean, maintainable code.",
-              },
-              {
-                title: "Passion",
-                desc: "Creating innovative solutions, learning cutting-edge technologies, and delivering exceptional user experiences.",
-              },
-            ].map((card) => (
-              <div
-                key={card.title}
-                className="rounded-lg p-4 bg-white dark:bg-accent hover:shadow-md transition border border-borderLight dark:border-gray-700"
-              >
-                <h3 className="font-semibold text-md mb-1 text-textMain dark:text-white">
-                  {card.title}
-                </h3>
-                <p className="text-xs text-textSubtle dark:text-gray-300">
-                  {card.desc}
-                </p>
-              </div>
+        <div className="grid lg:grid-cols-[.9fr_1.1fr] gap-12 items-start">
+          <div>
+            <span className="text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400">ABOUT</span>
+            <h2 className="text-4xl font-bold mt-3 mb-5 text-textMain dark:text-white">I build across the whole application.</h2>
+            <div className="space-y-4 text-textSubtle dark:text-gray-300 leading-relaxed">
+              <p>I’m a Full Stack Software Engineer focused on React, TypeScript, Python, Flask, PostgreSQL, Firebase, and REST APIs.</p>
+              <p>My recent work includes Ledgerly, a deployed multi-user personal-finance application, and a deployed Flask service API with PostgreSQL persistence, Swagger documentation, automated tests, and CI/CD.</p>
+              <p>I completed full-stack software engineering training through Coding Temple and continue building projects that force me to solve the parts that happen after the tutorial ends: ownership boundaries, validation, debugging, deployment, and maintainability.</p>
+            </div>
+          </div>
+          <div className="grid gap-4">
+            {cards.map((card) => (
+              <article key={card.title} className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-6">
+                <div className="flex items-center gap-3 mb-2 text-textMain dark:text-white font-semibold">{card.icon}<h3>{card.title}</h3></div>
+                <p className="text-sm leading-relaxed text-textSubtle dark:text-gray-300">{card.text}</p>
+              </article>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

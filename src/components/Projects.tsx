@@ -1,118 +1,48 @@
-import { FaChartLine, FaDatabase, FaCode, FaGithub } from "react-icons/fa";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
-
-const projects = [
-  {
-    title: "Ledgerly",
-    icon: <FaChartLine />,
-    desc: "A deployed full-stack personal finance application with Firebase authentication, PostgreSQL-backed per-user data isolation, transaction tracking, monthly budgets, savings goals, CSV import/export, analytics, and responsive mobile UX.",
-    tags: ["React", "TypeScript", "Python", "Flask", "PostgreSQL", "Firebase", "Render", "Pytest"],
-    live: "https://ledgerly-web-knmt.onrender.com",
-    github: "https://github.com/MotherTheresa64/Ledgerly",
-  },
-  {
-    title: "Advanced Service API",
-    icon: <FaDatabase />,
-    desc: "A deployed Flask REST API for managing mechanics and service tickets, with PostgreSQL persistence, SQLAlchemy models, Marshmallow serialization, Swagger documentation, automated tests, and CI/CD deployment.",
-    tags: ["Python", "Flask", "SQLAlchemy", "PostgreSQL", "Marshmallow", "Swagger", "Pytest", "CI/CD"],
-    live: "https://advanced-api-final.onrender.com/apidocs/",
-    github: "https://github.com/MotherTheresa64/Advanced-API-Final",
-  },
-  {
-    title: "Developer Portfolio",
-    icon: <FaCode />,
-    desc: "The responsive portfolio site you are viewing now, built with React and TypeScript to showcase production-style projects, technical skills, and deployed work across frontend and backend development.",
-    tags: ["React", "TypeScript", "Vite", "Tailwind CSS", "Framer Motion", "Responsive Design"],
-    live: "#home",
-    github: "https://github.com/MotherTheresa64/portfolio-website",
-  },
-];
+import { FaChartLine, FaDatabase, FaGithub, FaArrowUpRightFromSquare } from "react-icons/fa6";
 
 const Projects = () => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-
-  useEffect(() => {
-    if (inView) controls.start("visible");
-  }, [inView, controls]);
-
   return (
-    <section id="projects" className="py-24 px-6 bg-section dark:bg-dark">
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-2 text-textMain dark:text-white">
-          Featured Projects
-        </h2>
-        <p className="text-sm text-textSubtle dark:text-gray-300 mb-10">
-          Deployed applications and APIs built with modern frontend, backend, database, authentication, testing, and deployment workflows.
-        </p>
+    <section id="projects" className="py-24 px-6 bg-gray-50 dark:bg-gray-900">
+      <div className="max-w-6xl mx-auto">
+        <div className="max-w-3xl mb-10">
+          <span className="text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400">SELECTED WORK</span>
+          <h2 className="text-4xl sm:text-5xl font-bold mt-3 mb-4 text-textMain dark:text-white">Deployed work you can inspect.</h2>
+          <p className="text-textSubtle dark:text-gray-300 text-lg">Live applications, source code, backend architecture, authentication, data modeling, testing, and deployment—not placeholder cards.</p>
+        </div>
 
-        <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={controls}
-          variants={{
-            hidden: { opacity: 0, y: 40 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="grid md:grid-cols-2 gap-6 text-left"
-        >
-          {projects.map((project) => (
-            <div
-              key={project.title}
-              className="rounded-xl bg-white dark:bg-dark border border-borderLight dark:border-gray-700 p-6 transition-transform duration-300 transform hover:scale-[1.02] hover:shadow-lg"
-            >
-              <div className="flex items-center gap-2 text-lg font-semibold mb-2 text-textMain dark:text-white">
-                {project.icon}
-                {project.title}
-              </div>
-              <p className="text-sm text-textSubtle dark:text-gray-300 mb-4">
-                {project.desc}
-              </p>
-
-              <div className="flex flex-wrap gap-2 text-xs mb-4">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-2 py-1 rounded border border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:-translate-y-1 hover:shadow-md transition-transform"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex gap-2 text-sm flex-wrap">
-                <a
-                  href={project.live}
-                  target={project.live.startsWith("http") ? "_blank" : undefined}
-                  rel={project.live.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="btn"
-                >
-                  🔗 Live Demo
-                </a>
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn"
-                >
-                  <FaGithub /> GitHub Repo
-                </a>
+        <article className="rounded-3xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark p-7 sm:p-9 mb-6 shadow-sm">
+          <div className="grid lg:grid-cols-[1fr_.9fr] gap-10">
+            <div>
+              <div className="flex items-center gap-3 mb-4"><FaChartLine /><span className="text-xs font-bold tracking-[0.16em] text-gray-500 dark:text-gray-400">FLAGSHIP FULL-STACK PROJECT</span></div>
+              <h3 className="text-4xl font-bold mb-4 text-textMain dark:text-white">Ledgerly</h3>
+              <p className="text-textSubtle dark:text-gray-300 leading-relaxed mb-6">A deployed personal-finance application for transactions, monthly budgets, savings goals, cash-flow analytics, and data portability. Firebase handles identity while the Flask API verifies tokens and PostgreSQL stores each user's financial records behind strict ownership checks.</p>
+              <div className="flex flex-wrap gap-2 mb-7">{["React", "TypeScript", "Python", "Flask", "PostgreSQL", "Firebase Auth", "Pytest", "GitHub Actions", "Render"].map(tag => <span key={tag} className="px-2.5 py-1.5 rounded-lg text-xs border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300">{tag}</span>)}</div>
+              <div className="flex flex-wrap gap-3">
+                <a className="btn" href="https://ledgerly-web-knmt.onrender.com" target="_blank" rel="noopener noreferrer">Launch app <FaArrowUpRightFromSquare /></a>
+                <a className="btn" href="https://github.com/MotherTheresa64/Ledgerly" target="_blank" rel="noopener noreferrer"><FaGithub /> Source code</a>
               </div>
             </div>
-          ))}
-        </motion.div>
+            <div className="grid gap-3">
+              {[['Identity','Firebase registration, email verification, password recovery, protected API access.'],['Isolation','Transactions, budgets, and goals are scoped to the authenticated user throughout the API.'],['Product features','Search/filtering, CSV import/export, budgeting, savings goals, analytics, themes, and mobile UX.'],['Delivery','Automated backend tests, GitHub Actions CI, PostgreSQL production data, and Render deployment.']].map(([title, text]) => <div key={title} className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-5"><strong className="block mb-1 text-textMain dark:text-white">{title}</strong><p className="text-sm text-textSubtle dark:text-gray-300 leading-relaxed">{text}</p></div>)}
+            </div>
+          </div>
+        </article>
 
-        <a
-          href="https://github.com/MotherTheresa64"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-10 btn"
-        >
-          <FaGithub /> View More on GitHub
-        </a>
+        <div className="grid md:grid-cols-2 gap-6">
+          <article className="rounded-3xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark p-7">
+            <div className="flex items-center gap-3 mb-4"><FaDatabase /><span className="text-xs font-bold tracking-[0.16em] text-gray-500 dark:text-gray-400">BACKEND / API</span></div>
+            <h3 className="text-2xl font-bold mb-3 text-textMain dark:text-white">Advanced Service API</h3>
+            <p className="text-sm leading-relaxed text-textSubtle dark:text-gray-300 mb-5">A deployed Flask REST API for mechanics and service tickets with PostgreSQL, SQLAlchemy, Marshmallow serialization, Swagger/OpenAPI documentation, pytest coverage, Gunicorn, and CI/CD.</p>
+            <div className="flex flex-wrap gap-3"><a className="btn" href="https://advanced-api-final.onrender.com/apidocs/" target="_blank" rel="noopener noreferrer">Swagger docs <FaArrowUpRightFromSquare /></a><a className="btn" href="https://github.com/MotherTheresa64/Advanced-API-Final" target="_blank" rel="noopener noreferrer"><FaGithub /> Source</a></div>
+          </article>
+
+          <article className="rounded-3xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark p-7">
+            <div className="flex items-center gap-3 mb-4"><FaGithub /><span className="text-xs font-bold tracking-[0.16em] text-gray-500 dark:text-gray-400">MORE CODE</span></div>
+            <h3 className="text-2xl font-bold mb-3 text-textMain dark:text-white">GitHub profile</h3>
+            <p className="text-sm leading-relaxed text-textSubtle dark:text-gray-300 mb-5">Additional coursework, experiments, and earlier project iterations are public so you can inspect how my work has progressed over time.</p>
+            <a className="btn" href="https://github.com/MotherTheresa64" target="_blank" rel="noopener noreferrer"><FaGithub /> View GitHub</a>
+          </article>
+        </div>
       </div>
     </section>
   );

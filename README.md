@@ -1,47 +1,48 @@
-# Noah Ragan – Developer Portfolio 🚀
+# Noah Ragan — Developer Portfolio
 
-Welcome to the source code for my personal developer portfolio – a modern, fully responsive website showcasing my skills, projects, and experience in full-stack web development.
+Recruiter-focused portfolio for my full-stack software engineering work.
 
-## 🌐 Live Site
+## Live portfolio
 
-👉 [View Live Portfolio](https://noah-portfolio.vercel.app)
+**Canonical site:** https://noahragan-portfolio.vercel.app/
 
----
+> Note: `noah-portfolio.vercel.app` is not my portfolio and should not be used.
 
-## 🛠️ Tech Stack
+## Featured work
 
-- **Frontend**: React, TypeScript, Vite
-- **Styling**: Tailwind CSS 3.4, Responsive Design
-- **Animation**: Framer Motion, Intersection Observer
-- **Deployment**: Vercel
-- **Forms**: Formspree for contact form submission
+### Ledgerly
+A deployed full-stack personal-finance application with React, TypeScript, Python, Flask, PostgreSQL, Firebase Authentication, user-scoped financial data, automated tests, CI/CD, and Render deployment.
 
----
+- Live: https://ledgerly-web-knmt.onrender.com/
+- Source: https://github.com/MotherTheresa64/Ledgerly
 
-## 📁 Features
+### Advanced Service API
+A deployed Flask REST API with PostgreSQL, SQLAlchemy, Marshmallow, Swagger/OpenAPI documentation, pytest coverage, Gunicorn, and CI/CD.
 
-- ⚡ Clean, modern, and responsive layout
-- 💼 About, Skills, Projects, Contact sections
-- 🧠 Tech skill categorization with hover effects
-- 📫 Contact form with validation and submission
-- 🌙 Scroll indicator with auto-hide on scroll
-- ✨ Smooth entrance animations using Framer Motion
-- 🔗 External links to GitHub, LinkedIn, Email
+- Swagger: https://advanced-api-final.onrender.com/apidocs/
+- Source: https://github.com/MotherTheresa64/Advanced-API-Final
 
----
+## Portfolio stack
 
-## 📸 Preview
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Framer Motion
+- Formspree
+- Vercel
 
-![Hero section preview](./public/preview.png)
-
----
-
-## 🚀 Getting Started Locally
-
-Clone and run locally:
+## Local development
 
 ```bash
-git clone https://github.com/yourusername/noah-portfolio.git
-cd noah-portfolio
+git clone https://github.com/MotherTheresa64/portfolio-website.git
+cd portfolio-website
 npm install
 npm run dev
+```
+
+## Links
+
+- Portfolio: https://noahragan-portfolio.vercel.app/
+- LinkedIn: https://www.linkedin.com/in/njragandev/
+- GitHub: https://github.com/MotherTheresa64

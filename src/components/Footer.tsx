@@ -1,62 +1,17 @@
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
-const Footer = () => {
-  return (
-    <footer className="bg-footerBg pt-10 pb-12 px-6 text-sm text-textSubtle border-t border-borderLight shadow-inner">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        {/* Left: Name & Role */}
-        <div className="text-center md:text-left">
-          <p className="font-semibold text-textMain">Noah Ragan</p>
-          <p className="text-xs">Full Stack Software Developer</p>
-        </div>
-
-        {/* Middle: Icons */}
-        <div className="flex gap-4">
-          <a
-            href="https://github.com/MotherTheresa64"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2 border rounded hover:bg-gray-100"
-          >
-            <FaGithub size={16} />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/noahragan-dev/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2 border rounded hover:bg-gray-100"
-          >
-            <FaLinkedin size={16} />
-          </a>
-          <a
-            href="mailto:noah.j.ragan@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2 border rounded hover:bg-gray-100"
-          >
-            <FaEnvelope size={16} />
-          </a>
-        </div>
-
-        {/* Right: Credits */}
-        <div className="text-center md:text-right text-xs">
-          <p>
-            © {new Date().getFullYear()} Noah Ragan.{" "}
-            <span className="text-textMain">
-              Made <span className="text-red-500">♥</span> with{" "}
-              <span className="font-medium">React</span> &{" "}
-              <span className="font-medium">Next.js</span>
-            </span>
-          </p>
-        </div>
+const Footer = () => (
+  <footer className="px-6 py-10 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+    <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-6 items-center justify-between text-sm text-textSubtle dark:text-gray-300">
+      <div className="text-center md:text-left"><p className="font-semibold text-textMain dark:text-white">Noah Ragan</p><p className="text-xs">Full Stack Software Engineer</p></div>
+      <div className="flex gap-3">
+        <a aria-label="GitHub" className="btn-icon" href="https://github.com/MotherTheresa64" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+        <a aria-label="LinkedIn" className="btn-icon" href="https://www.linkedin.com/in/njragandev/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+        <a aria-label="Email" className="btn-icon" href="mailto:noah.j.ragan@gmail.com"><FaEnvelope /></a>
       </div>
-
-      {/* Bottom: Disclaimer */}
-      <p className="text-center text-xs mt-6 text-gray-500">
-        All rights reserved. This website showcases my skills and projects in web development.
-      </p>
-    </footer>
-  );
-};
+      <div className="text-center md:text-right text-xs"><p>© {new Date().getFullYear()} Noah Ragan</p><p>Built with React, TypeScript, Vite & Tailwind CSS.</p></div>
+    </div>
+  </footer>
+);
 
 export default Footer;
