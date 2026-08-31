@@ -1,379 +1,90 @@
 %PDF-1.4
-%AAAA ReportLab Generated PDF document (opensource)
 1 0 obj
-<<
-/F1 2 0 R /F2 3 0 R
->>
+<< /Type /Catalog /Pages 2 0 R >>
 endobj
 2 0 obj
-<<
-/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
->>
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
 endobj
 3 0 obj
-<<
-/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
->>
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
 endobj
 4 0 obj
-<<
-/A <<
-/S /URI /Type /Action /URI (https://noahragan-portfolio.vercel.app)
->> /Border [ 0 0 0 ] /Rect [ 337.5286 729 368.7722 738.6 ] /Subtype /Link /Type /Annot
->>
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 5 0 obj
-<<
-/A <<
-/S /URI /Type /Action /URI (https://www.linkedin.com/in/njragandev/)
->> /Border [ 0 0 0 ] /Rect [ 379.1994 729 410.4506 738.6 ] /Subtype /Link /Type /Annot
->>
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
 endobj
 6 0 obj
-<<
-/A <<
-/S /URI /Type /Action /URI (https://github.com/MotherTheresa64)
->> /Border [ 0 0 0 ] /Rect [ 420.8778 729 446.2086 738.6 ] /Subtype /Link /Type /Annot
->>
-endobj
-7 0 obj
-<<
-/A <<
-/S /URI /Type /Action /URI (https://planora-zlxv.onrender.com)
->> /Border [ 0 0 0 ] /Rect [ 306.1368 595.265 320.544 604.465 ] /Subtype /Link /Type /Annot
->>
-endobj
-8 0 obj
-<<
-/A <<
-/S /URI /Type /Action /URI (https://github.com/MotherTheresa64/Planora)
->> /Border [ 0 0 0 ] /Rect [ 326.4192 595.265 350.8272 604.465 ] /Subtype /Link /Type /Annot
->>
-endobj
-9 0 obj
-<<
-/A <<
-/S /URI /Type /Action /URI (https://threadline-ga8w.onrender.com)
->> /Border [ 0 0 0 ] /Rect [ 322.5768 567.965 336.984 577.165 ] /Subtype /Link /Type /Annot
->>
-endobj
-10 0 obj
-<<
-/A <<
-/S /URI /Type /Action /URI (https://github.com/MotherTheresa64/Threadline)
->> /Border [ 0 0 0 ] /Rect [ 342.8592 567.965 367.2672 577.165 ] /Subtype /Link /Type /Annot
->>
-endobj
-11 0 obj
-<<
-/A <<
-/S /URI /Type /Action /URI (https://wanderline-s1yv.onrender.com)
->> /Border [ 0 0 0 ] /Rect [ 310.1448 540.665 324.552 549.865 ] /Subtype /Link /Type /Annot
->>
-endobj
-12 0 obj
-<<
-/A <<
-/S /URI /Type /Action /URI (https://github.com/MotherTheresa64/Wanderline)
->> /Border [ 0 0 0 ] /Rect [ 330.4272 540.665 354.8352 549.865 ] /Subtype /Link /Type /Annot
->>
-endobj
-13 0 obj
-<<
-/A <<
-/S /URI /Type /Action /URI (https://ledgerly-web-knmt.onrender.com)
->> /Border [ 0 0 0 ] /Rect [ 290.5544 513.365 304.9616 522.565 ] /Subtype /Link /Type /Annot
->>
-endobj
-14 0 obj
-<<
-/A <<
-/S /URI /Type /Action /URI (https://github.com/MotherTheresa64/Ledgerly)
->> /Border [ 0 0 0 ] /Rect [ 310.8368 513.365 335.2448 522.565 ] /Subtype /Link /Type /Annot
->>
-endobj
-15 0 obj
-<<
-/A <<
-/S /URI /Type /Action /URI (https://advanced-api-final.onrender.com/apidocs/)
->> /Border [ 0 0 0 ] /Rect [ 36 462.565 66.0096 471.765 ] /Subtype /Link /Type /Annot
->>
-endobj
-16 0 obj
-<<
-/A <<
-/S /URI /Type /Action /URI (https://github.com/MotherTheresa64/Advanced-API-Final)
->> /Border [ 0 0 0 ] /Rect [ 71.8848 462.565 96.2928 471.765 ] /Subtype /Link /Type /Annot
->>
-endobj
-17 0 obj
-<<
-/Annots [ 4 0 R 5 0 R 6 0 R 7 0 R 8 0 R 9 0 R 10 0 R 11 0 R 12 0 R 13 0 R 
-  14 0 R 15 0 R 16 0 R ] /Contents 21 0 R /MediaBox [ 0 0 612 792 ] /Parent 20 0 R /Resources <<
-/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
->> /Rotate 0 
-  /Trans <<
-
->> /Type /Page
->>
-endobj
-18 0 obj
-<<
-/PageMode /UseNone /Pages 20 0 R /Type /Catalog
->>
-endobj
-19 0 obj
-<<
-/Author (Noah Ragan) /CreationDate (D:20260831103614+00'00') /Creator (anonymous) /Keywords () /ModDate (D:20260831103614+00'00') /Producer (ReportLab PDF Library - [_opensource]_) 
-  /Subject (unspecified) /Title (Noah Ragan - Full Stack Software Engineer Resume) /Trapped /False
->>
-endobj
-20 0 obj
-<<
-/Count 1 /Kids [ 17 0 R ] /Type /Pages
->>
-endobj
-21 0 obj
-<<
-/Length 9222
->>
+<< /Length 7162 >>
 stream
-1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
-BT /F2 17 Tf 20.4 TL ET
-0 0 0 rg
-BT 1 0 0 1 247.452 758 Tm (NOAH RAGAN) Tj T* ET
-BT /F2 9.2 Tf 11.04 TL ET
-.333333 .333333 .333333 rg
-BT 1 0 0 1 224.2212 742 Tm (FULL STACK SOFTWARE ENGINEER) Tj T* ET
-BT /F1 7.6 Tf 9.12 TL ET
-.333333 .333333 .333333 rg
-BT 1 0 0 1 165.7914 730 Tm (Willow Springs, MO  |  noah.j.ragan@gmail.com  |  ) Tj T* ET
-BT /F2 7.6 Tf 9.12 TL ET
-.211765 .372549 .568627 rg
-BT 1 0 0 1 337.5286 730 Tm (Portfolio) Tj T* ET
-.333333 .333333 .333333 rg
-BT /F1 7.6 Tf 9.12 TL ET
-BT 1 0 0 1 368.7722 730 Tm (  |  ) Tj T* ET
-BT /F2 7.6 Tf 9.12 TL ET
-.211765 .372549 .568627 rg
-BT 1 0 0 1 379.1994 730 Tm (LinkedIn) Tj T* ET
-.333333 .333333 .333333 rg
-BT /F1 7.6 Tf 9.12 TL ET
-BT 1 0 0 1 410.4506 730 Tm (  |  ) Tj T* ET
-BT /F2 7.6 Tf 9.12 TL ET
-.211765 .372549 .568627 rg
-BT 1 0 0 1 420.8778 730 Tm (GitHub) Tj T* ET
-.721569 .721569 .721569 RG
-.6 w
-n 36 716 m 576 716 l S
-BT /F2 8.8 Tf 10.56 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 701 Tm (PROFESSIONAL SUMMARY) Tj T* ET
-BT /F1 7.75 Tf 9.3 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 690.5 Tm (Full Stack Software Engineer building product-focused applications across React, TypeScript, Python/Flask, Node/Express, PostgreSQL, REST APIs, testing,) Tj T* ET
-BT 1 0 0 1 36 681.355 Tm (and cloud delivery. Built a four-product portfolio suite spanning intelligent planning, collaborative knowledge, travel coordination, and personal finance, with) Tj T* ET
-BT 1 0 0 1 36 672.21 Tm (responsive UX, local-first persistence, API boundaries, CI/CD, and Firebase-ready authentication/shared-data architecture.) Tj T* ET
-BT /F2 8.8 Tf 10.56 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 658.065 Tm (TECHNICAL SKILLS) Tj T* ET
-BT /F2 7.55 Tf 9.06 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 647.565 Tm (Frontend:) Tj T* ET
-BT /F1 7.55 Tf 9.06 TL ET
-BT 1 0 0 1 73.3272 647.565 Tm (React, TypeScript, JavaScript, HTML5, CSS3, Tailwing CSS, Vite, Responsive Design) Tj T* ET
-BT /F2 7.55 Tf 9.06 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 638.365 Tm (Backend:) Tj T* ET
-BT /F1 7.55 Tf 9.06 TL ET
-BT 1 0 0 1 72.08145 638.365 Tm (Python, Flask, Node.js, Express, REST APIs, SQLAlchemy, Marshmallow, Gunicorn) Tj T* ET
-BT /F2 7.55 Tf 9.06 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 629.165 Tm (Data / Auth:) Tj T* ET
-BT /F1 7.55 Tf 9.06 TL ET
-BT 1 0 0 1 80.46195 629.165 Tm (PostgreSQL, SQL, SQLite, Firebase / Firestore, Authentication, Authorization, Local-first Persistence) Tj T* ET
-BT /F2 7.55 Tf 9.06 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 619.965 Tm (Testing / Delivery:) Tj T* ET
-BT /F1 7.55 Tf 9.06 TL ET
-BT 1 0 0 1 103.1346 619.965 Tm (Pytest, Git, GitHub, GitHub Actions, CI/CD, Render, Vercel, Swagger/OpenAPI, Postman) Tj T* ET
-BT /F2 8.8 Tf 10.56 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 606.765 Tm (SELECTED PRODUCT WORK) Tj T* ET
-BT /F2 8 Tf 9.6 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 596.265 Tm (Planora - Intelligent Planning & Execution) Tj T* ET
-BT /F1 7.2 Tf 8.64 TL ET
-.466667 .466667 .466667 rg
-BT 1 0 0 1 199.152 596.265 Tm (|  React / TypeScript / Express  |  ) Tj T* ET
-BT /F2 7.2 Tf 8.64 TL ET
-.211765 .372549 .568627 rg
-BT 1 0 0 1 306.1368 596.265 Tm (Live) Tj T* ET
-.466667 .466667 .466667 rg
-BT /F1 7.2 Tf 8.64 TL ET
-BT 1 0 0 1 320.544 596.265 Tm ( | ) Tj T* ET
-BT /F2 7.2 Tf 8.64 TL ET
-.211765 .372549 .568627 rg
-BT 1 0 0 1 326.4192 596.265 Tm (Source) Tj T* ET
-BT /F1 7.35 Tf 8.82 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 587.265 Tm (- Built a goal-to-execution workspace connecting goals, structured plans, milestones, tasks, Kanban, scheduling/calendar, Today views, global search, resources, and) Tj T* ET
-BT 1 0 0 1 36 578.715 Tm (  progress analytics; added responsive UX, persistent local data, and Firebase-ready per-user sync boundaries.) Tj T* ET
-BT /F2 8 Tf 9.6 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 568.965 Tm (Threadline - Team Knowledge & Collaboration) Tj T* ET
-BT /F1 7.2 Tf 8.64 TL ET
-.466667 .466667 .466667 rg
-BT 1 0 0 1 215.592 568.965 Tm (|  React / TypeScript / Express  |  ) Tj T* ET
-BT /F2 7.2 Tf 8.64 TL ET
-.211765 .372549 .568627 rg
-BT 1 0 0 1 322.5768 568.965 Tm (Live) Tj T* ET
-.466667 .466667 .466667 rg
-BT /F1 7.2 Tf 8.64 TL ET
-BT 1 0 0 1 336.984 568.965 Tm ( | ) Tj T* ET
-BT /F2 7.2 Tf 8.64 TL ET
-.211765 .372549 .568627 rg
-BT 1 0 0 1 342.8592 568.965 Tm (Source) Tj T* ET
-BT /F1 7.35 Tf 8.82 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 559.965 Tm (- Built a collaborative knowledge workspace with multi-workspace flows, channels, deep-linked discussions, replies/reactions, bookmarks, resolution workflows,) Tj T* ET
-BT 1 0 0 1 36 551.415 Tm (  searchable documentation, version history, board/timeline views, activity/inbox flows, and optional Firestore-backed shared-workspace architecture.) Tj T* ET
-BT /F2 8 Tf 9.6 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 541.665 Tm (Wanderline - Collaborative Travel Planning) Tj T* ET
-BT /F1 7.2 Tf 8.64 TL ET
-.466667 .466667 .466667 rg
-BT 1 0 0 1 203.16 541.665 Tm (|  React / TypeScript / Express  |  ) Tj T* ET
-BT /F2 7.2 Tf 8.64 TL ET
-.211765 .372549 .568627 rg
-BT 1 0 0 1 310.1448 541.665 Tm (Live) Tj T* ET
-.466667 .466667 .466667 rg
-BT /F1 7.2 Tf 8.64 TL ET
-BT 1 0 0 1 324.552 541.665 Tm ( | ) Tj T* ET
-BT /F2 7.2 Tf 8.64 TL ET
-.211765 .372549 .568627 rg
-BT 1 0 0 1 330.4272 541.665 Tm (Source) Tj T* ET
-BT /F1 7.35 Tf 8.82 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 532.665 Tm (- Built a shared trip-planning product spanning travelers, itinerary, saved places, lodging/reservations, budgets/expenses, packing, notes, live weather, sharing,) Tj T* ET
-BT 1 0 0 1 36 524.115 Tm (  mobile-first workflows, privacy-safe demo data, and Google Maps integration.) Tj T* ET
-BT /F2 8 Tf 9.6 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 514.365 Tm (Ledgerly - Personal Finance) Tj T* ET
-BT /F1 7.2 Tf 8.64 TL ET
-.466667 .466667 .466667 rg
-BT 1 0 0 1 147.152 514.365 Tm (|  React / TypeScript / Flask / PostgreSQL  |  ) Tj T* ET
-BT /F2 7.2 Tf 8.64 TL ET
-.211765 .372549 .568627 rg
-BT 1 0 0 1 290.5544 514.365 Tm (Live) Tj T* ET
-.466667 .466667 .466667 rg
-BT /F1 7.2 Tf 8.64 TL ET
-BT 1 0 0 1 304.9616 514.365 Tm ( | ) Tj T* ET
-BT /F2 7.2 Tf 8.64 TL ET
-.211765 .372549 .568627 rg
-BT 1 0 0 1 310.8368 514.365 Tm (Source) Tj T* ET
-BT /F1 7.35 Tf 8.82 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 505.365 Tm (- Built a personal-finance product with accounts, transfers, transactions, monthly budgets, savings goals, cash-flow reports, CSV import/export, safer partial imports,) Tj T* ET
-BT 1 0 0 1 36 496.815 Tm (  responsive dark themes/mobile navigation, automated API tests, and user-scoped data architecture prepared for finalized Firebase identity configuration.) Tj T* ET
-BT /F2 8.8 Tf 10.56 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 483.065 Tm (ADDITIONAL ENGINEERING) Tj T* ET
-BT /F2 7.8 Tf 9.36 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 472.565 Tm (Advanced Service API) Tj T* ET
-BT /F1 7.3 Tf 8.76 TL ET
-BT 1 0 0 1 122.7048 472.565 Tm (- Deployed Flask/PostgreSQL REST API with SQLAlchemy, Marshmallow, Swagger/OpenAPI, pytest, Gunicorn, and CI/CD.) Tj T* ET
-BT /F2 7.2 Tf 8.64 TL ET
-.211765 .372549 .568627 rg
-BT 1 0 0 1 36 463.565 Tm (Swagger) Tj T* ET
-BT /F1 7.2 Tf 8.64 TL ET
-.466667 .466667 .466667 rg
-BT 1 0 0 1 66.0096 463.565 Tm ( | ) Tj T* ET
-BT /F2 7.2 Tf 8.64 TL ET
-.211765 .372549 .568627 rg
-BT 1 0 0 1 71.8848 463.565 Tm (Source) Tj T* ET
-BT /F2 8.8 Tf 10.56 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 455.565 Tm (SOFTWARE ENGINEERING TRAINING) Tj T* ET
-BT /F2 7.8 Tf 9.36 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 445.065 Tm (Coding Temple - Software Engineer Apprenticeship / Full-Stack Development) Tj T* ET
-BT /F1 7.3 Tf 8.76 TL ET
-.466667 .466667 .466667 rg
-BT 1 0 0 1 325.965 445.065 Tm (|  2026) Tj T* ET
-BT /F1 7.3 Tf 8.76 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 436.065 Tm (- Built full-stack applications and REST APIs using React, TypeScript, JavaScript, Python, Flask, SQL, authentication, relational data modeling, testing, Git/GitHub, and) Tj T* ET
-BT 1 0 0 1 36 427.565 Tm (  deployment workflows.) Tj T* ET
-BT /F2 8.8 Tf 10.56 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 414.065 Tm (PROFESSIONAL EXPERIENCE) Tj T* ET
-BT /F2 7.8 Tf 9.36 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 403.565 Tm (Enterprise Mobility - Reservation Specialist) Tj T* ET
-BT /F1 7.25 Tf 8.7 TL ET
-.466667 .466667 .466667 rg
-BT 1 0 0 1 200.7204 403.565 Tm (|  Remote | Sep 2024 - Mar 2025) Tj T* ET
-BT /F1 7.25 Tf 8.7 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 394.565 Tm (- Supported customers in a high-volume remote environment, troubleshooting account/reservation issues, documenting interactions, navigating policy-driven workflows,) Tj T* ET
-BT 1 0 0 1 36 386.165 Tm (  and communicating clear solutions.) Tj T* ET
-BT /F2 7.8 Tf 9.36 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 376.765 Tm (Tractor Supply Company - Team Member) Tj T* ET
-BT /F1 7.25 Tf 8.7 TL ET
-.466667 .466667 .466667 rg
-BT 1 0 0 1 192.468 376.765 Tm (|  Willow Springs, MO | May 2026 - Aug 2026) Tj T* ET
-BT /F1 7.25 Tf 8.7 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 367.765 Tm (- Supported customer service, inventory, stocking, merchandising, and store operations while using handheld systems and product information to resolve requests and) Tj T* ET
-BT 1 0 0 1 36 359.365 Tm (  maintain workflows.) Tj T* ET
-BT /F2 8.8 Tf 10.56 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 345.965 Tm (EDUCATION) Tj T* ET
-BT /F2 7.8 Tf 9.36 TL ET
-0 0 0 rg
-BT 1 0 0 1 36 335.465 Tm (Union Adventist University) Tj T* ET
-BT /F1 7.4 Tf 8.88 TL ET
-BT 1 0 0 1 140.0208 335.465 Tm (- Computer Science & Mathematics Coursework) Tj T* ET
- 
+BT /F2 18.00 Tf 0.000 0.000 0.000 rg 217.00 754.00 Td (NOAH RAGAN) Tj ET
+BT /F2 10.00 Tf 0.120 0.310 0.470 rg 197.00 734.00 Td (SOFTWARE ENGINEER | FULL STACK) Tj ET
+BT /F1 7.50 Tf 0.000 0.000 0.000 rg 97.00 720.00 Td (Willow Springs, MO | noah.j.ragan@gmail.com | noahragan-portfolio.vercel.app | linkedin.com/in/njragandev | github.com/MotherTheresa64) Tj ET
+BT /F2 9.50 Tf 0.120 0.310 0.470 rg 42.00 708.00 Td (PROFESSIONAL SUMMARY) Tj ET
+0.720 0.790 0.840 RG 0.5 w 42 705.00 m 570 705.00 l S
+BT /F1 8.25 Tf 0.000 0.000 0.000 rg 42.00 694.00 Td (Early-career full-stack software engineer building production-minded web systems with React, TypeScript, Python,) Tj ET
+BT /F1 8.25 Tf 0.000 0.000 0.000 rg 42.00 684.80 Td (FastAPI/Flask, PostgreSQL, Redis, REST/WebSocket APIs, background processing, testing, Docker, and CI/CD. Portfolio combines) Tj ET
+BT /F1 8.25 Tf 0.000 0.000 0.000 rg 42.00 675.60 Td (a systems-focused incident-operations capstone with four product-complete applications across planning, collaboration,) Tj ET
+BT /F1 8.25 Tf 0.000 0.000 0.000 rg 42.00 666.40 Td (travel, and personal finance.) Tj ET
+BT /F2 9.50 Tf 0.120 0.310 0.470 rg 42.00 653.20 Td (TECHNICAL SKILLS) Tj ET
+0.720 0.790 0.840 RG 0.5 w 42 650.20 m 570 650.20 l S
+BT /F1 8.10 Tf 0.000 0.000 0.000 rg 42.00 639.20 Td (Languages / Frontend: Python, TypeScript, JavaScript, SQL, React, HTML5, CSS3, Tailwind CSS, Vite) Tj ET
+BT /F1 8.10 Tf 0.000 0.000 0.000 rg 42.00 629.30 Td (Backend / Systems: FastAPI, Flask, Node.js/Express, REST APIs, WebSockets, Celery, SQLAlchemy, Redis) Tj ET
+BT /F1 8.10 Tf 0.000 0.000 0.000 rg 42.00 619.40 Td (Data / Quality / Delivery: PostgreSQL, Firebase/Firestore, Pytest, validation, RBAC, Docker Compose, Git, GitHub Actions, CI/CD,) Tj ET
+BT /F1 8.10 Tf 0.000 0.000 0.000 rg 42.00 610.50 Td (Render, Vercel) Tj ET
+BT /F2 9.50 Tf 0.120 0.310 0.470 rg 42.00 597.60 Td (CAPSTONE PROJECT) Tj ET
+0.720 0.790 0.840 RG 0.5 w 42 594.60 m 570 594.60 l S
+BT /F2 8.40 Tf 0.000 0.000 0.000 rg 42.00 583.60 Td (Aegis - Real-Time Incident Operations Platform - Active Development | React / TypeScript / FastAPI / PostgreSQL /) Tj ET
+BT /F2 8.40 Tf 0.000 0.000 0.000 rg 42.00 574.00 Td (Redis / WebSockets / Celery / Docker) Tj ET
+BT /F1 8.15 Tf 0.000 0.000 0.000 rg 42.00 564.40 Td (- Building a multi-tenant incident-management system covering service health, alert ingestion/deduplication, incident) Tj ET
+BT /F1 8.15 Tf 0.000 0.000 0.000 rg 50.00 555.30 Td (  coordination, realtime timelines, public status communication, audit history, and postmortem workflows.) Tj ET
+BT /F1 8.15 Tf 0.000 0.000 0.000 rg 42.00 545.60 Td (- Architected a modular FastAPI monolith with an independently scalable Celery worker; PostgreSQL is authoritative while) Tj ET
+BT /F1 8.15 Tf 0.000 0.000 0.000 rg 50.00 536.50 Td (  Redis handles queues, cache, rate limits, and event fanout to organization-scoped WebSocket clients.) Tj ET
+BT /F1 8.15 Tf 0.000 0.000 0.000 rg 42.00 526.80 Td (- Designed explicit tenant/RBAC security boundaries, documented architecture and security decisions, containerized local) Tj ET
+BT /F1 8.15 Tf 0.000 0.000 0.000 rg 50.00 517.70 Td (  infrastructure, and CI/CD with an observability- and infrastructure-as-code-oriented production path.) Tj ET
+BT /F2 9.50 Tf 0.120 0.310 0.470 rg 42.00 505.00 Td (SELECTED PRODUCT WORK) Tj ET
+0.720 0.790 0.840 RG 0.5 w 42 502.00 m 570 502.00 l S
+BT /F2 8.40 Tf 0.000 0.000 0.000 rg 42.00 491.00 Td (Planora | Planning & Execution Workspace) Tj ET
+BT /F1 8.15 Tf 0.000 0.000 0.000 rg 42.00 481.40 Td (- Built goal-to-execution workflows with plans, milestones, tasks, Kanban, calendar scheduling, Today views, search,) Tj ET
+BT /F1 8.15 Tf 0.000 0.000 0.000 rg 50.00 472.30 Td (  analytics, responsive UX, persistence, and Firebase-ready per-user sync.) Tj ET
+BT /F2 8.40 Tf 0.000 0.000 0.000 rg 42.00 462.60 Td (Threadline | Team Knowledge & Collaboration) Tj ET
+BT /F1 8.15 Tf 0.000 0.000 0.000 rg 42.00 453.00 Td (- Built multi-workspace discussions and knowledge flows with channels, deep-linked threads, replies/reactions,) Tj ET
+BT /F1 8.15 Tf 0.000 0.000 0.000 rg 50.00 443.90 Td (  bookmarks, resolutions, searchable documents, version history, board/timeline views, and role-aware Firestore-ready) Tj ET
+BT /F1 8.15 Tf 0.000 0.000 0.000 rg 50.00 434.80 Td (  collaboration.) Tj ET
+BT /F2 8.40 Tf 0.000 0.000 0.000 rg 42.00 425.10 Td (Wanderline | Collaborative Travel Planning) Tj ET
+BT /F1 8.15 Tf 0.000 0.000 0.000 rg 42.00 415.50 Td (- Built collaborative trip planning with itineraries, traveler/logistics data, reservations, budgets/expenses, packing,) Tj ET
+BT /F1 8.15 Tf 0.000 0.000 0.000 rg 50.00 406.40 Td (  saved places, live weather, sharing, mobile-first navigation, and Google Maps integration.) Tj ET
+BT /F2 8.40 Tf 0.000 0.000 0.000 rg 42.00 396.70 Td (Ledgerly | Personal Finance Application) Tj ET
+BT /F1 8.15 Tf 0.000 0.000 0.000 rg 42.00 387.10 Td (- Built financial accounts, transactions/transfers, budgets, savings goals, reports, CSV import/export, responsive) Tj ET
+BT /F1 8.15 Tf 0.000 0.000 0.000 rg 50.00 378.00 Td (  mobile UX, Flask REST APIs, PostgreSQL models, automated tests, CI/CD, and user-scoped data boundaries.) Tj ET
+BT /F1 7.90 Tf 0.000 0.000 0.000 rg 42.00 368.30 Td (Additional engineering: Advanced Service API - deployed Flask/PostgreSQL REST API with SQLAlchemy, Marshmallow, Swagger/OpenAPI,) Tj ET
+BT /F1 7.90 Tf 0.000 0.000 0.000 rg 42.00 359.60 Td (pytest, Gunicorn, and CI/CD.) Tj ET
+BT /F2 9.50 Tf 0.120 0.310 0.470 rg 42.00 346.90 Td (TRAINING & EXPERIENCE) Tj ET
+0.720 0.790 0.840 RG 0.5 w 42 343.90 m 570 343.90 l S
+BT /F1 7.90 Tf 0.000 0.000 0.000 rg 42.00 332.90 Td (Coding Temple - Full Stack Software Engineering Certificate | Project-based training in React, TypeScript, Python/Flask, SQL,) Tj ET
+BT /F1 7.90 Tf 0.000 0.000 0.000 rg 42.00 324.20 Td (APIs, authentication, testing, Git/GitHub, and deployment.) Tj ET
+BT /F1 7.90 Tf 0.000 0.000 0.000 rg 42.00 314.50 Td (Enterprise Mobility - Reservation Specialist | Remote | Sep 2024-Mar 2025 - Resolved high-volume account/reservation issues,) Tj ET
+BT /F1 7.90 Tf 0.000 0.000 0.000 rg 42.00 305.80 Td (documented cases, and communicated solutions across time-sensitive remote workflows.) Tj ET
+BT /F1 7.90 Tf 0.000 0.000 0.000 rg 42.00 296.10 Td (Tractor Supply Company - Team Member | Willow Springs, MO | May-Aug 2026 - Supported customer, inventory, merchandising, and) Tj ET
+BT /F1 7.90 Tf 0.000 0.000 0.000 rg 42.00 287.40 Td (handheld-system workflows in a fast-paced operating environment.) Tj ET
+BT /F1 7.90 Tf 0.000 0.000 0.000 rg 42.00 277.70 Td (Vivint - Tier 3 Technical Support | Remote | Nov 2022-Aug 2023 - Troubleshot escalated network-connected security-system issues) Tj ET
+BT /F1 7.90 Tf 0.000 0.000 0.000 rg 42.00 269.00 Td (and communicated technical resolutions in a remote support environment.) Tj ET
+BT /F2 9.50 Tf 0.120 0.310 0.470 rg 42.00 256.30 Td (EDUCATION) Tj ET
+0.720 0.790 0.840 RG 0.5 w 42 253.30 m 570 253.30 l S
+BT /F1 8.10 Tf 0.000 0.000 0.000 rg 42.00 242.30 Td (Union Adventist University - Computer Science & Mathematics coursework) Tj ET
 endstream
 endobj
 xref
-0 22
+0 7
 0000000000 65535 f 
-0000000061 00000 n 
-0000000102 00000 n 
-0000000209 00000 n 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
 0000000321 00000 n 
-0000000503 00000 n 
-0000000686 00000 n 
-0000000864 00000 n 
-0000001046 00000 n 
-0000001238 00000 n 
-0000001423 00000 n 
-0000001619 00000 n 
-0000001805 00000 n 
-0000002001 00000 n 
-0000002190 00000 n 
-0000002384 00000 n 
-0000002576 00000 n 
-0000002778 00000 n 
-0000003074 00000 n 
-0000003144 00000 n 
-0000003447 00000 n 
-0000003508 00000 n 
+0000000396 00000 n 
 trailer
-<<
-/ID 
-[<f791833d9458606baa7109c334dfe048><f791833d9458606baa7109c334dfe048>]
-% ReportLab generated PDF document -- digest (opensource)
-
-/Info 19 0 R
-/Root 18 0 R
-/Size 22
->>
+<< /Size 7 /Root 1 0 R >>
 startxref
-12782
+7609
 %%EOF
