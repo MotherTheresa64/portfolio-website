@@ -16,8 +16,8 @@ const About = () => {
             <h2 className="text-4xl font-bold mt-3 mb-5 text-textMain dark:text-white">I build across the whole application.</h2>
             <div className="space-y-4 text-textSubtle dark:text-gray-300 leading-relaxed">
               <p>I’m a Full Stack Software Engineer focused on React, TypeScript, Python, Flask, Node/Express, PostgreSQL, Firebase, and production-minded delivery.</p>
-              <p>My recent work includes Ledgerly, a deployed multi-user finance application, plus Planora, Threadline, and Wanderline: three live products exploring project planning, durable team knowledge, and consumer travel planning with very different interaction models.</p>
-              <p>I intentionally structure the newer demos so they remain fully reviewable without credentials while authentication and persistence boundaries stay isolated for the final per-user hosted-data phase. That lets me demonstrate product UX, state modeling, responsiveness, accessibility, integrations, deployment, and architecture now without pretending unfinished infrastructure is already finished.</p>
+              <p>My current product suite includes Ledgerly, Planora, Threadline, and Wanderline: four different applications covering personal finance, goal-driven planning, durable team knowledge, and collaborative travel. I’m treating them as strong portfolio references rather than labeling any one of them my flagship.</p>
+              <p>The newer demos are deliberately usable while larger hosted-account and collaboration layers are still being completed. That lets me demonstrate real interaction design, state modeling, responsiveness, accessibility, integrations, deployment, and architecture without presenting roadmap features as if they are already finished.</p>
               <p>I completed full-stack software engineering training through Coding Temple and continue building projects that strengthen my work in authorization, validation, debugging, data modeling, mobile product design, maintainability, and cloud deployment.</p>
             </div>
           </div>

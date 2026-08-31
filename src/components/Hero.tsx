@@ -1,5 +1,4 @@
 import { FaArrowDown, FaFilePdf, FaGithub, FaLinkedin } from "react-icons/fa";
-import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
 const Hero = () => {
@@ -33,7 +32,7 @@ const Hero = () => {
               transition={{ delay: 0.16, duration: 0.5 }}
               className="text-lg sm:text-xl text-textSubtle dark:text-gray-300 leading-relaxed max-w-2xl mb-7"
             >
-              I’m Noah Ragan, a Full Stack Software Engineer building across React, TypeScript, Python, Flask, Node, PostgreSQL, Firebase, and cloud deployment. My recent work spans personal finance, project planning, team knowledge, travel planning, and mobile product development.
+              I’m Noah Ragan, a Full Stack Software Engineer building across React, TypeScript, Python, Flask, Node, PostgreSQL, Firebase, and cloud deployment. My current product work spans personal finance, intelligent planning, team knowledge, and collaborative travel.
             </motion.p>
 
             <motion.div
@@ -89,17 +88,15 @@ const Hero = () => {
             </div>
 
             <div className="grid sm:grid-cols-2 gap-3 mt-4">
-              <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark p-4">
-                <span className="text-xs uppercase tracking-[0.16em] text-gray-500 dark:text-gray-400">Flagship</span>
-                <strong className="block text-textMain dark:text-white mt-1">Ledgerly</strong>
-                <a href="https://ledgerly-web-knmt.onrender.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 mt-2 text-sm font-semibold text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white">
-                  Launch live <FaArrowUpRightFromSquare size={12} />
-                </a>
+              <div className="rounded-2xl border border-dashed border-gray-300 dark:border-gray-600 bg-white dark:bg-dark p-4">
+                <span className="text-xs uppercase tracking-[0.16em] text-gray-500 dark:text-gray-400">Flagship project</span>
+                <strong className="block text-textMain dark:text-white mt-1">In development</strong>
+                <p className="text-xs text-textSubtle dark:text-gray-400 mt-2">This spot is intentionally reserved for the project that best represents my strongest end-to-end work.</p>
               </div>
               <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-dark p-4">
-                <span className="text-xs uppercase tracking-[0.16em] text-gray-500 dark:text-gray-400">Currently building</span>
-                <strong className="block text-textMain dark:text-white mt-1">Planora · Threadline · Wanderline</strong>
-                <p className="text-xs text-textSubtle dark:text-gray-400 mt-2">All three have live, reviewable demos.</p>
+                <span className="text-xs uppercase tracking-[0.16em] text-gray-500 dark:text-gray-400">Current product suite</span>
+                <strong className="block text-textMain dark:text-white mt-1">Ledgerly · Planora · Threadline · Wanderline</strong>
+                <p className="text-xs text-textSubtle dark:text-gray-400 mt-2">Live demos and source references, without forcing one into the flagship slot.</p>
               </div>
             </div>
           </motion.div>
