@@ -1,5 +1,5 @@
-%PDF-1.3
-%“Œ‹ž ReportLab Generated PDF document (opensource)
+%PDF-1.4
+%AAAA ReportLab Generated PDF document (opensource)
 1 0 obj
 <<
 /F1 2 0 R /F2 3 0 R
@@ -18,34 +18,98 @@ endobj
 4 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (mailto:noah.j.ragan@gmail.com)
->> /Border [ 0 0 0 ] /Rect [ 170 737 300 747 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (https://noahragan-portfolio.vercel.app)
+>> /Border [ 0 0 0 ] /Rect [ 337.5286 729 368.7722 738.6 ] /Subtype /Link /Type /Annot
 >>
 endobj
 5 0 obj
 <<
 /A <<
 /S /URI /Type /Action /URI (https://www.linkedin.com/in/njragandev/)
->> /Border [ 0 0 0 ] /Rect [ 310 737 430 747 ] /Subtype /Link /Type /Annot
+>> /Border [ 0 0 0 ] /Rect [ 379.1994 729 410.4506 738.6 ] /Subtype /Link /Type /Annot
 >>
 endobj
 6 0 obj
 <<
 /A <<
 /S /URI /Type /Action /URI (https://github.com/MotherTheresa64)
->> /Border [ 0 0 0 ] /Rect [ 430 737 560 747 ] /Subtype /Link /Type /Annot
+>> /Border [ 0 0 0 ] /Rect [ 420.8778 729 446.2086 738.6 ] /Subtype /Link /Type /Annot
 >>
 endobj
 7 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://noahragan-portfolio.vercel.app/)
->> /Border [ 0 0 0 ] /Rect [ 180 725 430 735 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (https://planora-zlxv.onrender.com)
+>> /Border [ 0 0 0 ] /Rect [ 306.1368 595.265 320.544 604.465 ] /Subtype /Link /Type /Annot
 >>
 endobj
 8 0 obj
 <<
-/Annots [ 4 0 R 5 0 R 6 0 R 7 0 R ] /Contents 12 0 R /MediaBox [ 0 0 612 792 ] /Parent 11 0 R /Resources <<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/MotherTheresa64/Planora)
+>> /Border [ 0 0 0 ] /Rect [ 326.4192 595.265 350.8272 604.465 ] /Subtype /Link /Type /Annot
+>>
+endobj
+9 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://threadline-ga8w.onrender.com)
+>> /Border [ 0 0 0 ] /Rect [ 322.5768 567.965 336.984 577.165 ] /Subtype /Link /Type /Annot
+>>
+endobj
+10 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/MotherTheresa64/Threadline)
+>> /Border [ 0 0 0 ] /Rect [ 342.8592 567.965 367.2672 577.165 ] /Subtype /Link /Type /Annot
+>>
+endobj
+11 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://wanderline-s1yv.onrender.com)
+>> /Border [ 0 0 0 ] /Rect [ 310.1448 540.665 324.552 549.865 ] /Subtype /Link /Type /Annot
+>>
+endobj
+12 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/MotherTheresa64/Wanderline)
+>> /Border [ 0 0 0 ] /Rect [ 330.4272 540.665 354.8352 549.865 ] /Subtype /Link /Type /Annot
+>>
+endobj
+13 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://ledgerly-web-knmt.onrender.com)
+>> /Border [ 0 0 0 ] /Rect [ 290.5544 513.365 304.9616 522.565 ] /Subtype /Link /Type /Annot
+>>
+endobj
+14 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/MotherTheresa64/Ledgerly)
+>> /Border [ 0 0 0 ] /Rect [ 310.8368 513.365 335.2448 522.565 ] /Subtype /Link /Type /Annot
+>>
+endobj
+15 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://advanced-api-final.onrender.com/apidocs/)
+>> /Border [ 0 0 0 ] /Rect [ 36 462.565 66.0096 471.765 ] /Subtype /Link /Type /Annot
+>>
+endobj
+16 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/MotherTheresa64/Advanced-API-Final)
+>> /Border [ 0 0 0 ] /Rect [ 71.8848 462.565 96.2928 471.765 ] /Subtype /Link /Type /Annot
+>>
+endobj
+17 0 obj
+<<
+/Annots [ 4 0 R 5 0 R 6 0 R 7 0 R 8 0 R 9 0 R 10 0 R 11 0 R 12 0 R 13 0 R 
+  14 0 R 15 0 R 16 0 R ] /Contents 21 0 R /MediaBox [ 0 0 612 792 ] /Parent 20 0 R /Resources <<
 /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
 >> /Rotate 0 
   /Trans <<
@@ -53,54 +117,263 @@ endobj
 >> /Type /Page
 >>
 endobj
-9 0 obj
+18 0 obj
 <<
-/PageMode /UseNone /Pages 11 0 R /Type /Catalog
+/PageMode /UseNone /Pages 20 0 R /Type /Catalog
 >>
 endobj
-10 0 obj
+19 0 obj
 <<
-/Author (anonymous) /CreationDate (D:20260831085644+00'00') /Creator (anonymous) /Keywords () /ModDate (D:20260831085644+00'00') /Producer (ReportLab PDF Library - \(opensource\)) 
-  /Subject (unspecified) /Title (untitled) /Trapped /False
+/Author (Noah Ragan) /CreationDate (D:20260831103614+00'00') /Creator (anonymous) /Keywords () /ModDate (D:20260831103614+00'00') /Producer (ReportLab PDF Library - [_opensource]_) 
+  /Subject (unspecified) /Title (Noah Ragan - Full Stack Software Engineer Resume) /Trapped /False
 >>
 endobj
-11 0 obj
+20 0 obj
 <<
-/Count 1 /Kids [ 8 0 R ] /Type /Pages
+/Count 1 /Kids [ 17 0 R ] /Type /Pages
 >>
 endobj
-12 0 obj
+21 0 obj
 <<
-/Filter [ /ASCII85Decode /FlateDecode ] /Length 3001
+/Length 9222
 >>
 stream
-GatU4?$"^j(4FN4\;r^U+@(I-m)p"\-_C*K/3M$Tje\(XUf^N1oRVe"r:iFa>6<KtfOcWKUR#*^EULC#gfBKIpt*uE]pS$4S2t:GlIe"$;K#qPBRW7Rq$2?*VVY/,+7JXkWWDJF_!2GDj:!RE0?*REX6]!d\t+;A?N!@bT/?R\A"3i9N.H;@]l,IV[KZgTD(r9l'0Y(&h8KQ.oBF@uEj*gOhkmk=RU(>*^REDbT8qg(OeijTGs6B^@ugg])YG+d37^HH$_p6UOIKijZH?BnGtmph-rD1mITi.AM<*Qp=G2guWE;BB_W5&"@DXra@F@_rl<_20lc6'1#g.jMGc?QcAomm:\SqcM<nc`%NieGM%ogRf9ZA:qg"Y'JZLhu#<+X$H7A7$<1@o$eM)=#nFh`O>[qCGEf<TsKD`dmAmIf/VFjI7pVSN)snoB'RT>mPTE(CK]P5;l[fU@aJVW#&*)lVI&\W&kA86F]7BC??*/KNq._TRZ&m`AJPi^%+<B#uMrUs*LLL(Q[X&We>HVNKSO/'X;cH:=cqFrV\15!?u@mLuWi(s0?V:(N-gh+HW@/XgTUl$?L"iqd7c"=e-5=X<S8(0r@rG%Q6%#[-#1%-Z`*3tm:FJkb@G.[09B(DnLCj?hq5V&,igUFT2pCH\]'kR6hAD3\'.R^mL.hOK4DU'+\`,4l"VVa[#4oTb6R(PQO"Uc]6sQXQ0rPS^(0*+;ad<MmCir'm:;!cucFpD+K!07_I/?&V92r$UZuP>ef(02cA@Ef;kYa"baTNG=:3Z]d%Dk9is(YNH]<mYe/eS;B+@Yc;G&@[0*XZKB,_SKYbD8X1`4Pk[d=k/55f'_kt87=F!N=Go.L/c%6;]GS*@`-(s%&R+Z(Wc>@6IteqtgE#d]1(RI.^/TT1e\dO2QrSW&&n'*/pT`3DRHoQ@L,K>@r_4UjORWN1-F,aiL"<\>F:/"hVVi6pCiHf]U\@RuQ_mQ'aDI2rs#&&RA/\/,G[E;;H6]aYbRjtR*f%qS3!IdP:qC]t,Cl>%1dJS&U<fP/o;,^A^GPV``2KV_$V4i`TP;B`efVhF-*tm>.MG)"dbr('=nLRlp3t?QRUs(:MqQ4"G"N=qhf3dhmWP3GgX4ia[rf)nC_ZO'BmVqgV2t"3)u=!t,@WZM)`d!cBH]AD'7hja1ej_p_#$IH1D(MYHX*O7i;8L:9ud+8SP^W29\Zf'>\aOF\$m?Y*`^_ECQK8m`d?97"441!k!s>HH@_aL-XAsQ:Psmp^c;P:AQ4?M15Fa</#4Zp0PXm(,0<9uW^R6($XDb%c,BdeP_d]Y6lr_%S9Y1'DidOa62+.^@s77"r0r0S)&N.>D["RTVf([h8u7#V+'mXdpRc\+jV"d0'uM#=XoJ4gADfU0SALWgIA,(ajd12KpPAc`*#q`M[>Wg.,#Oc$%aBW"$6Rf]7,o4&8==@/EaJ7b2\id/ag7\Q-.M.lSAb%0f[s;\+_>StT9kghRYF[nUQfIP*a67d;6SBTK'4G#l_jB4G)@4FDuN%6pN\5R4&%Y$a/Tr((!/cf9Wn^P(=9<kMTcH9oZ4+/h2TH_nfcH6(1?j*1i*;D)fS0$ZrZFCT`;:@TCLiVOGo\j#-UA!lal-!8+KUnM1s*Z"k.mo*[91CVr2e#5a.^V"pV?JAkYD3Zu(\Bo#'65o=Q]:+F6pmluH4-qcI66%?66;^>Hlu?>^NNA-^S'kQ$^E5_g&T.c]U/#gWV#66M9cDD)`*,9NbS0'&&3g?I1Rql<if]'`Jd,7E4/7\g=rdF5njCf>"$IBdK>2Jr@g#hP?0a>A9gmcdLD&<M5k10Fab1Q:C7+1B\mV(AE/5q_pLAF?us-=q0G;F:/+[9U0()[^aI5dA'MoYHLq+amrI].1QF1^[bQ7:N%7i`JSRK/Y1MXt)C6)(RL<2&p$3OBL"0A`Vec908J,I'6\hq_D24'ajH=%.GG8VhKJ5%$-GPO4+egYYZVR!J7%Y6XO\7&U,u_(;Lrdhe$Mo1r,4Q3k2$cYYN9A.:P*5>Qrasb$)1F(A=5T&Q1r$(+uX6+6+[@W(s3cWdpG`.18ISI%si9_cF92-WA^IB+_o53&&tZd?K^3YJ!9iGEHUR8NaJ4;QYs0Cko^oS$d:g[AmK#JfTP<fgZ8$YtF)3I:^Cs`gg04'go1)U&iqX'J6+Ug-Cq6^5t&.9"$jX,,]4DXAM7PnW-<`FOTC^\^i]m(PK:T:HA3$8AS6I2crqIj5n1jl.1@m?+.+gG,hA3,ZXr1!BR-=4F7RM]isosI53juqFpM8l1l&H?ED?UVO6":k#M:!Q2+fMfq,=2rcU#_E>hgld.:$Q.*=?:m4o1pA=[<9IgWD)Pqq4bjEP#Jm,R5Cm&o^q7G%X6Gb[AZ\f/F<Gr*"fN7a[bEhaWI+Vq`5'FM0J%d?ba`VLSOb3'GhdsUmaKE\GU*>]6(@q=2i28?;aF)eT9="?GbmM*M-fi8PQ;Kq'klg/lg6#QDp#2GbTS]kCemEf:kGGI+`pQ-0i>/b?E'J`=f&4WHA()9Lp_XNl!nK^&Y*rHI6oNpqP3`^H82^c7l,o2YmOXj?ma(d<!_r!5Z2*?o)K77)Z]Lpj_=1:m!N!@$a_$1F%e3_S+\j<h5g2#2p:t<c@=!m5e;i-XR!cEkK.1_YPSoLT.6e+IS#fA:Qo6JG_oMH(g>MP9(jCP(MVOi\*1=:3`F"]jo7!4'L+5B>8Hd[-E=A>3EAe'oe4ZY$d9q>ue(s@(T_/!n5LUd42FmNBsc[.rL_Dl#-',@DhWRs"n,,S!N0D6L!%T'#])-K^Ygmi'(kPJU/b_?Ga)#?qL'cjK&nD1Q'hQH0cq@M*uoVAbB"PBC4_kX5V7Lq]/i4-'-'Kh%/.(FXNPhN*Zfc8)Sh`@kl$EJf$R%OqJ9k"m\S7pJIeA"WT(1>->CHK%im\D"PeKY$C=mKs"Is--^17^e_?50\/gpSYB<P'Db,7YX`d2oqW@iq"<7H?(09Vt!`&$7%_f3CNTS&Q*)_uB_ek,@q~>endstream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+BT /F2 17 Tf 20.4 TL ET
+0 0 0 rg
+BT 1 0 0 1 247.452 758 Tm (NOAH RAGAN) Tj T* ET
+BT /F2 9.2 Tf 11.04 TL ET
+.333333 .333333 .333333 rg
+BT 1 0 0 1 224.2212 742 Tm (FULL STACK SOFTWARE ENGINEER) Tj T* ET
+BT /F1 7.6 Tf 9.12 TL ET
+.333333 .333333 .333333 rg
+BT 1 0 0 1 165.7914 730 Tm (Willow Springs, MO  |  noah.j.ragan@gmail.com  |  ) Tj T* ET
+BT /F2 7.6 Tf 9.12 TL ET
+.211765 .372549 .568627 rg
+BT 1 0 0 1 337.5286 730 Tm (Portfolio) Tj T* ET
+.333333 .333333 .333333 rg
+BT /F1 7.6 Tf 9.12 TL ET
+BT 1 0 0 1 368.7722 730 Tm (  |  ) Tj T* ET
+BT /F2 7.6 Tf 9.12 TL ET
+.211765 .372549 .568627 rg
+BT 1 0 0 1 379.1994 730 Tm (LinkedIn) Tj T* ET
+.333333 .333333 .333333 rg
+BT /F1 7.6 Tf 9.12 TL ET
+BT 1 0 0 1 410.4506 730 Tm (  |  ) Tj T* ET
+BT /F2 7.6 Tf 9.12 TL ET
+.211765 .372549 .568627 rg
+BT 1 0 0 1 420.8778 730 Tm (GitHub) Tj T* ET
+.721569 .721569 .721569 RG
+.6 w
+n 36 716 m 576 716 l S
+BT /F2 8.8 Tf 10.56 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 701 Tm (PROFESSIONAL SUMMARY) Tj T* ET
+BT /F1 7.75 Tf 9.3 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 690.5 Tm (Full Stack Software Engineer building product-focused applications across React, TypeScript, Python/Flask, Node/Express, PostgreSQL, REST APIs, testing,) Tj T* ET
+BT 1 0 0 1 36 681.355 Tm (and cloud delivery. Built a four-product portfolio suite spanning intelligent planning, collaborative knowledge, travel coordination, and personal finance, with) Tj T* ET
+BT 1 0 0 1 36 672.21 Tm (responsive UX, local-first persistence, API boundaries, CI/CD, and Firebase-ready authentication/shared-data architecture.) Tj T* ET
+BT /F2 8.8 Tf 10.56 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 658.065 Tm (TECHNICAL SKILLS) Tj T* ET
+BT /F2 7.55 Tf 9.06 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 647.565 Tm (Frontend:) Tj T* ET
+BT /F1 7.55 Tf 9.06 TL ET
+BT 1 0 0 1 73.3272 647.565 Tm (React, TypeScript, JavaScript, HTML5, CSS3, Tailwing CSS, Vite, Responsive Design) Tj T* ET
+BT /F2 7.55 Tf 9.06 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 638.365 Tm (Backend:) Tj T* ET
+BT /F1 7.55 Tf 9.06 TL ET
+BT 1 0 0 1 72.08145 638.365 Tm (Python, Flask, Node.js, Express, REST APIs, SQLAlchemy, Marshmallow, Gunicorn) Tj T* ET
+BT /F2 7.55 Tf 9.06 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 629.165 Tm (Data / Auth:) Tj T* ET
+BT /F1 7.55 Tf 9.06 TL ET
+BT 1 0 0 1 80.46195 629.165 Tm (PostgreSQL, SQL, SQLite, Firebase / Firestore, Authentication, Authorization, Local-first Persistence) Tj T* ET
+BT /F2 7.55 Tf 9.06 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 619.965 Tm (Testing / Delivery:) Tj T* ET
+BT /F1 7.55 Tf 9.06 TL ET
+BT 1 0 0 1 103.1346 619.965 Tm (Pytest, Git, GitHub, GitHub Actions, CI/CD, Render, Vercel, Swagger/OpenAPI, Postman) Tj T* ET
+BT /F2 8.8 Tf 10.56 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 606.765 Tm (SELECTED PRODUCT WORK) Tj T* ET
+BT /F2 8 Tf 9.6 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 596.265 Tm (Planora - Intelligent Planning & Execution) Tj T* ET
+BT /F1 7.2 Tf 8.64 TL ET
+.466667 .466667 .466667 rg
+BT 1 0 0 1 199.152 596.265 Tm (|  React / TypeScript / Express  |  ) Tj T* ET
+BT /F2 7.2 Tf 8.64 TL ET
+.211765 .372549 .568627 rg
+BT 1 0 0 1 306.1368 596.265 Tm (Live) Tj T* ET
+.466667 .466667 .466667 rg
+BT /F1 7.2 Tf 8.64 TL ET
+BT 1 0 0 1 320.544 596.265 Tm ( | ) Tj T* ET
+BT /F2 7.2 Tf 8.64 TL ET
+.211765 .372549 .568627 rg
+BT 1 0 0 1 326.4192 596.265 Tm (Source) Tj T* ET
+BT /F1 7.35 Tf 8.82 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 587.265 Tm (- Built a goal-to-execution workspace connecting goals, structured plans, milestones, tasks, Kanban, scheduling/calendar, Today views, global search, resources, and) Tj T* ET
+BT 1 0 0 1 36 578.715 Tm (  progress analytics; added responsive UX, persistent local data, and Firebase-ready per-user sync boundaries.) Tj T* ET
+BT /F2 8 Tf 9.6 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 568.965 Tm (Threadline - Team Knowledge & Collaboration) Tj T* ET
+BT /F1 7.2 Tf 8.64 TL ET
+.466667 .466667 .466667 rg
+BT 1 0 0 1 215.592 568.965 Tm (|  React / TypeScript / Express  |  ) Tj T* ET
+BT /F2 7.2 Tf 8.64 TL ET
+.211765 .372549 .568627 rg
+BT 1 0 0 1 322.5768 568.965 Tm (Live) Tj T* ET
+.466667 .466667 .466667 rg
+BT /F1 7.2 Tf 8.64 TL ET
+BT 1 0 0 1 336.984 568.965 Tm ( | ) Tj T* ET
+BT /F2 7.2 Tf 8.64 TL ET
+.211765 .372549 .568627 rg
+BT 1 0 0 1 342.8592 568.965 Tm (Source) Tj T* ET
+BT /F1 7.35 Tf 8.82 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 559.965 Tm (- Built a collaborative knowledge workspace with multi-workspace flows, channels, deep-linked discussions, replies/reactions, bookmarks, resolution workflows,) Tj T* ET
+BT 1 0 0 1 36 551.415 Tm (  searchable documentation, version history, board/timeline views, activity/inbox flows, and optional Firestore-backed shared-workspace architecture.) Tj T* ET
+BT /F2 8 Tf 9.6 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 541.665 Tm (Wanderline - Collaborative Travel Planning) Tj T* ET
+BT /F1 7.2 Tf 8.64 TL ET
+.466667 .466667 .466667 rg
+BT 1 0 0 1 203.16 541.665 Tm (|  React / TypeScript / Express  |  ) Tj T* ET
+BT /F2 7.2 Tf 8.64 TL ET
+.211765 .372549 .568627 rg
+BT 1 0 0 1 310.1448 541.665 Tm (Live) Tj T* ET
+.466667 .466667 .466667 rg
+BT /F1 7.2 Tf 8.64 TL ET
+BT 1 0 0 1 324.552 541.665 Tm ( | ) Tj T* ET
+BT /F2 7.2 Tf 8.64 TL ET
+.211765 .372549 .568627 rg
+BT 1 0 0 1 330.4272 541.665 Tm (Source) Tj T* ET
+BT /F1 7.35 Tf 8.82 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 532.665 Tm (- Built a shared trip-planning product spanning travelers, itinerary, saved places, lodging/reservations, budgets/expenses, packing, notes, live weather, sharing,) Tj T* ET
+BT 1 0 0 1 36 524.115 Tm (  mobile-first workflows, privacy-safe demo data, and Google Maps integration.) Tj T* ET
+BT /F2 8 Tf 9.6 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 514.365 Tm (Ledgerly - Personal Finance) Tj T* ET
+BT /F1 7.2 Tf 8.64 TL ET
+.466667 .466667 .466667 rg
+BT 1 0 0 1 147.152 514.365 Tm (|  React / TypeScript / Flask / PostgreSQL  |  ) Tj T* ET
+BT /F2 7.2 Tf 8.64 TL ET
+.211765 .372549 .568627 rg
+BT 1 0 0 1 290.5544 514.365 Tm (Live) Tj T* ET
+.466667 .466667 .466667 rg
+BT /F1 7.2 Tf 8.64 TL ET
+BT 1 0 0 1 304.9616 514.365 Tm ( | ) Tj T* ET
+BT /F2 7.2 Tf 8.64 TL ET
+.211765 .372549 .568627 rg
+BT 1 0 0 1 310.8368 514.365 Tm (Source) Tj T* ET
+BT /F1 7.35 Tf 8.82 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 505.365 Tm (- Built a personal-finance product with accounts, transfers, transactions, monthly budgets, savings goals, cash-flow reports, CSV import/export, safer partial imports,) Tj T* ET
+BT 1 0 0 1 36 496.815 Tm (  responsive dark themes/mobile navigation, automated API tests, and user-scoped data architecture prepared for finalized Firebase identity configuration.) Tj T* ET
+BT /F2 8.8 Tf 10.56 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 483.065 Tm (ADDITIONAL ENGINEERING) Tj T* ET
+BT /F2 7.8 Tf 9.36 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 472.565 Tm (Advanced Service API) Tj T* ET
+BT /F1 7.3 Tf 8.76 TL ET
+BT 1 0 0 1 122.7048 472.565 Tm (- Deployed Flask/PostgreSQL REST API with SQLAlchemy, Marshmallow, Swagger/OpenAPI, pytest, Gunicorn, and CI/CD.) Tj T* ET
+BT /F2 7.2 Tf 8.64 TL ET
+.211765 .372549 .568627 rg
+BT 1 0 0 1 36 463.565 Tm (Swagger) Tj T* ET
+BT /F1 7.2 Tf 8.64 TL ET
+.466667 .466667 .466667 rg
+BT 1 0 0 1 66.0096 463.565 Tm ( | ) Tj T* ET
+BT /F2 7.2 Tf 8.64 TL ET
+.211765 .372549 .568627 rg
+BT 1 0 0 1 71.8848 463.565 Tm (Source) Tj T* ET
+BT /F2 8.8 Tf 10.56 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 455.565 Tm (SOFTWARE ENGINEERING TRAINING) Tj T* ET
+BT /F2 7.8 Tf 9.36 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 445.065 Tm (Coding Temple - Software Engineer Apprenticeship / Full-Stack Development) Tj T* ET
+BT /F1 7.3 Tf 8.76 TL ET
+.466667 .466667 .466667 rg
+BT 1 0 0 1 325.965 445.065 Tm (|  2026) Tj T* ET
+BT /F1 7.3 Tf 8.76 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 436.065 Tm (- Built full-stack applications and REST APIs using React, TypeScript, JavaScript, Python, Flask, SQL, authentication, relational data modeling, testing, Git/GitHub, and) Tj T* ET
+BT 1 0 0 1 36 427.565 Tm (  deployment workflows.) Tj T* ET
+BT /F2 8.8 Tf 10.56 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 414.065 Tm (PROFESSIONAL EXPERIENCE) Tj T* ET
+BT /F2 7.8 Tf 9.36 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 403.565 Tm (Enterprise Mobility - Reservation Specialist) Tj T* ET
+BT /F1 7.25 Tf 8.7 TL ET
+.466667 .466667 .466667 rg
+BT 1 0 0 1 200.7204 403.565 Tm (|  Remote | Sep 2024 - Mar 2025) Tj T* ET
+BT /F1 7.25 Tf 8.7 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 394.565 Tm (- Supported customers in a high-volume remote environment, troubleshooting account/reservation issues, documenting interactions, navigating policy-driven workflows,) Tj T* ET
+BT 1 0 0 1 36 386.165 Tm (  and communicating clear solutions.) Tj T* ET
+BT /F2 7.8 Tf 9.36 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 376.765 Tm (Tractor Supply Company - Team Member) Tj T* ET
+BT /F1 7.25 Tf 8.7 TL ET
+.466667 .466667 .466667 rg
+BT 1 0 0 1 192.468 376.765 Tm (|  Willow Springs, MO | May 2026 - Aug 2026) Tj T* ET
+BT /F1 7.25 Tf 8.7 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 367.765 Tm (- Supported customer service, inventory, stocking, merchandising, and store operations while using handheld systems and product information to resolve requests and) Tj T* ET
+BT 1 0 0 1 36 359.365 Tm (  maintain workflows.) Tj T* ET
+BT /F2 8.8 Tf 10.56 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 345.965 Tm (EDUCATION) Tj T* ET
+BT /F2 7.8 Tf 9.36 TL ET
+0 0 0 rg
+BT 1 0 0 1 36 335.465 Tm (Union Adventist University) Tj T* ET
+BT /F1 7.4 Tf 8.88 TL ET
+BT 1 0 0 1 140.0208 335.465 Tm (- Computer Science & Mathematics Coursework) Tj T* ET
+ 
+endstream
 endobj
 xref
-0 13
+0 22
 0000000000 65535 f 
 0000000061 00000 n 
 0000000102 00000 n 
 0000000209 00000 n 
 0000000321 00000 n 
-0000000482 00000 n 
-0000000653 00000 n 
-0000000819 00000 n 
-0000000990 00000 n 
-0000001221 00000 n 
-0000001290 00000 n 
-0000001552 00000 n 
-0000001612 00000 n 
+0000000503 00000 n 
+0000000686 00000 n 
+0000000864 00000 n 
+0000001046 00000 n 
+0000001238 00000 n 
+0000001423 00000 n 
+0000001619 00000 n 
+0000001805 00000 n 
+0000002001 00000 n 
+0000002190 00000 n 
+0000002384 00000 n 
+0000002576 00000 n 
+0000002778 00000 n 
+0000003074 00000 n 
+0000003144 00000 n 
+0000003447 00000 n 
+0000003508 00000 n 
 trailer
 <<
 /ID 
-[<43c16571c933658a0c5151e348b2d354><43c16571c933658a0c5151e348b2d354>]
+[<f791833d9458606baa7109c334dfe048><f791833d9458606baa7109c334dfe048>]
 % ReportLab generated PDF document -- digest (opensource)
 
-/Info 10 0 R
-/Root 9 0 R
-/Size 13
+/Info 19 0 R
+/Root 18 0 R
+/Size 22
 >>
 startxref
-4705
+12782
 %%EOF
