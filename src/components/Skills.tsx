@@ -2,10 +2,10 @@ import { FaCode, FaServer, FaDatabase, FaLock, FaTools } from "react-icons/fa";
 
 const skillGroups = [
   { title: "Frontend", icon: <FaCode />, tags: ["React", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Vite", "Responsive Design"] },
-  { title: "Backend", icon: <FaServer />, tags: ["Python", "Flask", "REST APIs", "SQLAlchemy", "Marshmallow", "Gunicorn"] },
-  { title: "Data", icon: <FaDatabase />, tags: ["PostgreSQL", "SQL", "SQLite", "Relational Modeling"] },
-  { title: "Auth & Quality", icon: <FaLock />, tags: ["Firebase Authentication", "Authorization", "Pytest", "Validation", "User-scoped Data"] },
-  { title: "Delivery", icon: <FaTools />, tags: ["Git", "GitHub", "GitHub Actions", "CI/CD", "Render", "Vercel", "Swagger / OpenAPI", "Postman"] },
+  { title: "Backend & Realtime", icon: <FaServer />, tags: ["Python", "FastAPI", "Flask", "Node.js", "Express", "REST APIs", "WebSockets", "Celery", "SQLAlchemy"] },
+  { title: "Data & Messaging", icon: <FaDatabase />, tags: ["PostgreSQL", "SQL", "Redis", "SQLite", "Relational Modeling", "Event Fanout", "Caching"] },
+  { title: "Security & Quality", icon: <FaLock />, tags: ["RBAC", "Multi-tenant Authorization", "Firebase Authentication", "Validation", "Pytest", "Audit Trails", "User-scoped Data"] },
+  { title: "Delivery & Operations", icon: <FaTools />, tags: ["Git", "GitHub", "Docker", "Docker Compose", "GitHub Actions", "CI/CD", "Render", "Vercel", "Swagger / OpenAPI", "Postman"] },
 ];
 
 const Skills = () => (
@@ -13,8 +13,8 @@ const Skills = () => (
     <div className="max-w-6xl mx-auto">
       <div className="max-w-2xl mb-10">
         <span className="text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400">CAPABILITIES</span>
-        <h2 className="text-4xl font-bold mt-3 mb-3 text-textMain dark:text-white">Tools I use to build and ship.</h2>
-        <p className="text-textSubtle dark:text-gray-300">Focused on the technologies I use in deployed applications, APIs, testing, and production delivery.</p>
+        <h2 className="text-4xl font-bold mt-3 mb-3 text-textMain dark:text-white">Tools I use to build, ship, and operate software.</h2>
+        <p className="text-textSubtle dark:text-gray-300">A mix of product engineering and systems work: interfaces, APIs, realtime communication, relational data, authorization, asynchronous processing, testing, containers, and delivery.</p>
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
