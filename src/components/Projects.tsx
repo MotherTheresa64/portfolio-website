@@ -2,44 +2,44 @@ import { FaChartLine, FaDatabase, FaGithub, FaArrowUpRightFromSquare } from "rea
 
 const productProjects = [
   {
-    name: "Ledgerly",
-    category: "PERSONAL FINANCE / FULL-STACK PRODUCT",
-    status: "LIVE",
-    description: "A secure personal-finance application for understanding spending, managing transactions and budgets, tracking savings goals, and turning raw financial activity into useful cash-flow insight.",
-    note: "The deployed product uses React/TypeScript, a Flask REST API, PostgreSQL, Firebase Authentication, user-scoped ownership checks, automated tests, CSV portability, CI/CD, and Render.",
-    tags: ["React", "TypeScript", "Python", "Flask", "PostgreSQL", "Firebase Auth", "Pytest", "GitHub Actions", "Render"],
-    live: "https://ledgerly-web-knmt.onrender.com",
-    source: "https://github.com/MotherTheresa64/Ledgerly",
-  },
-  {
     name: "Planora",
     category: "INTELLIGENT PLANNING / PRODUCTIVITY",
-    status: "ACTIVE DEVELOPMENT",
-    description: "A planning and project-management product built around the goal → plan → milestones → tasks → schedule → progress lifecycle instead of stopping at a generic to-do list.",
-    note: "The live demo already includes multi-project Kanban, task/project creation, calendar views, derived analytics, search, assignee workflows, responsive layouts, persistent themes, and isolated auth/persistence boundaries. The roadmap adds AI-assisted plan generation, milestones, and smart scheduling.",
-    tags: ["React 19", "TypeScript", "Express 5", "Kanban", "Analytics", "Firebase-ready", "Responsive UI", "GitHub Actions", "Render"],
+    status: "PRODUCT COMPLETE",
+    description: "A planning and execution product built around the goal → plan → milestones → tasks → schedule → progress lifecycle, turning broad goals into structured work instead of stopping at a generic to-do list.",
+    note: "The completed product includes structured plans, milestones, task management, Kanban workflows, scheduling and calendar views, Today-focused execution, search, progress analytics, resources, responsive layouts, persistent local data, and Firebase-ready per-user synchronization boundaries.",
+    tags: ["React 19", "TypeScript", "Express 5", "Kanban", "Calendar", "Analytics", "Firebase-ready", "Responsive UI", "GitHub Actions", "Render"],
     live: "https://planora-zlxv.onrender.com",
     source: "https://github.com/MotherTheresa64/Planora",
   },
   {
     name: "Threadline",
     category: "TEAM KNOWLEDGE / COLLABORATION",
-    status: "ACTIVE DEVELOPMENT",
-    description: "A collaborative knowledge workspace designed to keep discussions connected to decisions and documentation so important context remains searchable instead of disappearing into a chat feed.",
-    note: "The live demo includes channels, search, deep-linked threads, replies, reactions, bookmarks, resolution workflows, keyboard navigation, and durable browser persistence. The next phase moves those workflows into true account-backed shared workspaces with permissions and hosted data.",
-    tags: ["React 19", "TypeScript", "Express 5", "Search", "Deep Links", "Accessibility", "Firebase-ready", "GitHub Actions", "Render"],
+    status: "PRODUCT COMPLETE",
+    description: "A collaborative knowledge workspace that keeps conversations connected to decisions and durable documentation so important context stays searchable instead of disappearing into a chat feed.",
+    note: "The completed product includes multi-workspace flows, channels, structured discussions, deep-linked threads, replies and reactions, bookmarks, resolutions, searchable knowledge documents, version history, board/timeline views, inbox/activity workflows, responsive navigation, and optional Firestore-backed shared workspaces with role-aware security rules.",
+    tags: ["React 19", "TypeScript", "Express 5", "Search", "Knowledge Base", "Version History", "Firestore-ready", "Accessibility", "GitHub Actions", "Render"],
     live: "https://threadline-ga8w.onrender.com",
     source: "https://github.com/MotherTheresa64/Threadline",
   },
   {
     name: "Wanderline",
     category: "COLLABORATIVE TRAVEL PLANNING",
-    status: "ACTIVE DEVELOPMENT",
-    description: "A travel-planning application intended to become one shared source of truth for a trip: travelers, places, itinerary, lodging, transportation, reservations, budget, packing, notes, weather, and group decisions.",
-    note: "The live demo currently includes editable itineraries, USD budget tracking, packing, saved places, live weather, sharing, search, themes, and mobile layouts. The active roadmap adds persistent shared trips, traveler roles/permissions, reservations, and Google Maps / Places integration as the primary mapping direction.",
-    tags: ["React 19", "TypeScript", "Express 5", "Open-Meteo", "Google Maps roadmap", "Collaboration", "Firebase-ready", "GitHub Actions", "Render"],
+    status: "PRODUCT COMPLETE",
+    description: "A collaborative travel-planning application built as one shared source of truth for a trip: travelers, places, itinerary, logistics, budget, packing, notes, weather, and group decisions.",
+    note: "The completed product includes trip creation and editing, collaborative traveler data, itinerary workflows, lodging and reservation details, budgets and expenses, packing, saved places, live weather, sharing, privacy-safe demo content, mobile-first navigation, and Google Maps integration through universal links and service configuration.",
+    tags: ["React 19", "TypeScript", "Express 5", "Open-Meteo", "Google Maps", "Collaboration", "Responsive PWA", "Firebase-ready", "GitHub Actions", "Render"],
     live: "https://wanderline-s1yv.onrender.com",
     source: "https://github.com/MotherTheresa64/Wanderline",
+  },
+  {
+    name: "Ledgerly",
+    category: "PERSONAL FINANCE / FULL-STACK PRODUCT",
+    status: "PRODUCT COMPLETE",
+    description: "A personal-finance application for understanding spending, managing financial accounts and transactions, building budgets, tracking savings goals, and turning raw activity into useful cash-flow insight.",
+    note: "The completed product includes financial accounts, transfers, richer transaction models, budgets and goals, reports, CSV import/export with safer partial imports, responsive dark themes, mobile hamburger navigation, a Flask REST API, PostgreSQL models, automated tests, and user-scoped architecture prepared for finalized Firebase identity configuration.",
+    tags: ["React", "TypeScript", "Python", "Flask", "PostgreSQL", "Firebase-ready", "Pytest", "GitHub Actions", "Render"],
+    live: "https://ledgerly-web-knmt.onrender.com",
+    source: "https://github.com/MotherTheresa64/Ledgerly",
   },
 ];
 
@@ -49,8 +49,8 @@ const Projects = () => {
       <div className="max-w-6xl mx-auto">
         <div className="max-w-3xl mb-10">
           <span className="text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400">SELECTED WORK</span>
-          <h2 className="text-4xl sm:text-5xl font-bold mt-3 mb-4 text-textMain dark:text-white">Products you can open, use, and inspect.</h2>
-          <p className="text-textSubtle dark:text-gray-300 text-lg">These are active reference projects across different problem spaces. I’m keeping the flagship label open until a separate project earns that position instead of assigning it to the most mature app by default.</p>
+          <h2 className="text-4xl sm:text-5xl font-bold mt-3 mb-4 text-textMain dark:text-white">Four products. Four different problem spaces.</h2>
+          <p className="text-textSubtle dark:text-gray-300 text-lg">The core product, interaction, responsive, and deployment work for this suite is complete. Firebase-backed identity and shared persistence are the remaining integration layer where applicable; none of these four is being forced into the flagship position.</p>
         </div>
 
         <article className="rounded-3xl border border-dashed border-gray-300 dark:border-gray-600 bg-white/70 dark:bg-dark/70 p-7 sm:p-9 mb-8">
@@ -60,11 +60,11 @@ const Projects = () => {
             </div>
             <div>
               <div className="flex flex-wrap items-center gap-3 mb-3">
-                <span className="text-xs font-bold tracking-[0.16em] text-gray-500 dark:text-gray-400">FLAGSHIP PROJECT</span>
-                <span className="text-[11px] font-bold tracking-[0.12em] px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300">IN DEVELOPMENT</span>
+                <span className="text-xs font-bold tracking-[0.16em] text-gray-500 dark:text-gray-400">NEXT FLAGSHIP BUILD</span>
+                <span className="text-[11px] font-bold tracking-[0.12em] px-2.5 py-1 rounded-full border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300">RESERVED</span>
               </div>
-              <h3 className="text-3xl font-bold text-textMain dark:text-white mb-3">Reserved for what comes next.</h3>
-              <p className="text-textSubtle dark:text-gray-300 leading-relaxed max-w-3xl">I’m deliberately leaving this slot open while I design the project that will represent my strongest end-to-end engineering work. Ledgerly, Planora, Threadline, and Wanderline stay visible below as substantial references without being forced into a hierarchy that no longer reflects how I want to present my portfolio.</p>
+              <h3 className="text-3xl font-bold text-textMain dark:text-white mb-3">The next one has to raise the ceiling.</h3>
+              <p className="text-textSubtle dark:text-gray-300 leading-relaxed max-w-3xl">The flagship slot is deliberately reserved for a larger systems problem with deeper backend architecture, true multi-user behavior, richer data flows, meaningful external integrations, production-grade testing, and enough engineering depth to anchor an interview on its own. The four products below demonstrate range without pretending one of them is that project.</p>
             </div>
           </div>
         </article>
@@ -72,9 +72,9 @@ const Projects = () => {
         <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
           <div>
             <span className="text-xs font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400">CURRENT PRODUCT SUITE</span>
-            <h3 className="text-2xl sm:text-3xl font-bold mt-2 text-textMain dark:text-white">Four products, four different problem spaces.</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold mt-2 text-textMain dark:text-white">Product-complete references you can open and inspect.</h3>
           </div>
-          <span className="text-xs text-textSubtle dark:text-gray-400">Live references · ongoing development</span>
+          <span className="text-xs text-textSubtle dark:text-gray-400">Core builds complete · Firebase configuration pending where applicable</span>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-8">
