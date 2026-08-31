@@ -6,6 +6,7 @@ import "./spacing-fix.css";
 import "./modal-fit.css";
 import "./lilac-motion.css";
 import "./lilac-hotfix.css";
+import "./mobile-modal-fix.css";
 import { ThemeProvider } from "./context/ThemeProvider";
 
 const normalizeTextNode = (node: Node) => {
