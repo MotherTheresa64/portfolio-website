@@ -19,6 +19,7 @@ const Navbar = () => {
               </a>
             </li>
           ))}
+          <li><a href="/Noah_Ragan_Software_Engineer_Resume.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors">Resume</a></li>
           <li><ThemeToggle /></li>
         </ul>
 
@@ -40,6 +41,7 @@ const Navbar = () => {
                 </a>
               </li>
             ))}
+            <li><a href="/Noah_Ragan_Software_Engineer_Resume.pdf" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)} className="block">Resume</a></li>
           </ul>
         </div>
       )}
