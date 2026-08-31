@@ -11,8 +11,15 @@ const normalizeResumeText = () => {
 
   while (node) {
     const value = node.nodeValue;
-    if (value && (value.includes("Résumé") || value.includes("résumé"))) {
-      node.nodeValue = value.replaceAll("Résumé", "Resume").replaceAll("résumé", "resume");
+    if (value) {
+      node.nodeValue = value
+        .replaceAll("CONTACT + RÉSUMÉ", "CONTACT + RESUME")
+        .replaceAll("CONTACT + Résumé", "CONTACT + RESUME")
+        .replaceAll("CONTACT + Resume", "CONTACT + RESUME")
+        .replaceAll("Download résumé", "Download Resume")
+        .replaceAll("Download resume", "Download Resume")
+        .replaceAll("Résumé", "Resume")
+        .replaceAll("résumé", "resume");
     }
     node = walker.nextNode();
   }
