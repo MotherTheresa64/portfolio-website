@@ -3,7 +3,6 @@ import type { FormEvent, ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   FiAward,
-  FiBookOpen,
   FiCheck,
   FiChevronRight,
   FiCode,
@@ -12,26 +11,28 @@ import {
   FiFolder,
   FiGithub,
   FiHome,
-  FiImage,
   FiLinkedin,
   FiList,
   FiLock,
   FiMail,
-  FiMap,
   FiTerminal,
-  FiUser,
   FiX,
   FiZap,
 } from "react-icons/fi";
+import "./map-v2.css";
 
-type GateId = "skills" | "projects" | "list" | "highlights" | "gallery" | "contact";
+type GateId = "skills" | "projects" | "list" | "highlights" | "aegis" | "contact";
 type Mode = "intro" | "challenge" | "revealed";
-type ViewId = "profile" | "skills" | "project-list" | "projects-root" | "highlights" | "gallery" | "aegis" | "contact" | null;
+type ViewId = "skills" | "project-list" | "projects-root" | "top-projects" | "aegis" | "contact" | null;
 
 type Challenge = {
   id: GateId;
   label: string;
+  file: string;
+  language: string;
   prompt: string;
+  snippet: string;
+  hint: string;
   answer: string;
   accepted: string[];
   targetId: string;
@@ -49,60 +50,90 @@ type Product = {
   source: string;
 };
 
+type Repo = {
+  name: string;
+  kind: string;
+  url: string;
+};
+
 const challenges: Challenge[] = [
   {
     id: "skills",
-    label: "CSS gate",
-    prompt: "Hide an element and remove it from layout. Enter the CSS declaration.",
-    answer: "display: none;",
-    accepted: ["display:none", "display: none", "display:none;", "display: none;", "none"],
-    targetId: "skills-node",
-    placeholder: "display: ...",
+    label: "CSS reveal",
+    file: "skills.css",
+    language: "CSS",
+    prompt: "Fill the blank so the hidden skills list becomes fully visible.",
+    snippet: `.skills-list {\n  opacity: 0;\n  visibility: hidden;\n}\n\n.skills-list.is-revealed {\n  opacity: ___;\n  visibility: visible;\n}`,
+    hint: "CSS opacity uses a value between 0 and 1. You want fully visible.",
+    answer: "1",
+    accepted: ["1", "opacity: 1", "opacity:1", "opacity: 1;", "opacity:1;"],
+    targetId: "gate-projects",
+    placeholder: "value",
   },
   {
     id: "projects",
-    label: "Logic gate",
-    prompt: "In JavaScript, what does true && true evaluate to?",
-    answer: "true",
-    accepted: ["true", "boolean true"],
+    label: "Root condition",
+    file: "root.ts",
+    language: "TypeScript",
+    prompt: "Complete the condition that opens the project root.",
+    snippet: `const skillsUnlocked = true;\nconst wantsProjects = true;\n\nif (skillsUnlocked && ________) {\n  openRoute(\"/projects\");\n}`,
+    hint: "The missing identifier is already declared directly above the if statement.",
+    answer: "wantsProjects",
+    accepted: ["wantsprojects", "wantsProjects"],
     targetId: "projects-root",
-    placeholder: "true / false",
+    placeholder: "identifier",
   },
   {
     id: "list",
-    label: "Git gate",
-    prompt: "Which Git command lists local and remote branches?",
-    answer: "git branch -a",
-    accepted: ["git branch -a", "git branch --all"],
+    label: "Git branch",
+    file: "repos.sh",
+    language: "Shell",
+    prompt: "Complete the command so Git lists both local and remote branches.",
+    snippet: `# show every branch\ngit branch ____`,
+    hint: "The short flag means “all.”",
+    answer: "-a",
+    accepted: ["-a", "--all", "git branch -a", "git branch --all"],
     targetId: "project-list-node",
-    placeholder: "git ...",
+    placeholder: "flag",
   },
   {
     id: "highlights",
-    label: "JS gate",
-    prompt: "What does 2 ** 5 evaluate to in JavaScript?",
-    answer: "32",
-    accepted: ["32"],
-    targetId: "highlight-node",
-    placeholder: "number",
+    label: "Featured filter",
+    file: "featured.ts",
+    language: "TypeScript",
+    prompt: "Fill the blank so only featured projects are returned.",
+    snippet: `const topFour = projects.filter((project) => {\n  return project.featured === ____;\n});`,
+    hint: "featured is a boolean property and the filter should keep enabled items.",
+    answer: "true",
+    accepted: ["true", "boolean true"],
+    targetId: "top-projects-node",
+    placeholder: "boolean",
   },
   {
-    id: "gallery",
-    label: "SQL gate",
-    prompt: "Write the SQL statement that selects every row from projects.",
-    answer: "SELECT * FROM projects;",
-    accepted: ["select * from projects", "select * from projects;"],
-    targetId: "gallery-node",
-    placeholder: "SELECT ...",
+    id: "aegis",
+    label: "Flagship route",
+    file: "route.ts",
+    language: "TypeScript",
+    prompt: "Complete the route assertion that points south to the flagship.",
+    snippet: `const path = [\"projects\", \"flagship\"];\n\npath.at(-1) === \"________\";`,
+    hint: "The answer is the final string already present in the path array.",
+    answer: "flagship",
+    accepted: ["flagship", "\"flagship\"", "'flagship'"],
+    targetId: "aegis-node",
+    placeholder: "route",
   },
   {
     id: "contact",
-    label: "HTTP gate",
-    prompt: "Which HTTP status code means OK?",
-    answer: "200",
-    accepted: ["200", "200 ok", "ok 200"],
+    label: "Contact route",
+    file: "contact.tsx",
+    language: "TSX",
+    prompt: "Complete the destination that opens the final contact node.",
+    snippet: `if (formIsReady) {\n  navigate(\"/________\");\n}`,
+    hint: "The final node contains email, LinkedIn, GitHub, and the résumé.",
+    answer: "contact",
+    accepted: ["contact", "/contact", "\"contact\"", "'contact'"],
     targetId: "contact-node",
-    placeholder: "status code",
+    placeholder: "route",
   },
 ];
 
@@ -149,6 +180,36 @@ const products: Product[] = [
   },
 ];
 
+const otherRepos: Repo[] = [
+  ["portfolio-website", "Interactive portfolio"],
+  ["bottom-dollar", "Mobile savings app"],
+  ["Advanced-API-Final", "Deployed Flask API"],
+  ["Achievements", "GitHub achievement lab"],
+  ["Advanced-Ecommerce-App-Firebase", "Firebase ecommerce"],
+  ["Advanced-Ecommerce-App", "Advanced ecommerce"],
+  ["Pipeline-Ecommerce", "CI/CD ecommerce"],
+  ["Ecommerce-API", "Backend API"],
+  ["Advanced-Api-Project", "API project"],
+  ["RateLimiting_Caching_API", "API infrastructure"],
+  ["Service-Center-CI-CD", "CI/CD exercise"],
+  ["Service-Center-Lesson-5", "Service center API"],
+  ["Documentation-Testing", "Testing + documentation"],
+  ["Task-Manager-Typescript", "TypeScript app"],
+  ["Marvel-Character-Fullstack-App", "Full-stack app"],
+  ["Pokeapi-Integration-App", "API integration"],
+  ["Spotify-Recreate", "Frontend recreation"],
+  ["Trivia-Quiz-App", "Interactive quiz"],
+  ["Ecom-Product-App", "Product UI"],
+  ["Frontend-Specialization-Modules", "Frontend coursework"],
+  ["Core-Modules", "Core coursework"],
+  ["Defeat-The-Evil-Wizard", "Python exercise"],
+  ["Module4-Html-Knowledge-Check", "HTML coursework"],
+  ["To-Do-Application", "Frontend exercise"],
+  ["Bootstrap-Forms-Utilities", "Bootstrap coursework"],
+  ["Event-Center-Website", "Frontend website"],
+  ["vercel-deployment-project", "Deployment exercise"],
+].map(([name, kind]) => ({ name, kind, url: `https://github.com/MotherTheresa64/${name}` }));
+
 const skillGroups = [
   { title: "Frontend", items: ["React", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Vite", "Responsive Design"] },
   { title: "Backend & realtime", items: ["Python", "FastAPI", "Flask", "Node.js", "Express", "REST APIs", "WebSockets", "Celery", "SQLAlchemy"] },
@@ -164,8 +225,8 @@ function App() {
   const [showRevealConfirm, setShowRevealConfirm] = useState(false);
   const [solved, setSolved] = useState<GateId[]>([]);
   const [revealedAnswers, setRevealedAnswers] = useState<GateId[]>([]);
+  const [openGate, setOpenGate] = useState<GateId | null>(null);
   const [view, setView] = useState<ViewId>(null);
-  const [selectedProduct, setSelectedProduct] = useState(0);
   const [pulseGate, setPulseGate] = useState<GateId | null>(null);
 
   const has = (id: GateId) => mode === "revealed" || solved.includes(id);
@@ -180,16 +241,18 @@ function App() {
   const openChallengeMode = () => {
     setShowRevealConfirm(false);
     setMode("challenge");
-    window.setTimeout(() => document.getElementById("gate-skills")?.scrollIntoView({ behavior: "smooth", block: "center" }), 280);
+    window.setTimeout(() => document.getElementById("skills-node")?.scrollIntoView({ behavior: "smooth", block: "center" }), 280);
   };
 
   const revealAll = () => {
     setShowRevealConfirm(false);
+    setOpenGate(null);
     setMode("revealed");
     setSolved(challenges.map((challenge) => challenge.id));
   };
 
   const completeGate = (id: GateId) => {
+    setOpenGate(null);
     setSolved((current) => (current.includes(id) ? current : [...current, id]));
     setPulseGate(id);
     const challenge = challenges.find((item) => item.id === id);
@@ -201,34 +264,38 @@ function App() {
 
   const revealAnswer = (id: GateId) => {
     setRevealedAnswers((current) => (current.includes(id) ? current : [...current, id]));
-    window.setTimeout(() => completeGate(id), 650);
+    window.setTimeout(() => completeGate(id), 1100);
   };
 
   const nextGate = challenges.find((challenge) => {
     if (has(challenge.id)) return false;
     if (challenge.id === "skills") return challengeMode;
     if (challenge.id === "projects") return has("skills");
-    if (["list", "highlights", "gallery"].includes(challenge.id)) return has("projects");
-    if (challenge.id === "contact") return has("gallery");
+    if (["list", "highlights", "aegis"].includes(challenge.id)) return has("projects");
+    if (challenge.id === "contact") return has("aegis");
     return false;
   });
 
   const pulseToNext = () => {
     if (!nextGate) return;
     setPulseGate(nextGate.id);
-    document.getElementById(`gate-${nextGate.id}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (nextGate.id !== "skills") setOpenGate(nextGate.id);
+    const target = nextGate.id === "skills" ? "skills-node" : `gate-${nextGate.id}`;
+    document.getElementById(target)?.scrollIntoView({ behavior: "smooth", block: "center" });
     window.setTimeout(() => setPulseGate(null), 900);
   };
 
   const navUnlocked = {
     skills: has("skills"),
     projects: has("projects"),
-    capstone: has("highlights"),
+    capstone: has("aegis"),
     contact: has("contact"),
   };
 
   return (
     <div className={`portfolio-app mode-${mode}`}>
+      <a className="resume-fab" href="/Noah_Ragan_Software_Engineer_Resume.pdf" target="_blank" rel="noreferrer"><FiDownload /><span>Résumé</span></a>
+
       <AnimatePresence>{mapVisible && <Sidebar mode={mode} openView={setView} unlocked={navUnlocked} />}</AnimatePresence>
 
       <main className="portfolio-main">
@@ -239,7 +306,6 @@ function App() {
             setShowRevealConfirm={setShowRevealConfirm}
             revealAll={revealAll}
             openChallengeMode={openChallengeMode}
-            openProfile={() => mapVisible && setView("profile")}
           />
 
           {mode === "intro" ? (
@@ -249,41 +315,15 @@ function App() {
             </button>
           ) : (
             <>
-              <VerticalGate
-                challenge={challenges[0]}
-                active={challengeMode && !has("skills")}
-                completed={has("skills")}
+              <SkillsWorkbench
+                unlocked={has("skills")}
                 bypassed={mode === "revealed"}
                 answerRevealed={revealedAnswers.includes("skills")}
                 pulse={pulseGate === "skills"}
                 onSolved={completeGate}
                 onReveal={revealAnswer}
+                onOpenSkills={() => setView("skills")}
               />
-
-              <AnimatePresence>
-                {has("skills") && (
-                  <motion.section
-                    id="skills-node"
-                    className="map-card skills-split"
-                    initial={{ opacity: 0, y: -12, scale: 0.97 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ duration: 0.45 }}
-                  >
-                    <button className="split-panel" type="button" onClick={() => setView("skills")}>
-                      <FiList />
-                      <strong>Skills List</strong>
-                      <span>Browse the stack I use to build, ship, and operate software.</span>
-                      <em>View skills <FiChevronRight /></em>
-                    </button>
-                    <button className="split-panel terminal-side" type="button" onClick={() => setView("skills")}>
-                      <FiTerminal />
-                      <strong>CSS Terminal</strong>
-                      <span className="code-copy">.skills &#123; display: grid; &#125;</span>
-                      <em>Inspect stack <FiChevronRight /></em>
-                    </button>
-                  </motion.section>
-                )}
-              </AnimatePresence>
 
               {has("skills") && (
                 <VerticalGate
@@ -293,6 +333,9 @@ function App() {
                   bypassed={mode === "revealed"}
                   answerRevealed={revealedAnswers.includes("projects")}
                   pulse={pulseGate === "projects"}
+                  isOpen={openGate === "projects"}
+                  onOpen={() => setOpenGate("projects")}
+                  onClose={() => setOpenGate(null)}
                   onSolved={completeGate}
                   onReveal={revealAnswer}
                 />
@@ -314,28 +357,23 @@ function App() {
                         bypassed={mode === "revealed"}
                         answerRevealed={revealedAnswers.includes("list")}
                         pulse={pulseGate === "list"}
+                        isOpen={openGate === "list"}
+                        onOpen={() => setOpenGate("list")}
+                        onClose={() => setOpenGate(null)}
                         onSolved={completeGate}
                         onReveal={revealAnswer}
                       >
                         <SectionCard
                           id="project-list-node"
                           icon={<FiGithub />}
-                          title="Project List"
-                          description="GitHub-style visual navigation for the complete project catalog."
-                          action="Browse projects"
+                          title="Other Projects"
+                          description="GitHub-style browsing for every other public project outside the Top 4 and Aegis."
+                          action="Browse repositories"
                           onClick={() => setView("project-list")}
                         />
                       </BranchZone>
 
-                      <SectionCard
-                        id="projects-root"
-                        icon={<FiFolder />}
-                        title="Projects Root"
-                        description="The central hub for shipped products, systems work, experiments, and source."
-                        action="Open root"
-                        emphasis
-                        onClick={() => setView("projects-root")}
-                      />
+                      <ProjectRootCard onClick={() => setView("projects-root")} />
 
                       <BranchZone
                         side="right"
@@ -344,16 +382,19 @@ function App() {
                         bypassed={mode === "revealed"}
                         answerRevealed={revealedAnswers.includes("highlights")}
                         pulse={pulseGate === "highlights"}
+                        isOpen={openGate === "highlights"}
+                        onOpen={() => setOpenGate("highlights")}
+                        onClose={() => setOpenGate(null)}
                         onSolved={completeGate}
                         onReveal={revealAnswer}
                       >
                         <SectionCard
-                          id="highlight-node"
+                          id="top-projects-node"
                           icon={<FiAward />}
-                          title="Highlighted Projects"
-                          description="Aegis and the strongest product work, with deeper engineering context."
-                          action="View highlights"
-                          onClick={() => setView("highlights")}
+                          title="Top 4 Projects"
+                          description="Planora, Threadline, Wanderline, and Ledgerly — the four finished product builds."
+                          action="View Top 4"
+                          onClick={() => setView("top-projects")}
                         />
                       </BranchZone>
                     </div>
@@ -361,32 +402,36 @@ function App() {
                     <div className="downstream">
                       <VerticalGate
                         challenge={challenges[4]}
-                        active={challengeMode && !has("gallery")}
-                        completed={has("gallery")}
+                        active={challengeMode && !has("aegis")}
+                        completed={has("aegis")}
                         bypassed={mode === "revealed"}
-                        answerRevealed={revealedAnswers.includes("gallery")}
-                        pulse={pulseGate === "gallery"}
+                        answerRevealed={revealedAnswers.includes("aegis")}
+                        pulse={pulseGate === "aegis"}
+                        isOpen={openGate === "aegis"}
+                        onOpen={() => setOpenGate("aegis")}
+                        onClose={() => setOpenGate(null)}
                         onSolved={completeGate}
                         onReveal={revealAnswer}
                       />
 
                       <AnimatePresence>
-                        {has("gallery") && (
+                        {has("aegis") && (
                           <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }}>
                             <SectionCard
-                              id="gallery-node"
-                              icon={<FiImage />}
-                              title="Project Gallery"
-                              description="Built-in previews for the four finished products and the active capstone."
-                              action="Open gallery"
+                              id="aegis-node"
+                              icon={<FiZap />}
+                              title="Aegis — Flagship"
+                              description="The capstone: a production-oriented real-time incident operations platform in active development."
+                              action="Open flagship showcase"
                               wide
-                              onClick={() => setView("gallery")}
+                              emphasis
+                              onClick={() => setView("aegis")}
                             />
                           </motion.div>
                         )}
                       </AnimatePresence>
 
-                      {has("gallery") && (
+                      {has("aegis") && (
                         <VerticalGate
                           challenge={challenges[5]}
                           active={challengeMode && !has("contact")}
@@ -394,6 +439,9 @@ function App() {
                           bypassed={mode === "revealed"}
                           answerRevealed={revealedAnswers.includes("contact")}
                           pulse={pulseGate === "contact"}
+                          isOpen={openGate === "contact"}
+                          onOpen={() => setOpenGate("contact")}
+                          onClose={() => setOpenGate(null)}
                           onSolved={completeGate}
                           onReveal={revealAnswer}
                         />
@@ -405,9 +453,9 @@ function App() {
                             <SectionCard
                               id="contact-node"
                               icon={<FiMail />}
-                              title="Contact Info"
-                              description="Let’s connect and build something useful."
-                              action="Get in touch"
+                              title="Contact + Résumé"
+                              description="Email, LinkedIn, GitHub, résumé, and a direct contact form."
+                              action="Open contact info"
                               onClick={() => setView("contact")}
                             />
                           </motion.div>
@@ -435,7 +483,7 @@ function App() {
           progress={progress}
           nextGate={nextGate?.label}
           onPulse={pulseToNext}
-          openProjects={() => navUnlocked.projects && setView("project-list")}
+          openProjects={() => navUnlocked.projects && setView("projects-root")}
           openContact={() => navUnlocked.contact && setView("contact")}
           projectsUnlocked={navUnlocked.projects}
           contactUnlocked={navUnlocked.contact}
@@ -448,8 +496,7 @@ function App() {
             view={view}
             onClose={() => setView(null)}
             products={products}
-            selectedProduct={selectedProduct}
-            setSelectedProduct={setSelectedProduct}
+            repos={otherRepos}
           />
         )}
       </AnimatePresence>
@@ -463,22 +510,19 @@ function HeroCard({
   setShowRevealConfirm,
   revealAll,
   openChallengeMode,
-  openProfile,
 }: {
   mode: Mode;
   showRevealConfirm: boolean;
   setShowRevealConfirm: (value: boolean) => void;
   revealAll: () => void;
   openChallengeMode: () => void;
-  openProfile: () => void;
 }) {
   return (
     <motion.header
-      className={`hero-node map-card ${mode !== "intro" ? "is-interactive" : ""}`}
+      className="hero-node map-card"
       initial={{ opacity: 0, y: -18 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.55 }}
-      onDoubleClick={openProfile}
     >
       <div className="hero-copy">
         <p className="eyebrow">ROOT / NOAH</p>
@@ -486,12 +530,11 @@ function HeroCard({
         <h2>Software Engineer</h2>
         <p className="hero-instructions">
           {mode === "intro"
-            ? "Navigate by solving the terminal gates. Select the node below to begin, or reveal the full portfolio instantly."
-            : "Solve each terminal to extend the path. Every revealed section opens into the full portfolio content."}
+            ? "Solve each code gate to grow the portfolio path, or reveal the full page immediately."
+            : "Solve, request a hint, or reveal an answer. Each completed code gate extends the map to the next section."}
         </p>
       </div>
       <div className="hero-actions">
-        {mode !== "intro" && <button type="button" className="text-button" onClick={openProfile}>Profile</button>}
         <button type="button" className="outline-button" onClick={() => setShowRevealConfirm(true)}>Reveal all</button>
       </div>
 
@@ -505,7 +548,7 @@ function HeroCard({
           >
             <button className="popover-close" onClick={() => setShowRevealConfirm(false)} aria-label="Close"><FiX /></button>
             <h3>Reveal the full page?</h3>
-            <p>This bypasses every challenge and reveals all sections, connections, and project details.</p>
+            <p>This bypasses every challenge and reveals the complete map, every section, and every connection.</p>
             <div className="popover-actions">
               <button className="primary-button" type="button" onClick={revealAll}>Reveal all</button>
               <button className="text-button" type="button" onClick={openChallengeMode}>Stay in challenge mode</button>
@@ -517,6 +560,55 @@ function HeroCard({
   );
 }
 
+function SkillsWorkbench({
+  unlocked,
+  bypassed,
+  answerRevealed,
+  pulse,
+  onSolved,
+  onReveal,
+  onOpenSkills,
+}: {
+  unlocked: boolean;
+  bypassed: boolean;
+  answerRevealed: boolean;
+  pulse: boolean;
+  onSolved: (id: GateId) => void;
+  onReveal: (id: GateId) => void;
+  onOpenSkills: () => void;
+}) {
+  return (
+    <motion.section id="skills-node" className="skills-workbench map-card" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
+      <div className={`skills-list-panel ${unlocked ? "is-revealed" : "is-hidden"}`}>
+        <div className="workbench-heading"><FiList /><span><strong>Skills List</strong><small>Actual stack</small></span></div>
+        <div className="skills-compact">
+          {skillGroups.map((group) => (
+            <div key={group.title}><b>{group.title}</b><p>{group.items.join(" · ")}</p></div>
+          ))}
+        </div>
+        {!unlocked && <div className="skills-lock-cover"><FiLock /><strong>Skills hidden</strong><span>Repair the CSS on the right to reveal the list.</span></div>}
+        {unlocked && <button className="inline-link" type="button" onClick={onOpenSkills}>Open full skills view <FiChevronRight /></button>}
+      </div>
+      <div className="skills-terminal-panel">
+        <div className="workbench-heading"><FiTerminal /><span><strong>CSS Terminal</strong><small>skills.css</small></span></div>
+        <ChallengeTerminal
+          challenge={challenges[0]}
+          bypassed={bypassed}
+          completed={unlocked}
+          answerRevealed={answerRevealed}
+          isOpen
+          embedded
+          onOpen={() => undefined}
+          onClose={() => undefined}
+          onSolved={onSolved}
+          onReveal={onReveal}
+        />
+      </div>
+      {pulse && <motion.span className="skills-reveal-pulse" initial={{ x: 120, opacity: 0 }} animate={{ x: -120, opacity: [0, 1, 0] }} transition={{ duration: 0.8 }} />}
+    </motion.section>
+  );
+}
+
 function VerticalGate({
   challenge,
   active,
@@ -524,6 +616,9 @@ function VerticalGate({
   bypassed,
   answerRevealed,
   pulse,
+  isOpen,
+  onOpen,
+  onClose,
   onSolved,
   onReveal,
 }: {
@@ -533,28 +628,30 @@ function VerticalGate({
   bypassed: boolean;
   answerRevealed: boolean;
   pulse: boolean;
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
   onSolved: (id: GateId) => void;
   onReveal: (id: GateId) => void;
 }) {
   return (
     <div className={`vertical-gate ${completed ? "is-complete" : ""}`} id={`gate-${challenge.id}`}>
       <motion.div className="connector vertical" initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ duration: 0.6 }} />
-      <button className={`node-dot ${active || pulse ? "is-active" : ""} ${completed ? "is-complete" : ""}`} type="button" aria-label={`${challenge.label} node`}>
+      <button className={`node-dot ${active || pulse ? "is-active" : ""} ${completed ? "is-complete" : ""}`} type="button" onClick={onOpen} aria-label={`${challenge.label} node`}>
         {completed ? <FiCheck /> : <span />}
       </button>
-      <AnimatePresence>
-        {(active || bypassed || completed) && (
-          <ChallengeTerminal
-            challenge={challenge}
-            bypassed={bypassed}
-            completed={completed}
-            answerRevealed={answerRevealed}
-            onSolved={onSolved}
-            onReveal={onReveal}
-          />
-        )}
-      </AnimatePresence>
-      {pulse && <motion.span className="travel-pulse vertical-pulse" initial={{ y: -32, opacity: 0 }} animate={{ y: 36, opacity: [0, 1, 0] }} transition={{ duration: 0.7 }} />}
+      <ChallengeTerminal
+        challenge={challenge}
+        bypassed={bypassed}
+        completed={completed}
+        answerRevealed={answerRevealed}
+        isOpen={isOpen}
+        onOpen={onOpen}
+        onClose={onClose}
+        onSolved={onSolved}
+        onReveal={onReveal}
+      />
+      {pulse && <motion.span className="travel-pulse vertical-pulse" initial={{ y: -45, opacity: 0 }} animate={{ y: 52, opacity: [0, 1, 0] }} transition={{ duration: 0.7 }} />}
     </div>
   );
 }
@@ -566,6 +663,9 @@ function BranchZone({
   bypassed,
   answerRevealed,
   pulse,
+  isOpen,
+  onOpen,
+  onClose,
   onSolved,
   onReveal,
   children,
@@ -576,6 +676,9 @@ function BranchZone({
   bypassed: boolean;
   answerRevealed: boolean;
   pulse: boolean;
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
   onSolved: (id: GateId) => void;
   onReveal: (id: GateId) => void;
   children: ReactNode;
@@ -584,7 +687,7 @@ function BranchZone({
     <div className={`branch-zone branch-${side}`}>
       <div className="branch-gate" id={`gate-${challenge.id}`}>
         <motion.div className="connector horizontal" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.55 }} />
-        <button className={`node-dot ${destinationVisible ? "is-complete" : "is-active"}`} type="button" aria-label={`${challenge.label} node`}>
+        <button className={`node-dot ${destinationVisible ? "is-complete" : "is-active"}`} type="button" onClick={onOpen} aria-label={`${challenge.label} node`}>
           {destinationVisible ? <FiCheck /> : <span />}
         </button>
         <ChallengeTerminal
@@ -592,11 +695,14 @@ function BranchZone({
           bypassed={bypassed}
           completed={destinationVisible}
           answerRevealed={answerRevealed}
+          isOpen={isOpen}
+          onOpen={onOpen}
+          onClose={onClose}
           onSolved={onSolved}
           onReveal={onReveal}
           branch={side}
         />
-        {pulse && <motion.span className={`travel-pulse branch-pulse ${side}`} initial={{ x: 0, opacity: 0 }} animate={{ x: side === "left" ? -78 : 78, opacity: [0, 1, 0] }} transition={{ duration: 0.7 }} />}
+        {pulse && <motion.span className={`travel-pulse branch-pulse ${side}`} initial={{ x: 0, opacity: 0 }} animate={{ x: side === "left" ? -88 : 88, opacity: [0, 1, 0] }} transition={{ duration: 0.7 }} />}
       </div>
       <AnimatePresence>
         {destinationVisible && (
@@ -614,20 +720,29 @@ function ChallengeTerminal({
   bypassed,
   completed,
   answerRevealed,
+  isOpen,
+  onOpen,
+  onClose,
   onSolved,
   onReveal,
   branch,
+  embedded,
 }: {
   challenge: Challenge;
   bypassed: boolean;
   completed: boolean;
   answerRevealed: boolean;
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
   onSolved: (id: GateId) => void;
   onReveal: (id: GateId) => void;
   branch?: "left" | "right";
+  embedded?: boolean;
 }) {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
+  const [showHint, setShowHint] = useState(false);
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -638,25 +753,48 @@ function ChallengeTerminal({
       setError("");
       onSolved(challenge.id);
     } else {
-      setError("Not quite — try again or reveal the answer.");
+      setError("Not quite. Use Hint, try again, or reveal the answer.");
     }
   };
+
+  if (bypassed) {
+    if (!embedded) return null;
+    return <div className="terminal-inline-complete"><FiCheck /><span><b>{challenge.file}</b><small>Reveal-all bypass active</small></span></div>;
+  }
+
+  if (completed && !isOpen && !embedded) {
+    return <button className="terminal-collapsed" type="button" onClick={onOpen}><FiCheck /><span>{challenge.file}</span><small>Solved</small></button>;
+  }
+
+  if (!isOpen && !embedded) {
+    return <button className="terminal-launcher" type="button" onClick={onOpen}><FiTerminal /><span><b>{challenge.file}</b><small>Open code challenge</small></span></button>;
+  }
+
+  if (completed && embedded) {
+    return <div className="terminal-inline-complete"><FiCheck /><span><b>{challenge.file}</b><small>Skills revealed · answer: {challenge.answer}</small></span></div>;
+  }
 
   return (
     <motion.form
       onSubmit={submit}
-      className={`challenge-terminal ${branch ? `terminal-${branch}` : ""} ${completed ? "is-complete" : ""}`}
-      initial={{ opacity: 0, scale: 0.97 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0 }}
+      className={`challenge-terminal vscode-terminal ${branch ? `terminal-${branch}` : ""} ${embedded ? "embedded-terminal" : ""} ${completed ? "is-complete" : ""}`}
+      initial={{ opacity: 0, scale: 0.97, y: 5 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.98 }}
     >
-      <div className="terminal-head">
-        <span><FiTerminal /> {challenge.label}</span>
-        <i>{bypassed ? "BYPASSED" : completed ? "SOLVED" : "ACTIVE"}</i>
+      <div className="editor-titlebar">
+        <span className="editor-dots"><i /><i /><i /></span>
+        <span className="editor-file"><FiCode /> {challenge.file}</span>
+        <span className="editor-language">{challenge.language}</span>
+        {!embedded && <button type="button" className="editor-close" onClick={onClose} aria-label="Close challenge"><FiX /></button>}
       </div>
-      <p>{challenge.prompt}</p>
-      {!bypassed && !completed && (
-        <div className="terminal-input-row">
+      <div className="editor-body">
+        <p className="editor-prompt"><b>{challenge.label}</b> — {challenge.prompt}</p>
+        <pre><code>{challenge.snippet}</code></pre>
+        {showHint && <div className="editor-hint"><span>Hint</span>{challenge.hint}</div>}
+        {answerRevealed && <div className="editor-answer"><span>Answer</span><code>{challenge.answer}</code></div>}
+        {error && <small className="terminal-error">{error}</small>}
+        <div className="editor-answer-row">
           <span>&gt;</span>
           <input
             value={value}
@@ -665,17 +803,33 @@ function ChallengeTerminal({
             aria-label={`${challenge.label} answer`}
             autoCapitalize="none"
             autoCorrect="off"
+            disabled={completed}
           />
-          <button type="submit">Solve</button>
         </div>
-      )}
-      {answerRevealed && <code className="revealed-answer">{challenge.answer}</code>}
-      {error && <small className="terminal-error">{error}</small>}
-      <div className="terminal-foot">
-        {!bypassed && !completed && <button type="button" onClick={() => onReveal(challenge.id)}>Reveal answer</button>}
-        {(bypassed || completed) && <span><FiCheck /> Path open</span>}
+      </div>
+      <div className="editor-actions">
+        {!completed && <button className="editor-solve" type="submit">Solve</button>}
+        <button type="button" onClick={() => setShowHint((current) => !current)}>{showHint ? "Hide hint" : "Hint"}</button>
+        {!completed && <button type="button" onClick={() => onReveal(challenge.id)}>Reveal answer</button>}
+        {completed && <button type="button" onClick={onClose}>Close</button>}
       </div>
     </motion.form>
+  );
+}
+
+function ProjectRootCard({ onClick }: { onClick: () => void }) {
+  return (
+    <motion.button id="projects-root" type="button" className="project-root-card map-card" onClick={onClick} whileHover={{ y: -3 }} whileTap={{ scale: 0.99 }}>
+      <span className="section-icon"><FiFolder /></span>
+      <strong>Projects Root</strong>
+      <p>Choose a direction. Each path has a different purpose.</p>
+      <div className="root-directions-mini">
+        <span><b>← LEFT</b><small>Other GitHub projects</small></span>
+        <span><b>RIGHT →</b><small>Top 4 finished apps</small></span>
+        <span><b>↓ SOUTH</b><small>Aegis flagship</small></span>
+      </div>
+      <em>Open map guide <FiChevronRight /></em>
+    </motion.button>
   );
 }
 
@@ -727,7 +881,7 @@ function Sidebar({
   const items = [
     { label: "Home", icon: <FiHome />, unlocked: true, action: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
     { label: "Skills", icon: <FiCode />, unlocked: unlocked.skills, action: () => openView("skills") },
-    { label: "Projects", icon: <FiFolder />, unlocked: unlocked.projects, action: () => openView("project-list") },
+    { label: "Projects", icon: <FiFolder />, unlocked: unlocked.projects, action: () => openView("projects-root") },
     { label: "Capstone", icon: <FiAward />, unlocked: unlocked.capstone, action: () => openView("aegis") },
     { label: "Contact", icon: <FiMail />, unlocked: unlocked.contact, action: () => openView("contact") },
   ];
@@ -742,6 +896,7 @@ function Sidebar({
           </button>
         ))}
       </nav>
+      <a className="sidebar-resume" href="/Noah_Ragan_Software_Engineer_Resume.pdf" target="_blank" rel="noreferrer"><FiDownload /><span>Résumé</span></a>
       <div className="sidebar-mode"><FiZap /><span>{mode === "revealed" ? "REVEALED" : "CHALLENGE"}<small>MODE</small></span></div>
     </motion.aside>
   );
@@ -767,11 +922,12 @@ function MobileDock({
   return (
     <div className="mobile-dock">
       <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}><FiHome /><span>Home</span></button>
-      <button type="button" onClick={openProjects} disabled={!projectsUnlocked}><FiFolder /><span>Projects</span></button>
+      <button type="button" onClick={openProjects} disabled={!projectsUnlocked}><FiFolder /><span>Root</span></button>
       <button className="signal-button" type="button" onClick={onPulse} disabled={!nextGate} aria-label="Jump to next challenge">
         <span className="signal-ring"><FiZap /></span>
         <small>{nextGate ? `Next: ${nextGate}` : `${progress}% complete`}</small>
       </button>
+      <a href="/Noah_Ragan_Software_Engineer_Resume.pdf" target="_blank" rel="noreferrer"><FiDownload /><span>Résumé</span></a>
       <button type="button" onClick={openContact} disabled={!contactUnlocked}><FiMail /><span>Contact</span></button>
     </div>
   );
@@ -781,25 +937,21 @@ function DetailModal({
   view,
   onClose,
   products,
-  selectedProduct,
-  setSelectedProduct,
+  repos,
 }: {
   view: Exclude<ViewId, null>;
   onClose: () => void;
   products: Product[];
-  selectedProduct: number;
-  setSelectedProduct: (index: number) => void;
+  repos: Repo[];
 }) {
   return (
     <motion.div className="modal-backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
       <motion.section className="detail-modal" initial={{ opacity: 0, y: 26, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 18 }}>
         <button className="modal-close" type="button" onClick={onClose} aria-label="Close details"><FiX /></button>
-        {view === "profile" && <ProfileView />}
         {view === "skills" && <SkillsView />}
-        {view === "project-list" && <ProjectListView products={products} />}
-        {view === "projects-root" && <ProjectsRootView products={products} />}
-        {view === "highlights" && <HighlightsView products={products} onOpenAegis={() => {}} />}
-        {view === "gallery" && <GalleryView products={products} selectedProduct={selectedProduct} setSelectedProduct={setSelectedProduct} />}
+        {view === "project-list" && <ProjectListView repos={repos} />}
+        {view === "projects-root" && <ProjectsRootView />}
+        {view === "top-projects" && <TopProjectsView products={products} />}
         {view === "aegis" && <AegisView />}
         {view === "contact" && <ContactView />}
       </motion.section>
@@ -809,21 +961,6 @@ function DetailModal({
 
 function ModalHeading({ eyebrow, title, children }: { eyebrow: string; title: string; children?: ReactNode }) {
   return <header className="modal-heading"><span>{eyebrow}</span><h2>{title}</h2>{children && <p>{children}</p>}</header>;
-}
-
-function ProfileView() {
-  return (
-    <div>
-      <ModalHeading eyebrow="PROFILE" title="Noah Ragan">Full Stack Software Engineer focused on product-minded interfaces, APIs, realtime systems, relational data, testing, and cloud delivery.</ModalHeading>
-      <div className="profile-grid">
-        <article><FiUser /><h3>Current focus</h3><p>Building Aegis as a production-oriented realtime incident operations capstone while keeping four finished product applications recruiter-ready.</p></article>
-        <article><FiBookOpen /><h3>Training</h3><p>Coding Temple — Software Engineer Apprenticeship / Full-Stack Development, 2026.</p></article>
-        <article><FiMap /><h3>Experience</h3><p>Enterprise Mobility — Reservation Specialist, remote (Sep 2024 – Mar 2025). Tractor Supply Company — Team Member (May 2026 – Aug 2026).</p></article>
-        <article><FiCode /><h3>Education</h3><p>Union Adventist University — Computer Science & Mathematics coursework.</p></article>
-      </div>
-      <div className="modal-actions"><a href="/Noah_Ragan_Software_Engineer_Resume.pdf" target="_blank" rel="noreferrer"><FiDownload /> Resume</a><a href="https://github.com/MotherTheresa64" target="_blank" rel="noreferrer"><FiGithub /> GitHub</a><a href="https://www.linkedin.com/in/njragandev/" target="_blank" rel="noreferrer"><FiLinkedin /> LinkedIn</a></div>
-    </div>
-  );
 }
 
 function SkillsView() {
@@ -837,19 +974,18 @@ function SkillsView() {
   );
 }
 
-function ProjectListView({ products }: { products: Product[] }) {
+function ProjectListView({ repos }: { repos: Repo[] }) {
   return (
     <div>
-      <ModalHeading eyebrow="PROJECT LIST" title="Repository browser">A simple GitHub-style index for the work behind the portfolio.</ModalHeading>
-      <div className="repo-browser">
-        {[...products, {
-          name: "Aegis", category: "CAPSTONE / SYSTEMS", status: "ACTIVE DEVELOPMENT", description: "Realtime incident operations platform.", note: "FastAPI, PostgreSQL, Redis, WebSockets, Celery, Docker, CI/CD.", tags: ["React", "TypeScript", "FastAPI", "PostgreSQL", "Redis"], live: "", source: "https://github.com/MotherTheresa64/Aegis"
-        }].map((project) => (
-          <article key={project.name}>
-            <div><FiFolder /><span><strong>{project.name}</strong><small>{project.category}</small></span></div>
-            <p>{project.description}</p>
-            <span className="status-chip">{project.status}</span>
-            <div className="repo-links">{project.live && <a href={project.live} target="_blank" rel="noreferrer">Live <FiExternalLink /></a>}<a href={project.source} target="_blank" rel="noreferrer">Source <FiGithub /></a></div>
+      <ModalHeading eyebrow="OTHER PROJECTS" title="GitHub-style repository browser">Everything outside the Top 4 and Aegis lives on this branch.</ModalHeading>
+      <div className="repo-browser-head"><span><FiGithub /> MotherTheresa64</span><b>{repos.length} repositories</b><a href="https://github.com/MotherTheresa64?tab=repositories" target="_blank" rel="noreferrer">Open GitHub <FiExternalLink /></a></div>
+      <div className="repo-browser compact-repos">
+        {repos.map((repo) => (
+          <article key={repo.name}>
+            <div><FiFolder /><span><strong>{repo.name}</strong><small>{repo.kind}</small></span></div>
+            <p>Public repository in the broader project and coursework archive.</p>
+            <span className="status-chip">PUBLIC</span>
+            <div className="repo-links"><a href={repo.url} target="_blank" rel="noreferrer">Source <FiGithub /></a></div>
           </article>
         ))}
       </div>
@@ -857,42 +993,35 @@ function ProjectListView({ products }: { products: Product[] }) {
   );
 }
 
-function ProjectsRootView({ products }: { products: Product[] }) {
+function ProjectsRootView() {
   return (
     <div>
-      <ModalHeading eyebrow="PROJECTS ROOT" title="Five substantial builds, four product-complete." />
-      <div className="root-stats"><article><b>4</b><span>Product-complete apps</span></article><article><b>1</b><span>Active capstone</span></article><article><b>Full stack</b><span>Frontend → API → data → delivery</span></article></div>
-      <div className="root-list">{products.map((product) => <a key={product.name} href={product.live} target="_blank" rel="noreferrer"><span>{product.name}</span><small>{product.category}</small><FiExternalLink /></a>)}</div>
+      <ModalHeading eyebrow="PROJECTS ROOT" title="Three directions, three different views of the work.">The map intentionally separates breadth, finished product work, and the flagship system instead of putting everything in one project grid.</ModalHeading>
+      <div className="root-directions">
+        <article><span>← LEFT</span><h3>Other Projects</h3><p>A GitHub-style repository browser containing the rest of the public project archive, excluding the Top 4 and Aegis.</p></article>
+        <article><span>RIGHT →</span><h3>Top 4 Products</h3><p>Planora, Threadline, Wanderline, and Ledgerly — four product-complete applications with live demos and source.</p></article>
+        <article><span>↓ SOUTH</span><h3>Aegis Flagship</h3><p>The capstone path leads into Aegis, then continues one final node south into contact information and the résumé.</p></article>
+      </div>
     </div>
   );
 }
 
-function HighlightsView({ products }: { products: Product[]; onOpenAegis: () => void }) {
+function TopProjectsView({ products }: { products: Product[] }) {
   return (
     <div>
-      <ModalHeading eyebrow="HIGHLIGHTS" title="The work I want reviewed first." />
-      <article className="aegis-highlight">
-        <div><span>AEGIS · ACTIVE DEVELOPMENT</span><h3>Real-Time Incident Operations Platform</h3><p>Multi-tenant incident operations with realtime collaboration, asynchronous workers, PostgreSQL as the source of truth, Redis for ephemeral state, auditability, service health, status pages, and production engineering discipline.</p></div>
-        <a href="https://github.com/MotherTheresa64/Aegis" target="_blank" rel="noreferrer">Source <FiExternalLink /></a>
-      </article>
-      <div className="highlight-grid">{products.map((product) => <article key={product.name}><span>{product.status}</span><h3>{product.name}</h3><p>{product.description}</p><a href={product.live} target="_blank" rel="noreferrer">Live demo <FiExternalLink /></a></article>)}</div>
-    </div>
-  );
-}
-
-function GalleryView({ products, selectedProduct, setSelectedProduct }: { products: Product[]; selectedProduct: number; setSelectedProduct: (index: number) => void }) {
-  const items = [{
-    name: "Aegis", category: "CAPSTONE / ACTIVE DEVELOPMENT", status: "SYSTEMS CAPSTONE", description: "A production-oriented realtime incident operations platform.", note: "Organizations, RBAC, alert normalization, incident coordination, WebSockets, Celery, Redis, PostgreSQL, observability, Docker, CI/CD, and Terraform path.", tags: ["React", "TypeScript", "FastAPI", "PostgreSQL", "Redis", "WebSockets", "Celery", "Docker"], live: "", source: "https://github.com/MotherTheresa64/Aegis"
-  }, ...products];
-  const item = items[selectedProduct % items.length];
-  return (
-    <div>
-      <ModalHeading eyebrow="PROJECT GALLERY" title="Browse the portfolio without leaving the map." />
-      <div className="gallery-tabs">{items.map((project, index) => <button type="button" key={project.name} className={index === selectedProduct ? "active" : ""} onClick={() => setSelectedProduct(index)}>{project.name}</button>)}</div>
-      <motion.article key={item.name} className="gallery-stage" initial={{ opacity: 0, x: 12 }} animate={{ opacity: 1, x: 0 }}>
-        <div className="gallery-window"><span>{item.category}</span><h3>{item.name}</h3><p>{item.description}</p><p className="gallery-note">{item.note}</p><div className="tag-row">{item.tags.map((tag) => <i key={tag}>{tag}</i>)}</div></div>
-        <div className="gallery-actions">{item.live && <a href={item.live} target="_blank" rel="noreferrer">Open live <FiExternalLink /></a>}<a href={item.source} target="_blank" rel="noreferrer">Source <FiGithub /></a></div>
-      </motion.article>
+      <ModalHeading eyebrow="TOP 4 · PRODUCT COMPLETE" title="The four finished applications I want reviewed first." />
+      <div className="highlight-grid top-four-grid">
+        {products.map((product) => (
+          <article key={product.name}>
+            <span>{product.status}</span>
+            <h3>{product.name}</h3>
+            <p>{product.description}</p>
+            <p className="project-detail-note">{product.note}</p>
+            <div className="tag-row">{product.tags.map((tag) => <i key={tag}>{tag}</i>)}</div>
+            <div className="project-card-actions"><a href={product.live} target="_blank" rel="noreferrer">Live demo <FiExternalLink /></a><a href={product.source} target="_blank" rel="noreferrer">Source <FiGithub /></a></div>
+          </article>
+        ))}
+      </div>
     </div>
   );
 }
@@ -935,10 +1064,22 @@ function ContactView() {
   };
   return (
     <div>
-      <ModalHeading eyebrow="CONTACT" title="Let’s build something useful.">Open to remote Full Stack, Frontend, Backend, and Software Engineer opportunities.</ModalHeading>
+      <ModalHeading eyebrow="CONTACT + RÉSUMÉ" title="The final node.">Email, professional profiles, the current résumé, and a direct contact form all live here.</ModalHeading>
       <div className="contact-grid">
-        <div className="contact-links"><a href="mailto:noah.j.ragan@gmail.com"><FiMail /> noah.j.ragan@gmail.com</a><a href="https://www.linkedin.com/in/njragandev/" target="_blank" rel="noreferrer"><FiLinkedin /> LinkedIn</a><a href="https://github.com/MotherTheresa64" target="_blank" rel="noreferrer"><FiGithub /> GitHub</a><a href="/Noah_Ragan_Software_Engineer_Resume.pdf" target="_blank" rel="noreferrer"><FiDownload /> Resume</a></div>
-        <form onSubmit={handleSubmit}><label>Name<input required value={formData.name} onChange={(event) => setFormData({ ...formData, name: event.target.value })} /></label><label>Email<input required type="email" value={formData.email} onChange={(event) => setFormData({ ...formData, email: event.target.value })} /></label><label>Message<textarea required rows={5} value={formData.message} onChange={(event) => setFormData({ ...formData, message: event.target.value })} /></label><button type="submit" className="primary-button" disabled={status === "sending"}>{status === "sending" ? "Sending…" : "Send message"}</button>{status === "sent" && <p className="form-success">Message sent. Thanks!</p>}{status === "error" && <p className="form-error">That didn’t send. Email me directly instead.</p>}</form>
+        <div className="contact-links">
+          <a className="resume-contact-link" href="/Noah_Ragan_Software_Engineer_Resume.pdf" target="_blank" rel="noreferrer"><FiDownload /> Download résumé</a>
+          <a href="mailto:noah.j.ragan@gmail.com"><FiMail /> noah.j.ragan@gmail.com</a>
+          <a href="https://www.linkedin.com/in/njragandev/" target="_blank" rel="noreferrer"><FiLinkedin /> LinkedIn</a>
+          <a href="https://github.com/MotherTheresa64" target="_blank" rel="noreferrer"><FiGithub /> GitHub</a>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <label>Name<input required value={formData.name} onChange={(event) => setFormData({ ...formData, name: event.target.value })} /></label>
+          <label>Email<input required type="email" value={formData.email} onChange={(event) => setFormData({ ...formData, email: event.target.value })} /></label>
+          <label>Message<textarea required rows={5} value={formData.message} onChange={(event) => setFormData({ ...formData, message: event.target.value })} /></label>
+          <button type="submit" className="primary-button" disabled={status === "sending"}>{status === "sending" ? "Sending…" : "Send message"}</button>
+          {status === "sent" && <p className="form-success">Message sent. Thanks!</p>}
+          {status === "error" && <p className="form-error">That didn’t send. Email me directly instead.</p>}
+        </form>
       </div>
     </div>
   );
