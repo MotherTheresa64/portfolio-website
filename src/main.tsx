@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import "./spacing-fix.css";
+import "./modal-fit.css";
 import { ThemeProvider } from "./context/ThemeProvider";
 
 const normalizeResumeText = () => {
