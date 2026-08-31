@@ -8,35 +8,61 @@ Recruiter-focused portfolio for my full-stack software engineering work.
 
 > Note: `noah-portfolio.vercel.app` is not my portfolio and should not be used.
 
-## Flagship project
+## Flagship / capstone — Aegis
 
-The flagship position is intentionally **open / in development**. I am not treating Ledgerly or any other current application as the automatic flagship simply because it is the most mature. The eventual flagship will be a separate project selected to represent my strongest end-to-end engineering work.
+**Aegis** is a production-oriented **Real-Time Incident Operations Platform** for engineering teams. It is intentionally the capstone because it demonstrates systems engineering beyond a standard CRUD application.
 
-## Current product work
+The architecture and product scope include:
 
-### Ledgerly
-A deployed personal-finance application with React, TypeScript, Python, Flask, PostgreSQL, Firebase Authentication, user-scoped financial data, automated tests, CI/CD, CSV portability, and Render deployment.
+- React + TypeScript frontend
+- Python + FastAPI backend
+- PostgreSQL + SQLAlchemy
+- Redis for cache, rate limiting, queues, and realtime event fanout
+- WebSockets for organization-scoped realtime updates
+- Celery background workers for retryable/asynchronous jobs
+- Multi-tenant organizations, memberships, and RBAC
+- Service catalog and dependency-aware health
+- Alert ingestion, normalization, and deduplication
+- Incident rooms, timelines, tasks, and participant workflows
+- Public status communication
+- Audit/security history
+- Postmortem workflows and analytics
+- Docker Compose local infrastructure
+- GitHub Actions CI/CD
+- OpenTelemetry-ready observability
+- Terraform-oriented production infrastructure path
 
-- Live: https://ledgerly-web-knmt.onrender.com/
-- Source: https://github.com/MotherTheresa64/Ledgerly
+Source: https://github.com/MotherTheresa64/Aegis
+
+The active production foundation currently lives on `build/foundation` while the project is merged through normal feature-branch / pull-request workflow.
+
+## Selected product work
 
 ### Planora
-An active planning and project-management product built around the goal → plan → milestones → tasks → schedule → progress lifecycle. The live demo currently includes multi-project Kanban, task/project creation, calendar views, derived analytics, search, persistent themes, responsive layouts, optional Firebase Authentication, Express hosting, CI, and Render deployment. The roadmap adds AI-assisted plan generation and smart scheduling.
+A product-complete planning and execution workspace built around the goal → plan → milestones → tasks → schedule → progress lifecycle, with Kanban, scheduling/calendar views, Today workflows, search, analytics, resources, responsive layouts, persistence, CI, and Firebase-ready synchronization boundaries.
 
 - Live: https://planora-zlxv.onrender.com/
 - Source: https://github.com/MotherTheresa64/Planora
 
 ### Threadline
-An active collaboration and knowledge product built around keeping discussions connected to decisions and documentation. The live demo includes channels, searchable discussions, deep-linked threads, replies, reactions, bookmarks, resolution workflows, keyboard navigation, persistent themes, optional Firebase Authentication, Express hosting, CI, and Render deployment. The next phase moves those workflows into true account-backed shared workspaces.
+A product-complete collaboration and knowledge workspace designed to keep discussions connected to decisions and durable documentation. It includes multi-workspace flows, channels, search, deep-linked threads, replies/reactions, bookmarks, resolutions, knowledge documents, version history, board/timeline views, inbox/activity flows, responsive navigation, CI, and optional Firestore-backed shared workspaces with role-aware security rules.
 
 - Live: https://threadline-ga8w.onrender.com/
 - Source: https://github.com/MotherTheresa64/Threadline
 
 ### Wanderline
-An active collaborative travel-planning product intended to become a shared source of truth for travelers, places, itinerary, lodging, transportation, reservations, budget, packing, notes, weather, and trip decisions. The live demo currently includes editable itineraries, USD budget tracking, packing, saved places, live weather, sharing, search, responsive themes, optional Firebase Authentication, Express hosting, CI, and Render deployment. The roadmap adds persistent shared trips, traveler permissions, reservations, and Google Maps / Places integration as the primary mapping direction.
+A product-complete collaborative travel planner covering trip creation, traveler data, itineraries, lodging/reservations, budgets/expenses, packing, saved places, live weather, sharing, mobile-first navigation, privacy-safe demo content, Google Maps integration, CI, and Firebase-ready account persistence.
 
 - Live: https://wanderline-s1yv.onrender.com/
 - Source: https://github.com/MotherTheresa64/Wanderline
+
+### Ledgerly
+A product-complete personal-finance application with financial accounts, transactions, transfers, budgets, savings goals, reports, CSV import/export, responsive dark themes, mobile navigation, a Flask REST API, PostgreSQL models, automated tests, CI/CD, and user-scoped architecture prepared for finalized Firebase identity configuration.
+
+- Live: https://ledgerly-web-knmt.onrender.com/
+- Source: https://github.com/MotherTheresa64/Ledgerly
+
+## Additional engineering
 
 ### Advanced Service API
 A deployed Flask REST API with PostgreSQL, SQLAlchemy, Marshmallow, Swagger/OpenAPI documentation, pytest coverage, Gunicorn, and CI/CD.
