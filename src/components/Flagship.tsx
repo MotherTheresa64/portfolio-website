@@ -1,26 +1,26 @@
-import { FaCodeBranch, FaDatabase, FaMobileScreenButton, FaShieldHalved } from "react-icons/fa6";
+import { FaCodeBranch, FaDatabase, FaNetworkWired, FaShieldHalved } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
 const principles = [
   {
-    icon: <FaMobileScreenButton />,
-    title: "End-to-end scope",
-    desc: "The eventual flagship should demonstrate product UX, application architecture, data, auth, testing, and deployment together.",
+    icon: <FaNetworkWired />,
+    title: "Larger systems scope",
+    desc: "The flagship should go beyond a polished interface and force meaningful decisions across services, data flow, background work, integrations, and failure handling.",
   },
   {
     icon: <FaShieldHalved />,
-    title: "Clear product identity",
-    desc: "It should solve a specific problem strongly enough to stand on its own instead of being selected only because it is already mature.",
+    title: "Real multi-user behavior",
+    desc: "Identity, permissions, shared state, security boundaries, and durable account-backed data should be fundamental to the product rather than demo-layer decoration.",
   },
   {
     icon: <FaDatabase />,
     title: "Engineering depth",
-    desc: "The code should provide meaningful examples of architecture, state, validation, security boundaries, testing, and maintainability.",
+    desc: "The project should expose substantial architecture, data modeling, validation, observability, testing, performance, and maintainability decisions that are worth discussing in an interview.",
   },
   {
     icon: <FaCodeBranch />,
-    title: "Actually shipped",
-    desc: "The finished project should be reviewable as a real deployed product with a clean path from source code to production.",
+    title: "Production discipline",
+    desc: "It should be reviewable end to end: source, CI/CD, deployment, real integrations, useful documentation, and a product identity strong enough to stand on its own.",
   },
 ];
 
@@ -37,11 +37,14 @@ const Flagship = () => (
         >
           <div>
             <span className="inline-flex items-center rounded-full border border-gray-200 dark:border-gray-700 px-3 py-1 text-xs font-semibold tracking-wide text-textSubtle dark:text-gray-300 mb-5">
-              FLAGSHIP PROJECT · IN DEVELOPMENT
+              NEXT FLAGSHIP BUILD · RESERVED
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-textMain dark:text-white mb-4">Reserved for what comes next.</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-textMain dark:text-white mb-4">The next one has to raise the ceiling.</h2>
             <p className="text-base sm:text-lg leading-relaxed text-textSubtle dark:text-gray-300 mb-6">
-              I’m intentionally leaving the flagship position open until I finish the project that best represents my strongest end-to-end engineering work. The projects elsewhere on this portfolio remain active references without being forced into that role.
+              Planora, Threadline, Wanderline, and Ledgerly already demonstrate range across four distinct products. I’m intentionally reserving the flagship position for something more ambitious: a larger systems problem with deeper backend architecture, real multi-user behavior, richer data flows, external integrations, production-grade testing, and enough technical surface area to anchor an engineering interview by itself.
+            </p>
+            <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+              Until that project earns the position, none of the current four is artificially labeled as the flagship.
             </p>
           </div>
         </motion.div>
