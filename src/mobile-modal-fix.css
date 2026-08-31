@@ -1,0 +1,156 @@
+/* Mobile detail views behave as true bottom sheets instead of full-height desktop modals. */
+@media (max-width: 860px) {
+  .modal-backdrop {
+    inset: 0 !important;
+    padding:
+      max(64px, calc(env(safe-area-inset-top, 0px) + 54px))
+      10px
+      max(12px, env(safe-area-inset-bottom, 0px)) !important;
+    align-items: end !important;
+    justify-items: stretch !important;
+    overflow: hidden !important;
+  }
+
+  .detail-modal {
+    width: 100% !important;
+    max-width: none !important;
+    max-height: calc(100dvh - max(86px, calc(env(safe-area-inset-top, 0px) + 70px))) !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    overscroll-behavior: contain !important;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-top: 70px;
+    border-radius: 22px 22px 14px 14px !important;
+    padding: 18px 18px max(30px, env(safe-area-inset-bottom, 0px)) !important;
+    position: relative !important;
+  }
+
+  .detail-modal::after {
+    content: "";
+    position: sticky;
+    top: 0;
+    display: block;
+    width: 42px;
+    height: 4px;
+    margin: 0 auto 2px;
+    border-radius: 999px;
+    background: rgba(225,215,255,.22);
+    pointer-events: none;
+    z-index: 6;
+  }
+
+  .modal-close {
+    position: sticky !important;
+    top: 8px !important;
+    float: right;
+    margin: 0 0 6px auto !important;
+    width: 46px !important;
+    height: 46px !important;
+    min-width: 46px !important;
+    min-height: 46px !important;
+    border-radius: 50% !important;
+    background: rgba(20,23,22,.96) !important;
+    border-color: rgba(183,160,255,.34) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,.38), 0 0 22px rgba(183,160,255,.08) !important;
+    backdrop-filter: blur(14px);
+    z-index: 30 !important;
+  }
+
+  .modal-close svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .modal-heading {
+    clear: both;
+    margin: 4px 4px 22px 4px !important;
+    max-width: none !important;
+    padding-right: 0 !important;
+  }
+
+  .modal-heading > span {
+    display: inline-block;
+    font-size: 9px !important;
+    letter-spacing: .16em !important;
+    margin-bottom: 5px;
+  }
+
+  .modal-heading h2 {
+    margin: 5px 0 10px !important;
+    font-size: clamp(30px, 9.5vw, 40px) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -.035em !important;
+  }
+
+  .modal-heading p {
+    font-size: 13px !important;
+    line-height: 1.62 !important;
+  }
+
+  .root-directions,
+  .skills-grid,
+  .aegis-grid,
+  .highlight-grid,
+  .contact-grid {
+    gap: 12px !important;
+  }
+
+  .root-directions article,
+  .skills-grid article,
+  .aegis-grid article,
+  .highlight-grid article {
+    padding: 18px !important;
+    border-radius: 14px !important;
+  }
+
+  .root-directions article h3,
+  .skills-grid article h3,
+  .aegis-grid article h3,
+  .highlight-grid article h3 {
+    font-size: 17px !important;
+  }
+
+  .root-directions article p,
+  .skills-grid article p,
+  .aegis-grid article p,
+  .highlight-grid article p {
+    font-size: 12px !important;
+    line-height: 1.58 !important;
+  }
+
+  .contact-grid form {
+    padding: 16px !important;
+  }
+
+  .contact-grid input,
+  .contact-grid textarea {
+    font-size: 16px !important;
+  }
+
+  .contact-grid textarea {
+    min-height: 132px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-backdrop {
+    padding-top: max(72px, calc(env(safe-area-inset-top, 0px) + 60px)) !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  .detail-modal {
+    max-height: calc(100dvh - max(94px, calc(env(safe-area-inset-top, 0px) + 76px))) !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  .modal-heading h2 {
+    font-size: clamp(28px, 9vw, 36px) !important;
+  }
+
+  .modal-heading p {
+    font-size: 12.5px !important;
+  }
+}
