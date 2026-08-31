@@ -1,0 +1,49 @@
+/* Ensure open coding challenges contribute enough visual breathing room at the end of the currently unlocked path. */
+.portfolio-main {
+  padding-bottom: max(220px, 24vh) !important;
+}
+
+.map-canvas {
+  padding-bottom: clamp(160px, 22vh, 280px);
+}
+
+.vertical-gate:has(> .challenge-terminal:not(.embedded-terminal)) {
+  min-height: 440px !important;
+}
+
+.vertical-gate:has(> .challenge-terminal:not(.embedded-terminal)) > .challenge-terminal:not(.embedded-terminal) {
+  top: 46% !important;
+}
+
+.branch-gate:has(> .challenge-terminal) {
+  height: 360px !important;
+}
+
+/* When an editor is the last unlocked interaction, reserve extra room beneath it instead of letting it hang outside the document flow. */
+.map-canvas > .vertical-gate:last-child:has(> .challenge-terminal:not(.embedded-terminal)),
+.downstream > .vertical-gate:last-child:has(> .challenge-terminal:not(.embedded-terminal)),
+.projects-map:last-child .downstream > .vertical-gate:last-child:has(> .challenge-terminal:not(.embedded-terminal)) {
+  margin-bottom: 120px;
+}
+
+@media (max-width: 860px) {
+  .portfolio-main {
+    padding-bottom: 180px !important;
+  }
+
+  .map-canvas {
+    padding-bottom: 150px;
+  }
+
+  .vertical-gate:has(> .challenge-terminal:not(.embedded-terminal)) {
+    min-height: 500px !important;
+  }
+
+  .vertical-gate:has(> .challenge-terminal:not(.embedded-terminal)) > .challenge-terminal:not(.embedded-terminal) {
+    top: 46% !important;
+  }
+
+  .branch-gate:has(> .challenge-terminal) {
+    height: 470px !important;
+  }
+}
