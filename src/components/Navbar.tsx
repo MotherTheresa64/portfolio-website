@@ -4,7 +4,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const navItems = ["Projects", "About", "Skills", "Contact"];
+  const navItems = ["Capstone", "Projects", "About", "Skills", "Contact"];
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white/90 dark:bg-dark/90 backdrop-blur border-b border-gray-200 dark:border-gray-800 z-50">
