@@ -292,7 +292,7 @@ export const aegis = {
   live: "https://aegis-web-jvlk.onrender.com",
   api: "https://aegis-api-l8f8.onrender.com",
   docs: "https://aegis-api-l8f8.onrender.com/docs",
-  source: "https://github.com/MotherTherresa64/Aegis".replace("MotherTherresa64", "MotherTheresa64"),
+  source: "https://github.com/MotherTheresa64/Aegis",
   summary:
     "A production-oriented, multi-tenant incident operations platform for service health, alert ingestion, incident coordination, realtime updates, dependencies, public status communication, audit history, webhooks, analytics, and postmortems.",
   architecture:
