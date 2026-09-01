@@ -10,6 +10,7 @@ const files = {
   compactHook: await readFile(new URL("../src/hooks/useCompactLayout.ts", import.meta.url), "utf8"),
   data: await readFile(new URL("../src/portfolio-data.ts", import.meta.url), "utf8"),
   css: await readFile(new URL("../src/styles.css", import.meta.url), "utf8"),
+  circuitCss: await readFile(new URL("../src/circuit-motion.css", import.meta.url), "utf8"),
   mobileCss: await readFile(new URL("../src/mobile.css", import.meta.url), "utf8"),
   html: await readFile(new URL("../index.html", import.meta.url), "utf8"),
 };
@@ -21,7 +22,10 @@ const expect = (condition, message) => { if (!condition) failures.push(message);
 expect(!all.includes("MutationObserver"), "DOM MutationObserver hacks must stay removed");
 expect(!files.main.includes("portfolio-enhancements"), "main.tsx must not import portfolio-enhancements");
 expect(files.main.includes('import "./styles.css"'), "main.tsx must keep the desktop visual foundation stylesheet");
+expect(files.main.includes('import "./circuit-motion.css"'), "main.tsx must load the dedicated desktop circuit motion layer");
 expect(files.main.includes('import "./mobile.css"'), "main.tsx must load the isolated mobile interaction layer after the desktop foundation");
+expect(files.main.indexOf('import "./styles.css"') < files.main.indexOf('import "./circuit-motion.css"'), "circuit motion must layer on top of the desktop foundation");
+expect(files.main.indexOf('import "./circuit-motion.css"') < files.main.indexOf('import "./mobile.css"'), "mobile overrides must load after desktop circuit motion");
 expect(!files.challenge.includes("<input"), "challenge answers must not use typed inputs");
 expect(files.challenge.includes("choice-button"), "challenge must render React-controlled choice buttons");
 expect(files.challenge.includes('aria-live="polite"'), "challenge feedback needs an aria-live region");
@@ -37,7 +41,7 @@ expect(files.contact.includes("mailto:"), "contact form needs a direct email fal
 expect(files.contact.includes('status === "sending"'), "contact form needs a sending state");
 expect(files.contact.includes('status === "error"'), "contact form needs an error state");
 expect(files.css.includes("--accent:"), "portfolio CSS must expose the lilac accent as a reusable design token");
-expect(!/--amber|#dba13e|#f0bc5e|219\s*,\s*161\s*,\s*62|240\s*,\s*188\s*,\s*94/i.test(`${files.css}\n${files.mobileCss}`), "legacy amber/gold portfolio palette must stay removed");
+expect(!/--amber|#dba13e|#f0bc5e|219\s*,\s*161\s*,\s*62|240\s*,\s*188\s*,\s*94/i.test(`${files.css}\n${files.circuitCss}\n${files.mobileCss}`), "legacy amber/gold portfolio palette must stay removed");
 expect(files.css.includes(".branch-grid::before"), "desktop must retain the branching circuit-board route geometry");
 expect(files.css.includes(".route-line.horizontal"), "desktop must retain horizontal circuit traces");
 expect(files.css.includes(".route-line.vertical"), "desktop must retain vertical circuit traces");
@@ -46,6 +50,16 @@ expect(files.css.includes("@keyframes dotPulse"), "desktop logic nodes must reta
 expect(files.css.includes("@keyframes profileFloat"), "desktop profile motion must remain available");
 expect(files.css.includes("@keyframes sheen"), "desktop flagship sheen animation must remain available");
 expect(files.css.includes("background-size: 48px 48px"), "desktop must retain the circuit/grid backdrop texture");
+expect(files.circuitCss.includes("min-width: 861px"), "additional circuit motion must stay desktop-scoped");
+expect(files.circuitCss.includes("prefers-reduced-motion: no-preference"), "desktop circuit motion must respect reduced-motion preferences");
+expect(files.circuitCss.includes("verticalSignalTravel"), "vertical traces must carry animated signal packets");
+expect(files.circuitCss.includes("horizontalSignalTravel"), "horizontal traces must carry animated signal packets");
+expect(files.circuitCss.includes("branchBusPacket"), "branch bus must show clocked circuit activity");
+expect(files.circuitCss.includes("logicGateReady"), "active logic nodes must visibly pulse");
+expect(files.circuitCss.includes("connectorPins"), "circuit modules must expose animated connector-pin activity");
+expect(files.circuitCss.includes("moduleCurrentSweep"), "circuit modules must show restrained current sweeps");
+expect(files.circuitCss.includes("profileScanline"), "hero profile module must retain a circuit-style scanline");
+expect(files.circuitCss.includes("boardGridDrift"), "background board grid must contain subtle motion");
 expect(files.css.includes("prefers-reduced-motion"), "CSS must respect reduced motion");
 expect(files.css.includes("max-width: 370px"), "base CSS must retain the narrow-phone pass");
 expect(files.css.includes("orientation: landscape"), "base CSS must retain a phone-landscape pass");
