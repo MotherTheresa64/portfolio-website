@@ -1,0 +1,725 @@
+/* Final portfolio QA + polish layer.
+   Imported last so responsive behavior and interaction states remain predictable. */
+
+:root {
+  --polish-panel: rgba(17, 20, 19, 0.985);
+  --polish-panel-solid: #111413;
+  --polish-lilac: #b7a0ff;
+  --polish-lilac-bright: #e1d7ff;
+  --polish-line: rgba(183, 160, 255, 0.72);
+  --polish-focus: rgba(225, 215, 255, 0.92);
+  --polish-danger: #e58f92;
+}
+
+html {
+  scroll-padding-top: 24px;
+}
+
+body {
+  overscroll-behavior-y: none;
+}
+
+button,
+a,
+input,
+textarea {
+  touch-action: manipulation;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--polish-focus);
+  outline-offset: 3px;
+}
+
+.map-card,
+.project-root-card,
+.section-card,
+.skills-workbench {
+  isolation: isolate;
+}
+
+#skills-node,
+#projects-root,
+#project-list-node,
+#top-projects-node,
+#aegis-node,
+#contact-node,
+.vertical-gate,
+.branch-gate {
+  scroll-margin-block: 92px;
+}
+
+/* ---------- Connection and node cleanup ---------- */
+.connector,
+.skills-workbench::before {
+  pointer-events: none;
+}
+
+.node-dot {
+  overflow: visible;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.node-dot > svg {
+  width: 15px;
+  height: 15px;
+  stroke-width: 2.45;
+  transform-origin: center;
+  position: relative;
+  z-index: 3;
+}
+
+/* These two gate bodies are intentionally rotated; their solved checkmarks should not be. */
+#gate-projects .node-dot.is-complete > svg {
+  transform: rotate(-45deg) !important;
+}
+
+#gate-contact .node-dot.is-complete > svg {
+  transform: rotate(45deg) !important;
+}
+
+/* Preserve the designed rotation while an active node breathes. */
+#gate-projects .node-dot.is-active {
+  animation: polishProjectGatePulse 1.8s ease-in-out infinite !important;
+}
+
+#gate-contact .node-dot.is-active {
+  animation: polishContactGatePulse 1.8s ease-in-out infinite !important;
+}
+
+@keyframes polishProjectGatePulse {
+  0%, 100% { transform: rotate(45deg) scale(1); }
+  50% { transform: rotate(45deg) scale(1.085); }
+}
+
+@keyframes polishContactGatePulse {
+  0%, 100% { transform: rotate(-45deg) scale(1); }
+  50% { transform: rotate(-45deg) scale(1.085); }
+}
+
+.node-dot.is-complete {
+  background: linear-gradient(145deg, rgba(15, 22, 18, 0.98), rgba(12, 18, 15, 0.98)) !important;
+}
+
+.node-dot.is-complete > svg {
+  filter: drop-shadow(0 0 5px rgba(107, 196, 125, 0.42));
+  animation: polishCheckIn 0.38s cubic-bezier(.2,.85,.25,1) both;
+}
+
+@keyframes polishCheckIn {
+  from { opacity: 0; scale: .55; }
+  to { opacity: 1; scale: 1; }
+}
+
+/* Opaque center card prevents route lines from visually bleeding through it. */
+.project-root-card {
+  position: relative;
+  z-index: 8;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 84% 12%, rgba(183,160,255,.085), transparent 34%),
+    linear-gradient(145deg, rgba(24,27,26,.995), rgba(16,19,18,.995)) !important;
+  backdrop-filter: blur(16px);
+}
+
+.project-root-card:hover {
+  transform: translateY(-3px);
+}
+
+.project-root-card .root-directions-mini span {
+  transition: background .22s ease, border-color .22s ease, transform .22s ease;
+}
+
+.project-root-card:hover .root-directions-mini span {
+  border-color: rgba(183,160,255,.18);
+}
+
+.project-root-card:hover .root-directions-mini span:nth-child(1) { transform: translateX(-2px); }
+.project-root-card:hover .root-directions-mini span:nth-child(2) { transform: translateX(2px); }
+.project-root-card:hover .root-directions-mini span:nth-child(3) { transform: translateY(1px); }
+
+/* ---------- Challenge UX: floating panel + multiple choice ---------- */
+.challenge-terminal:not(.embedded-terminal) {
+  position: fixed !important;
+  left: 50% !important;
+  right: auto !important;
+  top: 50% !important;
+  bottom: auto !important;
+  width: min(540px, calc(100vw - 48px)) !important;
+  max-height: min(78dvh, 700px);
+  transform: translate(-50%, -50%) !important;
+  overflow: auto !important;
+  z-index: 360 !important;
+  box-shadow:
+    0 0 0 100vmax rgba(4,5,5,.64),
+    0 28px 90px rgba(0,0,0,.65),
+    0 0 58px rgba(183,160,255,.12) !important;
+}
+
+.challenge-terminal:not(.embedded-terminal) .editor-body {
+  max-height: calc(78dvh - 82px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.challenge-terminal.is-multiple-choice .editor-answer-row {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+.challenge-terminal.is-multiple-choice .editor-actions {
+  display: none !important;
+}
+
+.multiple-choice-quiz {
+  margin-top: 11px;
+  border: 1px solid rgba(183,160,255,.19);
+  border-radius: 10px;
+  padding: 10px;
+  background:
+    linear-gradient(145deg, rgba(183,160,255,.032), transparent 55%),
+    rgba(11,14,13,.58);
+  position: relative;
+  z-index: 2;
+  animation: polishQuizIn .28s ease both;
+}
+
+@keyframes polishQuizIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: none; }
+}
+
+.multiple-choice-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  color: #d8d4df;
+  font: 600 9px/1.3 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .025em;
+}
+
+.multiple-choice-strikes {
+  flex: 0 0 auto;
+  color: #8f8998;
+  font-size: 8px;
+  font-weight: 500;
+}
+
+.multiple-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.multiple-choice-option {
+  min-width: 0;
+  min-height: 42px;
+  border: 1px solid rgba(183,160,255,.19);
+  border-radius: 8px;
+  background: rgba(22,25,24,.88);
+  color: #d9d5df;
+  padding: 8px 10px;
+  text-align: left;
+  cursor: pointer;
+  font: 500 10px/1.35 ui-monospace, SFMono-Regular, Menlo, monospace;
+  overflow-wrap: anywhere;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease, opacity .18s ease;
+}
+
+.multiple-choice-option:hover:not(:disabled),
+.multiple-choice-option:focus-visible:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(225,215,255,.62);
+  background: rgba(183,160,255,.075);
+  box-shadow: 0 7px 22px rgba(0,0,0,.18), 0 0 20px rgba(183,160,255,.055);
+}
+
+.multiple-choice-option.is-wrong {
+  color: #c99598;
+  border-color: rgba(229,143,146,.32);
+  background: rgba(229,143,146,.045);
+  text-decoration: line-through;
+  opacity: .62;
+  animation: polishWrong .28s ease both;
+}
+
+.multiple-choice-option.is-correct {
+  color: #bce4c5;
+  border-color: rgba(107,196,125,.58);
+  background: rgba(107,196,125,.09);
+  box-shadow: 0 0 24px rgba(107,196,125,.09);
+  animation: polishCorrect .42s cubic-bezier(.2,.85,.25,1) both;
+}
+
+.multiple-choice-option:disabled:not(.is-wrong):not(.is-correct) {
+  opacity: .45;
+  cursor: default;
+}
+
+@keyframes polishWrong {
+  0%,100% { transform: translateX(0); }
+  33% { transform: translateX(-3px); }
+  66% { transform: translateX(3px); }
+}
+
+@keyframes polishCorrect {
+  0% { transform: scale(.98); }
+  55% { transform: scale(1.025); }
+  100% { transform: scale(1); }
+}
+
+.multiple-choice-status {
+  min-height: 16px;
+  margin-top: 8px;
+  color: #8f8b94;
+  font: 500 8px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.editor-hint,
+.editor-answer {
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- Cards, progress, and navigation ---------- */
+.section-card,
+.project-root-card {
+  transition: transform .24s cubic-bezier(.2,.8,.2,1), border-color .24s ease, box-shadow .24s ease, background .24s ease !important;
+}
+
+.section-card:hover,
+.project-root-card:hover {
+  border-color: rgba(225,215,255,.5) !important;
+  box-shadow: 0 18px 54px rgba(0,0,0,.25), 0 0 34px rgba(183,160,255,.075) !important;
+}
+
+.section-card em,
+.project-root-card em,
+.inline-link {
+  transition: gap .2s ease, color .2s ease;
+}
+
+.section-card:hover em,
+.project-root-card:hover em,
+.inline-link:hover {
+  gap: 8px;
+  color: var(--polish-lilac-bright) !important;
+}
+
+.root-directions-mini b,
+.root-directions article > span {
+  white-space: nowrap;
+}
+
+.map-progress {
+  backdrop-filter: blur(14px);
+}
+
+.sidebar nav button,
+.sidebar-resume,
+.mobile-dock > button,
+.mobile-dock > a {
+  transition: transform .2s ease, color .2s ease, background .2s ease, border-color .2s ease, opacity .2s ease;
+}
+
+.sidebar nav button:not(:disabled):active,
+.sidebar-resume:active {
+  transform: scale(.97);
+}
+
+.sidebar nav button:disabled {
+  opacity: .38;
+}
+
+.resume-fab,
+.sidebar-resume,
+.mobile-dock > a {
+  white-space: nowrap;
+}
+
+/* ---------- Desktop / laptop QA ---------- */
+@media (min-width: 861px) {
+  .portfolio-main {
+    padding-right: clamp(38px, 4vw, 72px);
+  }
+
+  .map-canvas {
+    max-width: 1180px;
+  }
+
+  .project-cross-row {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .project-root-card {
+    min-width: 0;
+  }
+
+  .branch-destination,
+  .project-root-card {
+    z-index: 6;
+  }
+
+  .branch-gate {
+    z-index: 4;
+  }
+
+  .terminal-launcher,
+  .terminal-collapsed {
+    z-index: 9;
+  }
+}
+
+@media (min-width: 861px) and (max-width: 1120px) {
+  .portfolio-main {
+    padding-left: 126px;
+    padding-right: 28px;
+  }
+
+  .map-canvas {
+    width: min(100%, calc(100vw - 170px));
+  }
+
+  .project-cross-row {
+    grid-template-columns: minmax(0,1fr) minmax(250px, 290px) minmax(0,1fr) !important;
+    gap: 12px !important;
+  }
+
+  .branch-left {
+    grid-template-columns: minmax(0,1fr) 116px !important;
+  }
+
+  .branch-right {
+    grid-template-columns: 116px minmax(0,1fr) !important;
+  }
+}
+
+/* ---------- Mobile / tablet: one intentional vertical route ---------- */
+@media (max-width: 860px) {
+  html {
+    scroll-padding-bottom: calc(92px + env(safe-area-inset-bottom));
+  }
+
+  .portfolio-main {
+    padding: 24px 14px calc(116px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .map-canvas {
+    width: min(100%, 620px) !important;
+    margin-inline: auto;
+  }
+
+  .hero-node {
+    width: 100% !important;
+    padding-inline: clamp(18px, 5vw, 30px) !important;
+  }
+
+  .hero-actions {
+    justify-content: center !important;
+  }
+
+  .skills-workbench {
+    width: 100% !important;
+    overflow: hidden;
+  }
+
+  .skills-terminal-panel,
+  .skills-list-panel {
+    min-width: 0;
+  }
+
+  .skills-workbench::before,
+  .connector.vertical,
+  .branch-gate .connector.horizontal {
+    left: 50% !important;
+  }
+
+  .project-cross-row {
+    width: 100% !important;
+    gap: 0 !important;
+  }
+
+  .project-root-card {
+    order: 0;
+    min-height: 0 !important;
+    padding: 22px clamp(16px, 5vw, 24px) !important;
+  }
+
+  .project-root-card > p {
+    max-width: 34rem;
+  }
+
+  .root-directions-mini {
+    gap: 7px !important;
+  }
+
+  .root-directions-mini span {
+    grid-template-columns: minmax(74px, auto) 1fr !important;
+    gap: 10px !important;
+    min-height: 38px !important;
+    padding: 5px 0;
+  }
+
+  .root-directions-mini b {
+    font-size: 8px !important;
+    letter-spacing: .045em !important;
+  }
+
+  .root-directions-mini small {
+    font-size: 8.5px !important;
+    line-height: 1.35;
+  }
+
+  .branch-zone {
+    position: relative;
+    z-index: 2;
+  }
+
+  .branch-gate {
+    height: 136px !important;
+  }
+
+  .branch-gate .connector.horizontal {
+    width: 1px !important;
+    height: 100% !important;
+    right: auto !important;
+    top: 0 !important;
+    bottom: auto !important;
+  }
+
+  .branch-gate .node-dot {
+    z-index: 8;
+  }
+
+  .branch-gate .terminal-launcher,
+  .branch-gate .terminal-collapsed,
+  .vertical-gate > .terminal-launcher,
+  .vertical-gate > .terminal-collapsed {
+    left: calc(50% + 30px) !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    max-width: min(175px, calc(50vw - 42px));
+  }
+
+  .challenge-terminal:not(.embedded-terminal) {
+    left: 10px !important;
+    right: 10px !important;
+    top: auto !important;
+    bottom: calc(82px + env(safe-area-inset-bottom)) !important;
+    width: auto !important;
+    max-height: min(72dvh, 620px) !important;
+    transform: none !important;
+    border-radius: 16px 16px 12px 12px !important;
+    box-shadow:
+      0 0 0 100vmax rgba(4,5,5,.58),
+      0 -20px 70px rgba(0,0,0,.52),
+      0 0 42px rgba(183,160,255,.1) !important;
+  }
+
+  .challenge-terminal:not(.embedded-terminal) .editor-body {
+    max-height: calc(72dvh - 78px);
+  }
+
+  .multiple-choice-option {
+    min-height: 46px;
+  }
+
+  .section-card,
+  .project-root-card {
+    width: 100% !important;
+  }
+
+  .downstream > div:not(.vertical-gate) {
+    width: 100% !important;
+  }
+
+  .root-directions {
+    gap: 9px !important;
+  }
+
+  .root-directions article {
+    padding: 17px !important;
+  }
+
+  .root-directions article > span {
+    display: inline-flex;
+    min-width: 86px;
+  }
+
+  .mobile-dock {
+    left: max(8px, env(safe-area-inset-left)) !important;
+    right: max(8px, env(safe-area-inset-right)) !important;
+    bottom: max(8px, env(safe-area-inset-bottom)) !important;
+    width: auto !important;
+    max-width: 620px;
+    margin-inline: auto;
+    border-radius: 16px !important;
+    overflow: visible;
+  }
+
+  .mobile-dock > button,
+  .mobile-dock > a {
+    min-width: 0;
+  }
+
+  .mobile-dock > button > span,
+  .mobile-dock > a > span {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .signal-button small {
+    max-width: min(30vw, 150px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .modal-backdrop {
+    align-items: flex-end !important;
+    padding: 10px 8px 0 !important;
+  }
+
+  .detail-modal {
+    width: 100% !important;
+    max-width: 720px !important;
+    max-height: calc(100dvh - 18px) !important;
+    border-radius: 22px 22px 0 0 !important;
+    padding-bottom: calc(24px + env(safe-area-inset-bottom)) !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-node h1 {
+    font-size: clamp(36px, 12vw, 48px) !important;
+  }
+
+  .hero-node h2 {
+    font-size: 17px !important;
+  }
+
+  .hero-instructions {
+    font-size: 10.5px !important;
+    line-height: 1.65 !important;
+  }
+
+  .skills-list-panel,
+  .skills-terminal-panel {
+    padding-inline: 13px !important;
+  }
+
+  .editor-body {
+    padding: 10px !important;
+  }
+
+  .editor-body pre {
+    font-size: 9px !important;
+    line-height: 1.55 !important;
+    padding: 9px !important;
+  }
+
+  .multiple-choice-grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .multiple-choice-option {
+    min-height: 43px;
+  }
+
+  .multiple-choice-heading {
+    align-items: flex-start;
+  }
+
+  .project-root-card > strong,
+  .section-card > strong {
+    font-size: 17px !important;
+  }
+
+  .section-card p,
+  .project-root-card > p {
+    font-size: 10.5px !important;
+  }
+
+  .branch-gate .terminal-launcher,
+  .branch-gate .terminal-collapsed,
+  .vertical-gate > .terminal-launcher,
+  .vertical-gate > .terminal-collapsed {
+    left: calc(50% + 26px) !important;
+    max-width: calc(50vw - 34px);
+  }
+
+  .terminal-launcher small {
+    white-space: normal !important;
+    line-height: 1.25;
+  }
+
+  .mobile-dock {
+    grid-template-columns: .9fr .9fr 1.4fr .9fr .9fr !important;
+  }
+
+  .mobile-dock > button,
+  .mobile-dock > a {
+    padding-inline: 2px !important;
+  }
+
+  .mobile-dock > button span,
+  .mobile-dock > a span {
+    font-size: 7px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .portfolio-main {
+    padding-inline: 9px !important;
+  }
+
+  .project-root-card,
+  .section-card {
+    padding-inline: 15px !important;
+  }
+
+  .root-directions-mini span {
+    grid-template-columns: 70px 1fr !important;
+  }
+
+  .branch-gate .terminal-launcher,
+  .branch-gate .terminal-collapsed,
+  .vertical-gate > .terminal-launcher,
+  .vertical-gate > .terminal-collapsed {
+    max-width: calc(50vw - 28px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .node-dot.is-complete > svg,
+  .multiple-choice-quiz,
+  .multiple-choice-option,
+  #gate-projects .node-dot.is-active,
+  #gate-contact .node-dot.is-active {
+    animation: none !important;
+  }
+
+  .section-card,
+  .project-root-card,
+  .root-directions-mini span,
+  .multiple-choice-option {
+    transition-duration: .01ms !important;
+  }
+}
