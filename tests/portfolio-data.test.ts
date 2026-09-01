@@ -12,34 +12,45 @@ test("every challenge has four unique choices containing exactly one correct ans
   }
 });
 
-test("featured projects have distinct categories and https links", () => {
+test("featured projects have distinct categories, case-study substance, and https links", () => {
   assert.equal(new Set(products.map((product) => product.category)).size, products.length);
   for (const product of products) {
     assert.match(product.live, /^https:\/\//);
     assert.match(product.source, /^https:\/\/github\.com\/MotherTheresa64\//);
     assert.doesNotMatch(product.status, /product complete/i);
-    assert.ok(product.reality.length > 80);
+    assert.ok(product.reality.length > 80, `${product.name} reality`);
+    assert.ok(product.architecture.length > 120, `${product.name} architecture`);
+    assert.ok(product.engineering.length >= 3, `${product.name} engineering`);
+    assert.ok(product.engineering.every((item) => item.length > 50), `${product.name} engineering detail`);
+    assert.ok(product.quality.length > 80, `${product.name} quality`);
+    assert.ok(product.tradeoff.length > 100, `${product.name} tradeoff`);
   }
 });
 
-test("project copy preserves the important implementation boundaries", () => {
+test("project copy preserves important implementation boundaries without exaggeration", () => {
   const planora = products.find((product) => product.name === "Planora");
   const threadline = products.find((product) => product.name === "Threadline");
   const wanderline = products.find((product) => product.name === "Wanderline");
   const ledgerly = products.find((product) => product.name === "Ledgerly");
 
-  assert.match(planora?.reality ?? "", /Firestore load\/save/i);
+  assert.match(planora?.reality ?? "", /typed, versioned workspace|local-first/i);
+  assert.match(planora?.tradeoff ?? "", /does not provide cross-device shared data yet/i);
+  assert.doesNotMatch(`${planora?.status} ${planora?.reality}`, /cloud sync implemented|Firestore load\/save/i);
+
   assert.match(threadline?.reality ?? "", /onSnapshot/i);
-  assert.match(threadline?.reality ?? "", /tradeoff/i);
+  assert.match(threadline?.tradeoff ?? "", /subcollections/i);
   assert.match(wanderline?.reality ?? "", /remain a final integration step/i);
   assert.match(ledgerly?.reality ?? "", /verifies Firebase ID tokens/i);
 });
 
-test("Aegis copy is flagship-focused without unsupported Terraform language", () => {
+test("Aegis copy is flagship-focused and exposes defensible system decisions", () => {
   const text = JSON.stringify(aegis);
-  assert.match(text, /Redis tickets/i);
+  assert.match(text, /Redis-backed tickets|Redis tickets|Redis-backed realtime/i);
   assert.match(text, /Celery/i);
   assert.match(text, /Prometheus/i);
+  assert.match(aegis.architecture, /PostgreSQL is authoritative/i);
+  assert.ok(aegis.decisions.length >= 4);
+  assert.ok(aegis.quality.length > 120);
   assert.doesNotMatch(text, /Terraform/i);
   assert.match(aegis.live, /^https:\/\//);
   assert.match(aegis.source, /MotherTheresa64\/Aegis$/);
