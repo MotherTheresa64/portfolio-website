@@ -63,8 +63,7 @@ export function ChallengeCard({
       return;
     }
 
-    setMessage(`Strike 2/2. The correct answer is ${challenge.answer}. ${challenge.explanation}`);
-    scheduleComplete(reduceMotion ? 650 : 1600);
+    setMessage(`Strike 2/2. The correct answer is ${challenge.answer}. Review it below, then continue when you're ready.`);
   };
 
   if (bypassed) {
@@ -150,6 +149,9 @@ export function ChallengeCard({
             <strong>Answer revealed</strong>
             <code>{challenge.answer}</code>
             <span>{challenge.explanation}</span>
+            <button className="challenge-continue" type="button" onClick={() => onComplete(challenge.id)}>
+              <FiCheck aria-hidden="true" /> Continue
+            </button>
           </div>
         )}
       </div>
