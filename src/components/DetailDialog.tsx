@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef } from "react";
 import type { KeyboardEvent as ReactKeyboardEvent, ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { FiX } from "react-icons/fi";
+import { FiArrowLeft, FiX } from "react-icons/fi";
 
 const FOCUSABLE = [
   "a[href]",
@@ -29,12 +29,16 @@ export function DetailDialog({
   const descriptionId = useId();
   const panelRef = useRef<HTMLElement>(null);
   const returnFocusRef = useRef<HTMLElement | null>(null);
+  const scrollPositionRef = useRef(0);
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     returnFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    scrollPositionRef.current = window.scrollY;
+
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+
     const panel = panelRef.current;
     const firstFocusable = panel?.querySelector<HTMLElement>(FOCUSABLE);
     (firstFocusable ?? panel)?.focus();
@@ -47,7 +51,11 @@ export function DetailDialog({
     return () => {
       document.removeEventListener("keydown", escape);
       document.body.style.overflow = previousOverflow;
-      returnFocusRef.current?.focus({ preventScroll: true });
+      const scrollTop = scrollPositionRef.current;
+      window.requestAnimationFrame(() => {
+        window.scrollTo({ top: scrollTop, left: 0, behavior: "auto" });
+        returnFocusRef.current?.focus({ preventScroll: true });
+      });
     };
   }, [onClose]);
 
@@ -102,8 +110,10 @@ export function DetailDialog({
             <h2 id={titleId}>{title}</h2>
             {description && <p id={descriptionId}>{description}</p>}
           </header>
-          <button className="dialog-close" type="button" onClick={onClose} aria-label={`Close ${title}`}>
-            <FiX aria-hidden="true" />
+          <button className="dialog-close" type="button" onClick={onClose} aria-label={`Back from ${title}`}>
+            <FiArrowLeft className="dialog-back-icon" aria-hidden="true" />
+            <span className="dialog-close-label">Back</span>
+            <FiX className="dialog-close-x" aria-hidden="true" />
           </button>
         </div>
         <div className="dialog-content">{children}</div>
