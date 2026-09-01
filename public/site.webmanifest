@@ -1,0 +1,18 @@
+{
+  "name": "Noah Ragan — Software Engineer",
+  "short_name": "Noah Ragan",
+  "description": "Recruiter-friendly software engineering portfolio featuring Aegis and full-stack product work.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#08070d",
+  "theme_color": "#08070d",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
