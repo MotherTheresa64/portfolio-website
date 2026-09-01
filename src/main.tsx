@@ -5,6 +5,7 @@ import "./styles.css";
 import "./circuit-motion.css";
 import "./projects-fork.css";
 import "./checkpoint-layout.css";
+import "./product-case-study.css";
 import "./mobile.css";
 
 createRoot(document.getElementById("root")!).render(
