@@ -5,6 +5,7 @@ type QuizOption = {
 
 type QuizConfig = {
   answer: string;
+  hint: string;
   choices: QuizOption[];
 };
 
@@ -17,6 +18,7 @@ type QuizState = {
 const quizByFile: Record<string, QuizConfig> = {
   "skills.css": {
     answer: "1",
+    hint: "Opacity runs from transparent to fully opaque. Pick the value at the fully visible end of that range.",
     choices: [
       { label: "0", value: "0" },
       { label: "1", value: "1" },
@@ -26,6 +28,7 @@ const quizByFile: Record<string, QuizConfig> = {
   },
   "root.ts": {
     answer: "wantsProjects",
+    hint: "The missing condition should represent the visitor choosing to continue, not the boolean that only records prior progress.",
     choices: [
       { label: "skillsUnlocked", value: "skillsUnlocked" },
       { label: "wantsProjects", value: "wantsProjects" },
@@ -35,6 +38,7 @@ const quizByFile: Record<string, QuizConfig> = {
   },
   "repos.sh": {
     answer: "-a",
+    hint: "Use the short option whose meaning is to include every branch scope, including remotes.",
     choices: [
       { label: "-r", value: "-r" },
       { label: "-a", value: "-a" },
@@ -44,6 +48,7 @@ const quizByFile: Record<string, QuizConfig> = {
   },
   "featured.ts": {
     answer: "true",
+    hint: "The filter should keep projects whose featured switch is enabled.",
     choices: [
       { label: "false", value: "false" },
       { label: "true", value: "true" },
@@ -53,6 +58,7 @@ const quizByFile: Record<string, QuizConfig> = {
   },
   "route.ts": {
     answer: "flagship",
+    hint: "path.at(-1) reads the final member of the array. Match the assertion to the role of that destination.",
     choices: [
       { label: "projects", value: "projects" },
       { label: "contact", value: "contact" },
@@ -62,6 +68,7 @@ const quizByFile: Record<string, QuizConfig> = {
   },
   "contact.tsx": {
     answer: "contact",
+    hint: "Choose the route for the section that gathers the ways a visitor can reach me.",
     choices: [
       { label: "profile", value: "profile" },
       { label: "resume", value: "resume" },
@@ -93,9 +100,19 @@ const findActionButton = (form: HTMLFormElement, label: string) =>
     (button) => button.textContent?.trim().toLowerCase() === label.toLowerCase(),
   );
 
-const revealHint = (form: HTMLFormElement) => {
-  if (form.querySelector(".editor-hint")) return;
-  findActionButton(form, "Hint")?.click();
+const applyPolishedHint = (form: HTMLFormElement, hint: string) => {
+  const hintBox = form.querySelector<HTMLElement>(".editor-hint");
+  if (!hintBox || hintBox.dataset.polishedHint === "true") return;
+  const label = hintBox.querySelector("span");
+  hintBox.replaceChildren();
+  if (label) hintBox.append(label);
+  hintBox.append(document.createTextNode(hint));
+  hintBox.dataset.polishedHint = "true";
+};
+
+const revealHint = (form: HTMLFormElement, hint: string) => {
+  if (!form.querySelector(".editor-hint")) findActionButton(form, "Hint")?.click();
+  window.requestAnimationFrame(() => applyPolishedHint(form, hint));
 };
 
 const revealAnswer = (form: HTMLFormElement) => {
@@ -113,7 +130,10 @@ const setReactInputValue = (input: HTMLInputElement, value: string) => {
 const enhanceChallenge = (form: HTMLFormElement) => {
   const file = getFileName(form);
   const config = quizByFile[file];
-  if (!config || form.querySelector(".multiple-choice-quiz")) return;
+  if (!config) return;
+
+  applyPolishedHint(form, config.hint);
+  if (form.querySelector(".multiple-choice-quiz")) return;
 
   const body = form.querySelector<HTMLElement>(".editor-body");
   const answerRow = form.querySelector<HTMLElement>(".editor-answer-row");
@@ -188,7 +208,7 @@ const enhanceChallenge = (form: HTMLFormElement) => {
 
       if (state.strikes === 1) {
         status.textContent = "Strike 1/2 · hint unlocked below. Try one more option.";
-        revealHint(form);
+        revealHint(form, config.hint);
         return;
       }
 
@@ -197,7 +217,7 @@ const enhanceChallenge = (form: HTMLFormElement) => {
         option.disabled = true;
       });
       status.textContent = "Strike 2/2 · answer revealed. Unlocking the route automatically…";
-      revealHint(form);
+      revealHint(form, config.hint);
       window.setTimeout(() => revealAnswer(form), 80);
     });
 
