@@ -7,6 +7,8 @@ import "./modal-fit.css";
 import "./lilac-motion.css";
 import "./lilac-hotfix.css";
 import "./mobile-modal-fix.css";
+import "./portfolio-polish.css";
+import "./portfolio-enhancements";
 import { ThemeProvider } from "./context/ThemeProvider";
 
 const normalizeTextNode = (node: Node) => {
