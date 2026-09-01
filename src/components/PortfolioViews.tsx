@@ -74,7 +74,34 @@ function ProductsView() {
           <h3>{product.name}</h3>
           <p className="product-lead">{product.description}</p>
           <p>{product.detail}</p>
-          <div className="reality-note"><FiCheckCircle aria-hidden="true" /><span><strong>Current implementation</strong>{product.reality}</span></div>
+
+          <div className="reality-note">
+            <FiCheckCircle aria-hidden="true" />
+            <span><strong>Current implementation</strong>{product.reality}</span>
+          </div>
+
+          <div className="architecture-callout">
+            <strong>Architecture</strong>
+            <p>{product.architecture}</p>
+          </div>
+
+          <div className="case-study-grid">
+            <section className="case-study-section" aria-label={`${product.name} engineering highlights`}>
+              <h4>Engineering highlights</h4>
+              <ul className="engineering-list">
+                {product.engineering.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </section>
+            <section className="case-study-section" aria-label={`${product.name} quality and validation`}>
+              <h4>Quality + validation</h4>
+              <p>{product.quality}</p>
+            </section>
+            <section className="case-study-section" aria-label={`${product.name} engineering tradeoff`}>
+              <h4>Important tradeoff</h4>
+              <p>{product.tradeoff}</p>
+            </section>
+          </div>
+
           <div className="tag-row">{product.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
           <div className="card-actions">
             <a href={product.live} target="_blank" rel="noreferrer">Live demo <FiExternalLink aria-hidden="true" /></a>
@@ -95,12 +122,32 @@ function AegisView() {
         <strong>{aegis.status}</strong>
         <p>{aegis.summary}</p>
       </div>
+
       <div className="aegis-pillars">
         {aegis.pillars.map((pillar, index) => {
           const Icon = icons[index] ?? FiZap;
           return <article key={pillar.title}><Icon aria-hidden="true" /><h3>{pillar.title}</h3><p>{pillar.text}</p></article>;
         })}
       </div>
+
+      <div className="architecture-callout">
+        <strong>Architecture and system shape</strong>
+        <p>{aegis.architecture}</p>
+      </div>
+
+      <div className="case-study-grid">
+        <section className="case-study-section" aria-label="Aegis engineering decisions">
+          <h4>Engineering decisions worth inspecting</h4>
+          <ul className="engineering-list">
+            {aegis.decisions.map((decision) => <li key={decision}>{decision}</li>)}
+          </ul>
+        </section>
+        <section className="case-study-section" aria-label="Aegis quality and operations">
+          <h4>Quality + operations</h4>
+          <p>{aegis.quality}</p>
+        </section>
+      </div>
+
       <div className="tag-row large">{aegis.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
       <div className="card-actions flagship-actions">
         <a href={aegis.live} target="_blank" rel="noreferrer">Open live Aegis <FiArrowRight aria-hidden="true" /></a>
