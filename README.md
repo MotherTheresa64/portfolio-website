@@ -1,96 +1,82 @@
-# Noah Ragan — Developer Portfolio
+# Noah Ragan — Software Engineering Portfolio
 
-Recruiter-focused portfolio for my full-stack software engineering work.
+A recruiter-first interactive portfolio built with React, TypeScript, Vite, Framer Motion, and a deliberately small client-side architecture.
 
-## Live portfolio
+**Live:** https://noahragan-portfolio.vercel.app/
 
-**Canonical site:** https://noahragan-portfolio.vercel.app/
+## Experience design
 
-> Note: `noah-portfolio.vercel.app` is not my portfolio and should not be used.
+Visitors get two equally valid routes from the first screen:
 
-## Flagship / capstone — Aegis
+- **Interactive challenge mode** — solve six small multiple-choice code gates to grow the project map.
+- **View everything now** — immediately reveal the same portfolio content with no challenge requirement.
 
-**Aegis** is a production-oriented **Real-Time Incident Operations Platform** for engineering teams. It is intentionally the capstone because it demonstrates systems engineering beyond a standard CRUD application.
+Challenge mode is personality, not access control. The resume, GitHub, LinkedIn, contact route, Aegis summary, and direct recruiter path are available immediately.
 
-The architecture and product scope include:
+## Challenge behavior
 
-- React + TypeScript frontend
-- Python + FastAPI backend
-- PostgreSQL + SQLAlchemy
-- Redis for cache, rate limiting, queues, and realtime event fanout
-- WebSockets for organization-scoped realtime updates
-- Celery background workers for retryable/asynchronous jobs
-- Multi-tenant organizations, memberships, and RBAC
-- Service catalog and dependency-aware health
-- Alert ingestion, normalization, and deduplication
-- Incident rooms, timelines, tasks, and participant workflows
-- Public status communication
-- Audit/security history
-- Postmortem workflows and analytics
-- Docker Compose local infrastructure
-- GitHub Actions CI/CD
-- OpenTelemetry-ready observability
-- Terraform-oriented production infrastructure path
+Each challenge is React-controlled and keyboard/touch accessible:
 
-Source: https://github.com/MotherTheresa64/Aegis
+1. Choose from four code options.
+2. First incorrect choice is marked unavailable and reveals a useful hint.
+3. Second incorrect choice reveals and explains the correct answer, then progresses automatically.
+4. A correct choice gives success feedback and progresses naturally.
 
-The active production foundation currently lives on `build/foundation` while the project is merged through normal feature-branch / pull-request workflow.
+Challenge state lives in `src/challenge-engine.ts`; the UI lives in `src/components/ChallengeCard.tsx`. There are no MutationObservers, hidden answer inputs, synthetic React clicks, or post-render DOM patches.
 
-## Selected product work
+## Portfolio hierarchy
 
-### Planora
-A product-complete planning and execution workspace built around the goal → plan → milestones → tasks → schedule → progress lifecycle, with Kanban, scheduling/calendar views, Today workflows, search, analytics, resources, responsive layouts, persistence, CI, and Firebase-ready synchronization boundaries.
+- **Aegis** is the flagship/capstone and receives the strongest visual and content hierarchy.
+- **Planora** emphasizes structured planning and current per-user Firestore sync with local fallback.
+- **Threadline** emphasizes real-time shared Firestore workspaces, roles, discussions, decisions, and versioned knowledge with documented snapshot-model tradeoffs.
+- **Wanderline** emphasizes consumer group travel workflows while clearly identifying cloud collaboration as a remaining integration boundary.
+- **Ledgerly** emphasizes a full-stack finance domain with Firebase identity, Flask token verification, PostgreSQL data, and tests.
 
-- Live: https://planora-zlxv.onrender.com/
-- Source: https://github.com/MotherTheresa64/Planora
+Project wording is intentionally implementation-specific instead of repeating a generic “product complete” label.
 
-### Threadline
-A product-complete collaboration and knowledge workspace designed to keep discussions connected to decisions and durable documentation. It includes multi-workspace flows, channels, search, deep-linked threads, replies/reactions, bookmarks, resolutions, knowledge documents, version history, board/timeline views, inbox/activity flows, responsive navigation, CI, and optional Firestore-backed shared workspaces with role-aware security rules.
+## Accessibility and responsive behavior
 
-- Live: https://threadline-ga8w.onrender.com/
-- Source: https://github.com/MotherTheresa64/Threadline
+- semantic controls and visible focus states
+- keyboard-completable challenge flow
+- `role="dialog"`, `aria-modal`, focus trap, Escape close, focus return, and body scroll locking
+- `aria-live` challenge/form feedback
+- non-color correct/incorrect labels
+- responsive desktop map and stacked mobile route wording
+- touch-friendly dock and controls
+- reduced-motion support
+- narrow-phone and phone-landscape layout passes
 
-### Wanderline
-A product-complete collaborative travel planner covering trip creation, traveler data, itineraries, lodging/reservations, budgets/expenses, packing, saved places, live weather, sharing, mobile-first navigation, privacy-safe demo content, Google Maps integration, CI, and Firebase-ready account persistence.
-
-- Live: https://wanderline-s1yv.onrender.com/
-- Source: https://github.com/MotherTheresa64/Wanderline
-
-### Ledgerly
-A product-complete personal-finance application with financial accounts, transactions, transfers, budgets, savings goals, reports, CSV import/export, responsive dark themes, mobile navigation, a Flask REST API, PostgreSQL models, automated tests, CI/CD, and user-scoped architecture prepared for finalized Firebase identity configuration.
-
-- Live: https://ledgerly-web-knmt.onrender.com/
-- Source: https://github.com/MotherTheresa64/Ledgerly
-
-## Additional engineering
-
-### Advanced Service API
-A deployed Flask REST API with PostgreSQL, SQLAlchemy, Marshmallow, Swagger/OpenAPI documentation, pytest coverage, Gunicorn, and CI/CD.
-
-- Swagger: https://advanced-api-final.onrender.com/apidocs/
-- Source: https://github.com/MotherTheresa64/Advanced-API-Final
-
-## Portfolio stack
-
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
-- Framer Motion
-- Formspree
-- Vercel
-
-## Local development
+## Quality gates
 
 ```bash
-git clone https://github.com/MotherTheresa64/portfolio-website.git
-cd portfolio-website
-npm install
-npm run dev
+npm ci
+npm run check
 ```
 
-## Links
+`npm run check` runs:
 
-- Portfolio: https://noahragan-portfolio.vercel.app/
-- LinkedIn: https://www.linkedin.com/in/njragandev/
-- GitHub: https://github.com/MotherTheresa64
+- ESLint
+- Node challenge/data tests
+- static portfolio invariants (no DOM patching, typed answers, stale Aegis branch/Terraform copy, etc.)
+- TypeScript + Vite production build
+
+GitHub Actions runs the same command on pull requests and `main`.
+
+## Source map
+
+```text
+src/
+├── App.tsx                         portfolio/map orchestration
+├── challenge-engine.ts            pure challenge + unlock logic
+├── portfolio-data.ts              recruiter-facing data and links
+├── styles.css                     consolidated visual/responsive system
+├── components/
+│   ├── ChallengeCard.tsx           accessible multiple-choice challenge UI
+│   ├── ContactPanel.tsx            Formspree + direct fallback contact
+│   ├── DetailDialog.tsx            accessible modal behavior
+│   └── PortfolioViews.tsx          skills/projects/Aegis/contact detail views
+└── hooks/
+    └── useCompactLayout.ts         layout-aware route copy
+```
+
+The portfolio is intentionally a static/client application. Deeper backend architecture belongs in Aegis and the other project repositories rather than being invented for the portfolio itself.
