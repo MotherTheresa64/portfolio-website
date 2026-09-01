@@ -208,6 +208,10 @@ const enhanceChallenge = (form: HTMLFormElement) => {
   body.insertBefore(quiz, answerRow);
 };
 
+const setTextIfChanged = (element: HTMLElement, value: string) => {
+  if (element.textContent !== value) element.textContent = value;
+};
+
 const updateDirectionalGuidance = () => {
   const mobile = mobileQuery.matches;
   const compactLabels = mobile
@@ -215,21 +219,25 @@ const updateDirectionalGuidance = () => {
     : ["← LEFT", "RIGHT →", "↓ SOUTH"];
 
   document.querySelectorAll<HTMLElement>(".project-root-card .root-directions-mini span b").forEach((label, index) => {
-    label.textContent = compactLabels[index] ?? label.textContent;
+    const value = compactLabels[index];
+    if (value) setTextIfChanged(label, value);
   });
 
   const rootDescription = document.querySelector<HTMLElement>(".project-root-card > p");
   if (rootDescription) {
-    rootDescription.textContent = mobile
-      ? "On smaller screens the project map flows top-to-bottom. Follow the numbered route."
-      : "Choose a direction. Each path has a different purpose.";
+    setTextIfChanged(
+      rootDescription,
+      mobile
+        ? "On smaller screens the project map flows top-to-bottom. Follow the numbered route."
+        : "Choose a direction. Each path has a different purpose.",
+    );
   }
 
   const rootAction = document.querySelector<HTMLElement>(".project-root-card > em");
   if (rootAction) {
-    const icon = rootAction.querySelector("svg");
-    rootAction.replaceChildren(document.createTextNode(mobile ? "Open route guide " : "Open map guide "));
-    if (icon) rootAction.append(icon);
+    const desiredText = mobile ? "Open route guide " : "Open map guide ";
+    const textNode = Array.from(rootAction.childNodes).find((node) => node.nodeType === Node.TEXT_NODE);
+    if (textNode && textNode.nodeValue !== desiredText) textNode.nodeValue = desiredText;
   }
 
   const modalLabels = mobile
@@ -237,7 +245,8 @@ const updateDirectionalGuidance = () => {
     : ["← LEFT", "RIGHT →", "↓ SOUTH"];
 
   document.querySelectorAll<HTMLElement>(".root-directions article > span").forEach((label, index) => {
-    label.textContent = modalLabels[index] ?? label.textContent;
+    const value = modalLabels[index];
+    if (value) setTextIfChanged(label, value);
   });
 };
 
