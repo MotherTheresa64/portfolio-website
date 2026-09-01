@@ -27,7 +27,6 @@ import {
   GITHUB_URL,
   LINKEDIN_URL,
   RESUME_URL,
-  aegis,
   challenges,
   products,
   skillGroups,
