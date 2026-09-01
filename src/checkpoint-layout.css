@@ -1,0 +1,247 @@
+/*
+ * Desktop circuit checkpoint geometry.
+ *
+ * Keeps logic nodes visually embedded in their traces instead of reading as
+ * oversized floating milestones. Mobile/touch behavior remains owned by
+ * mobile.css and loads after this layer.
+ */
+
+@media (min-width: 861px) and (hover: hover) and (pointer: fine) {
+  /* Compact the shared checkpoint assembly without sacrificing mouse targets. */
+  .gate-node {
+    width: min(620px, 100%);
+    min-height: 78px;
+  }
+
+  .route-line.vertical {
+    top: -34px;
+    bottom: -30px;
+  }
+
+  .map-dot {
+    width: 32px;
+    height: 32px;
+    border-color: rgba(197,169,255,.50);
+    box-shadow:
+      0 0 0 3px rgba(197,169,255,.035),
+      0 0 13px rgba(169,124,255,.10);
+  }
+
+  .map-dot > span {
+    width: 7px;
+    height: 7px;
+    box-shadow: 0 0 9px rgba(197,169,255,.38);
+  }
+
+  .map-dot.is-complete {
+    border-color: rgba(121,214,166,.58);
+    background: rgba(121,214,166,.085);
+    box-shadow:
+      0 0 0 3px rgba(121,214,166,.035),
+      0 0 13px rgba(121,214,166,.105);
+  }
+
+  /* Reduce the oversized decorative ring around each logic gate. */
+  .map-dot::before {
+    inset: -5px;
+    border-color: rgba(197,169,255,.16);
+  }
+
+  .map-dot.is-active::before {
+    border-color: rgba(222,207,255,.30);
+  }
+
+  .map-dot.is-complete::before {
+    border-color: rgba(121,214,166,.28);
+  }
+
+  /* Status modules sit closer to the checkpoint they describe. */
+  .challenge-complete,
+  .challenge-launcher {
+    width: min(410px, calc(100% - 52px));
+    min-height: 48px;
+    margin: 6px auto 8px;
+    padding: 9px 12px;
+    border-radius: 10px;
+    gap: 9px;
+  }
+
+  .challenge-complete strong,
+  .challenge-launcher strong {
+    font-size: 11px;
+  }
+
+  .challenge-complete small,
+  .challenge-launcher small {
+    margin-top: 2px;
+    font-size: 8px;
+  }
+
+  /* Tighten the transition into Projects Root. */
+  .projects-map {
+    margin-top: 30px;
+  }
+
+  /* Tighten the center-fed project fork around the receiving gates. */
+  .branch-grid {
+    --fork-rail-y: 42px;
+    --fork-root-gap: 20px;
+  }
+
+  .branch-path {
+    padding-top: 30px;
+  }
+
+  .branch-path::before {
+    top: -3px;
+  }
+
+  .branch-grid .gate-node {
+    min-height: 70px;
+  }
+
+  .branch-grid .gate-node > .route-line.vertical {
+    top: 15px;
+    bottom: -27px;
+  }
+
+  .branch-grid .map-dot {
+    width: 32px;
+    height: 32px;
+  }
+
+  .branch-grid .map-dot.is-complete {
+    box-shadow:
+      0 0 0 3px rgba(121,214,166,.035),
+      0 0 14px rgba(121,214,166,.11);
+  }
+
+  /* The flagship spine should read as a continuous circuit, not spaced milestones. */
+  .flagship-path {
+    margin-top: 30px;
+    padding-top: 25px;
+  }
+
+  .flagship-path::before {
+    top: -1px;
+  }
+
+  .flagship-path > .gate-node {
+    min-height: 76px;
+  }
+
+  .flagship-path .destination-card {
+    margin-top: 8px;
+  }
+
+  /* Keep route pulse dots subordinate to the actual gate nodes. */
+  .route-line.vertical::after,
+  .route-line.horizontal::after {
+    width: 6px;
+    height: 6px;
+    box-shadow: 0 0 10px rgba(197,169,255,.38);
+  }
+}
+
+@media (min-width: 861px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  /* Replace the larger breathing states with tighter, circuit-like activity. */
+  .map-dot {
+    animation: checkpointIdle 3.8s ease-in-out infinite;
+  }
+
+  .map-dot.is-active {
+    animation: checkpointReady 2.7s ease-in-out infinite;
+  }
+
+  .map-dot.is-complete {
+    animation: checkpointComplete 4.4s ease-in-out infinite;
+  }
+
+  .map-dot::before {
+    animation: checkpointRing 3.8s ease-out infinite;
+  }
+
+  .map-dot.is-active::before {
+    animation-duration: 2.7s;
+  }
+
+  .map-dot.is-complete::before {
+    animation-duration: 4.4s;
+  }
+
+  /* The project-fork arrival reaction stays visible, but no longer balloons. */
+  .branch-grid .map-dot::after {
+    inset: -5px;
+    animation: checkpointBranchArrival 5.4s ease-out infinite;
+  }
+}
+
+@keyframes checkpointIdle {
+  0%, 100% {
+    box-shadow:
+      0 0 0 3px rgba(197,169,255,.025),
+      0 0 11px rgba(169,124,255,.08);
+  }
+  50% {
+    box-shadow:
+      0 0 0 4px rgba(197,169,255,.04),
+      0 0 16px rgba(169,124,255,.14);
+  }
+}
+
+@keyframes checkpointReady {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow:
+      0 0 0 3px rgba(197,169,255,.03),
+      0 0 12px rgba(169,124,255,.10);
+  }
+  50% {
+    transform: scale(1.035);
+    box-shadow:
+      0 0 0 5px rgba(197,169,255,.045),
+      0 0 19px rgba(222,207,255,.18);
+  }
+}
+
+@keyframes checkpointComplete {
+  0%, 100% {
+    box-shadow:
+      0 0 0 3px rgba(121,214,166,.025),
+      0 0 10px rgba(121,214,166,.08);
+  }
+  50% {
+    box-shadow:
+      0 0 0 4px rgba(121,214,166,.04),
+      0 0 15px rgba(121,214,166,.14);
+  }
+}
+
+@keyframes checkpointRing {
+  0%, 42% {
+    opacity: 0;
+    transform: scale(.88);
+  }
+  52% {
+    opacity: .38;
+  }
+  82%, 100% {
+    opacity: 0;
+    transform: scale(1.22);
+  }
+}
+
+@keyframes checkpointBranchArrival {
+  0%, 68% {
+    opacity: 0;
+    transform: scale(.88);
+  }
+  74% {
+    opacity: .42;
+    transform: scale(.96);
+  }
+  88%, 100% {
+    opacity: 0;
+    transform: scale(1.24);
+  }
+}
