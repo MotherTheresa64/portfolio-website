@@ -9,6 +9,7 @@
 @media (min-width: 861px) and (hover: hover) and (pointer: fine) {
   .branch-grid {
     --fork-gap: clamp(72px, 8vw, 124px);
+    --fork-half-gap-negative: clamp(-62px, -4vw, -36px);
     --fork-rail-y: 47px;
     --fork-root-gap: 26px;
     width: min(980px, 100%);
@@ -21,7 +22,7 @@
     content: "";
     position: absolute;
     z-index: 0;
-    top: calc(-1 * var(--fork-root-gap));
+    top: -26px;
     bottom: auto;
     left: 50%;
     right: auto;
@@ -101,11 +102,11 @@
 
   .branch-left .route-line.horizontal {
     left: 50%;
-    right: calc(var(--fork-gap) / -2);
+    right: var(--fork-half-gap-negative);
   }
 
   .branch-right .route-line.horizontal {
-    left: calc(var(--fork-gap) / -2);
+    left: var(--fork-half-gap-negative);
     right: 50%;
   }
 
