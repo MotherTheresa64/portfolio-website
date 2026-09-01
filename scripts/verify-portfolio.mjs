@@ -27,6 +27,8 @@ expect(files.dialog.includes('role="dialog"'), "detail overlay must use dialog s
 expect(files.dialog.includes('aria-modal="true"'), "detail overlay must be modal to assistive technology");
 expect(files.dialog.includes('event.key === "Escape"'), "dialog must close on Escape");
 expect(files.dialog.includes("trapFocus"), "dialog must trap keyboard focus");
+expect(files.dialog.includes("scrollPositionRef"), "detail views must restore the prior page scroll position when closed");
+expect(files.dialog.includes("dialog-back-icon"), "mobile detail views need an explicit Back affordance");
 expect(files.contact.includes("formspree.io"), "contact form must keep Formspree delivery");
 expect(files.contact.includes("mailto:"), "contact form needs a direct email fallback");
 expect(files.contact.includes('status === "sending"'), "contact form needs a sending state");
@@ -37,7 +39,15 @@ expect(files.css.includes("prefers-reduced-motion"), "CSS must respect reduced m
 expect(files.css.includes("max-width: 370px"), "CSS must include a narrow-phone pass");
 expect(files.css.includes("orientation: landscape"), "CSS must include a phone-landscape pass");
 expect(files.css.includes("env(safe-area-inset-bottom)"), "mobile fixed UI must account for device safe areas");
+expect(files.css.includes(".resume-fab { display: none !important; }"), "mobile must remove the floating resume FAB instead of collapsing it to an icon");
+expect(files.css.includes(".mobile-dock.is-hidden"), "mobile dock must support auto-hiding while scrolling");
+expect(files.css.includes(".mobile-dock.is-direct"), "direct mode must use a four-item mobile jump dock without fake completion progress");
+expect(files.css.includes("height: 100dvh"), "mobile detail views must use the full viewport rather than a nested desktop-sized modal");
 expect(files.compactHook.includes("pointer: coarse"), "mobile guidance must adapt to touch/coarse-pointer input as well as width");
+expect(files.app.includes("DirectPortfolio"), "direct recruiter mode must render a dedicated non-challenge portfolio flow");
+expect(!files.app.includes("Direct recruiter view"), "direct mode must not render fake completed-gate status chrome");
+expect(files.app.includes("gestureRef"), "mobile dock must distinguish a scroll/drag gesture from a deliberate tap");
+expect(files.app.includes('mode === "challenge" &&'), "challenge progress/navigation chrome must be challenge-mode specific");
 expect(files.views.includes("Architecture"), "featured product views must expose architecture context");
 expect(files.views.includes("Engineering highlights"), "featured product views must expose engineering highlights");
 expect(files.views.includes("Important tradeoff"), "featured product views must expose explicit tradeoffs");
