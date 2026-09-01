@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const QUERY = "(max-width: 860px)";
+const QUERY = "(max-width: 860px), (hover: none) and (pointer: coarse)";
 
 export function useCompactLayout() {
   const [compact, setCompact] = useState(() =>
