@@ -1,27 +1,55 @@
 /*
  * Desktop circuit checkpoint geometry.
  *
- * Keeps logic nodes visually embedded in their traces instead of reading as
- * oversized floating milestones. Mobile/touch behavior remains owned by
- * mobile.css and loads after this layer.
+ * Checkpoints are intentionally separated from their neighboring modules while
+ * the circuit trace remains visually continuous through the center of each
+ * logic node. Mobile/touch behavior remains owned by mobile.css.
  */
 
 @media (min-width: 861px) and (hover: hover) and (pointer: fine) {
-  /* Compact the shared checkpoint assembly without sacrificing mouse targets. */
+  /*
+   * Shared gate assembly: preserve a deliberate air gap around the node and
+   * status module instead of letting either appear attached to a card edge.
+   */
   .gate-node {
     width: min(620px, 100%);
-    min-height: 78px;
+    min-height: 88px;
+    padding: 8px 0 10px;
   }
 
-  .route-line.vertical {
-    top: -34px;
-    bottom: -30px;
+  /*
+   * The conductor spans the full gate assembly. Cards sit above it and mask it
+   * naturally, so the trace connects components without drawing across them.
+   */
+  .gate-node > .route-line.vertical {
+    top: -28px;
+    bottom: -24px;
+    z-index: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(197,169,255,.10),
+      rgba(197,169,255,.48) 18%,
+      rgba(222,207,255,.62) 50%,
+      rgba(197,169,255,.42) 82%,
+      rgba(197,169,255,.08)
+    );
   }
 
   .map-dot {
     width: 32px;
     height: 32px;
+    z-index: 2;
     border-color: rgba(197,169,255,.50);
+    /* The first layer is the conductor continuing THROUGH the node. */
+    background:
+      linear-gradient(
+        90deg,
+        transparent calc(50% - .5px),
+        rgba(222,207,255,.60) calc(50% - .5px),
+        rgba(222,207,255,.60) calc(50% + .5px),
+        transparent calc(50% + .5px)
+      ),
+      #110e19;
     box-shadow:
       0 0 0 3px rgba(197,169,255,.035),
       0 0 13px rgba(169,124,255,.10);
@@ -35,13 +63,21 @@
 
   .map-dot.is-complete {
     border-color: rgba(121,214,166,.58);
-    background: rgba(121,214,166,.085);
+    background:
+      linear-gradient(
+        90deg,
+        transparent calc(50% - .5px),
+        rgba(121,214,166,.48) calc(50% - .5px),
+        rgba(121,214,166,.48) calc(50% + .5px),
+        transparent calc(50% + .5px)
+      ),
+      #101a17;
     box-shadow:
       0 0 0 3px rgba(121,214,166,.035),
       0 0 13px rgba(121,214,166,.105);
   }
 
-  /* Reduce the oversized decorative ring around each logic gate. */
+  /* Reduce the decorative ring without removing the active-circuit feedback. */
   .map-dot::before {
     inset: -5px;
     border-color: rgba(197,169,255,.16);
@@ -55,12 +91,17 @@
     border-color: rgba(121,214,166,.28);
   }
 
-  /* Status modules sit closer to the checkpoint they describe. */
+  /*
+   * Status modules now sit a clear distance below their checkpoint. This is the
+   * main spacing correction: the node no longer crowds the box beneath it.
+   */
   .challenge-complete,
   .challenge-launcher {
+    position: relative;
+    z-index: 2;
     width: min(410px, calc(100% - 52px));
     min-height: 48px;
-    margin: 6px auto 8px;
+    margin: 15px auto 9px;
     padding: 9px 12px;
     border-radius: 10px;
     gap: 9px;
@@ -77,15 +118,18 @@
     font-size: 8px;
   }
 
-  /* Tighten the transition into Projects Root. */
+  /* Give Projects Root enough separation from the projects gate/status module. */
   .projects-map {
-    margin-top: 30px;
+    margin-top: 38px;
   }
 
-  /* Tighten the center-fed project fork around the receiving gates. */
+  /*
+   * Center-fed project fork. Branch nodes have a horizontal input plus a
+   * vertical output, so the conductor inside the circle becomes a small cross.
+   */
   .branch-grid {
     --fork-rail-y: 42px;
-    --fork-root-gap: 20px;
+    --fork-root-gap: 24px;
   }
 
   .branch-path {
@@ -97,17 +141,35 @@
   }
 
   .branch-grid .gate-node {
-    min-height: 70px;
+    min-height: 82px;
+    padding-top: 8px;
+    padding-bottom: 10px;
   }
 
   .branch-grid .gate-node > .route-line.vertical {
-    top: 15px;
-    bottom: -27px;
+    top: 18px;
+    bottom: -24px;
   }
 
   .branch-grid .map-dot {
     width: 32px;
     height: 32px;
+    background:
+      linear-gradient(
+        90deg,
+        transparent calc(50% - .5px),
+        rgba(121,214,166,.46) calc(50% - .5px),
+        rgba(121,214,166,.46) calc(50% + .5px),
+        transparent calc(50% + .5px)
+      ),
+      linear-gradient(
+        180deg,
+        transparent calc(50% - .5px),
+        rgba(121,214,166,.46) calc(50% - .5px),
+        rgba(121,214,166,.46) calc(50% + .5px),
+        transparent calc(50% + .5px)
+      ),
+      #101a17;
   }
 
   .branch-grid .map-dot.is-complete {
@@ -116,25 +178,54 @@
       0 0 14px rgba(121,214,166,.11);
   }
 
-  /* The flagship spine should read as a continuous circuit, not spaced milestones. */
+  .branch-grid .challenge-complete,
+  .branch-grid .challenge-launcher {
+    margin-top: 15px;
+    margin-bottom: 11px;
+  }
+
+  /* Give the destination cards a clean gap after the branch status modules. */
+  .branch-path > div:last-child .destination-card {
+    margin-top: 14px;
+  }
+
+  /*
+   * Flagship spine: each gate gets space from BOTH adjacent modules. The trace
+   * still runs along the centerline and visibly continues through every node.
+   */
   .flagship-path {
-    margin-top: 30px;
-    padding-top: 25px;
+    margin-top: 40px;
+    padding-top: 30px;
   }
 
   .flagship-path::before {
-    top: -1px;
+    top: 0;
   }
 
   .flagship-path > .gate-node {
-    min-height: 76px;
+    min-height: 94px;
+    margin-top: 15px;
+    margin-bottom: 17px;
+    padding-top: 9px;
+    padding-bottom: 10px;
   }
 
+  .flagship-path > .gate-node > .route-line.vertical {
+    top: -22px;
+    bottom: -22px;
+  }
+
+  /* Status box -> destination box receives its own visible breathing room. */
   .flagship-path .destination-card {
-    margin-top: 8px;
+    margin-top: 16px;
   }
 
-  /* Keep route pulse dots subordinate to the actual gate nodes. */
+  /* The Aegis card -> contact checkpoint transition gets a little extra air. */
+  .flagship-path > div + .gate-node {
+    margin-top: 20px;
+  }
+
+  /* Keep pulse markers subordinate to the actual checkpoint nodes. */
   .route-line.vertical::after,
   .route-line.horizontal::after {
     width: 6px;
@@ -144,7 +235,6 @@
 }
 
 @media (min-width: 861px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  /* Replace the larger breathing states with tighter, circuit-like activity. */
   .map-dot {
     animation: checkpointIdle 3.8s ease-in-out infinite;
   }
