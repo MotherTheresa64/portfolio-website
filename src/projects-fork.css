@@ -1,0 +1,308 @@
+/*
+ * Projects Root PCB fork.
+ *
+ * This layer intentionally scopes only the desktop/fine-pointer Projects Root
+ * branch. The broader board remains in styles.css, activity remains in
+ * circuit-motion.css, and touch/mobile behavior still wins in mobile.css.
+ */
+
+@media (min-width: 861px) and (hover: hover) and (pointer: fine) {
+  .branch-grid {
+    --fork-gap: clamp(72px, 8vw, 124px);
+    --fork-rail-y: 47px;
+    --fork-root-gap: 26px;
+    width: min(980px, 100%);
+    margin: var(--fork-root-gap) auto 0;
+    gap: var(--fork-gap);
+  }
+
+  /* Replace the old wide cross-page rail with a single center-fed trunk. */
+  .branch-grid::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: calc(-1 * var(--fork-root-gap));
+    bottom: auto;
+    left: 50%;
+    right: auto;
+    width: 1px;
+    height: calc(var(--fork-root-gap) + var(--fork-rail-y));
+    transform: translateX(-50%);
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      rgba(197,169,255,.10),
+      rgba(197,169,255,.48) 32%,
+      rgba(222,207,255,.72) 76%,
+      rgba(197,169,255,.55)
+    );
+    box-shadow: 0 0 12px rgba(169,124,255,.10);
+  }
+
+  /* The fork itself is one clear PCB junction, not a traveling endpoint dot. */
+  .branch-grid::after {
+    content: "";
+    position: absolute;
+    z-index: 4;
+    top: var(--fork-rail-y);
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    border: 1px solid rgba(222,207,255,.62);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    opacity: 1;
+    background: #171020;
+    box-shadow:
+      0 0 0 5px rgba(197,169,255,.055),
+      0 0 14px rgba(197,169,255,.38);
+  }
+
+  .branch-path {
+    padding-top: 36px;
+  }
+
+  /* Bring route labels inward so each one belongs to its actual branch. */
+  .branch-path::before {
+    top: 0;
+    width: max-content;
+    max-width: calc(100% - 40px);
+  }
+
+  .branch-left::before {
+    left: calc(50% + 18px);
+    right: auto;
+    text-align: left;
+  }
+
+  .branch-right::before {
+    left: auto;
+    right: calc(50% + 18px);
+    text-align: right;
+  }
+
+  /*
+   * Each arm now runs only between the center junction and its gate.
+   * It terminates at the gate center instead of continuing to the viewport edge.
+   */
+  .branch-grid .route-line.horizontal {
+    top: var(--fork-rail-y);
+    z-index: 0;
+    height: 1px;
+    overflow: visible;
+    background: linear-gradient(
+      90deg,
+      rgba(197,169,255,.26),
+      rgba(222,207,255,.66),
+      rgba(197,169,255,.36)
+    );
+  }
+
+  .branch-left .route-line.horizontal {
+    left: 50%;
+    right: calc(var(--fork-gap) / -2);
+  }
+
+  .branch-right .route-line.horizontal {
+    left: calc(var(--fork-gap) / -2);
+    right: 50%;
+  }
+
+  /* The old decorative endpoint dots are what made the rail look like a waveform. */
+  .branch-grid .route-line.horizontal::after {
+    content: none;
+    display: none;
+  }
+
+  /* Horizontal input arrives at the gate, then the output drops into its module. */
+  .branch-grid .gate-node > .route-line.vertical {
+    top: 19px;
+    bottom: -42px;
+    background: linear-gradient(
+      180deg,
+      rgba(222,207,255,.58),
+      rgba(197,169,255,.30) 46%,
+      rgba(197,169,255,.12)
+    );
+  }
+
+  .branch-grid .gate-node > .route-line.vertical::after {
+    display: none;
+  }
+
+  /* Keep the completed gate readable: green state wins over decorative lilac cores. */
+  .branch-grid .map-dot.is-complete {
+    border-color: rgba(121,214,166,.62);
+    background: rgba(121,214,166,.10);
+    color: var(--green);
+    box-shadow:
+      0 0 0 6px rgba(121,214,166,.035),
+      0 0 22px rgba(121,214,166,.12);
+  }
+
+  .branch-grid .map-dot.is-complete > span {
+    display: none;
+  }
+
+  /* Keep destination modules visually connected to their output traces. */
+  .branch-path > div:last-child {
+    position: relative;
+  }
+}
+
+@media (min-width: 861px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  /* A soft pulse marks the exact moment the trunk splits into two signals. */
+  .branch-grid::after {
+    animation: forkJunctionPulse 5.4s ease-out infinite;
+  }
+
+  /* Override the old full-rail packets with short center-to-gate signal packets. */
+  .branch-grid .route-line.horizontal::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 24px;
+    height: 3px;
+    border-radius: 999px;
+    opacity: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(222,207,255,.82),
+      #fff,
+      rgba(169,124,255,.86),
+      transparent
+    );
+    box-shadow:
+      0 0 8px rgba(222,207,255,.58),
+      0 0 18px rgba(169,124,255,.22);
+  }
+
+  .branch-left .route-line.horizontal::before {
+    left: auto;
+    right: -12px;
+    transform: translateY(-50%);
+    animation: forkSignalLeft 5.4s linear infinite;
+  }
+
+  .branch-right .route-line.horizontal::before {
+    left: -12px;
+    right: auto;
+    transform: translateY(-50%);
+    animation: forkSignalRight 5.4s linear infinite;
+  }
+
+  /* Arrival halo: the receiving logic gate reacts when the packet reaches it. */
+  .branch-grid .map-dot::after {
+    content: "";
+    position: absolute;
+    inset: -7px;
+    border: 1px solid rgba(222,207,255,.34);
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(.78);
+    animation: forkGateArrival 5.4s ease-out infinite;
+  }
+
+  .branch-grid .map-dot.is-complete::after {
+    border-color: rgba(121,214,166,.48);
+  }
+
+  /* The output leg lights just after the gate receives its signal. */
+  .branch-grid .gate-node > .route-line.vertical {
+    animation: forkOutputCurrent 5.4s ease-in-out infinite;
+  }
+}
+
+@keyframes forkJunctionPulse {
+  0%, 29% {
+    box-shadow:
+      0 0 0 5px rgba(197,169,255,.035),
+      0 0 10px rgba(197,169,255,.22);
+    background: #171020;
+  }
+  35% {
+    box-shadow:
+      0 0 0 8px rgba(197,169,255,.09),
+      0 0 26px rgba(222,207,255,.72);
+    background: var(--accent-bright);
+  }
+  43%, 100% {
+    box-shadow:
+      0 0 0 5px rgba(197,169,255,.055),
+      0 0 14px rgba(197,169,255,.38);
+    background: #171020;
+  }
+}
+
+@keyframes forkSignalLeft {
+  0%, 34% {
+    right: -12px;
+    opacity: 0;
+  }
+  38% {
+    opacity: 1;
+  }
+  72% {
+    right: calc(100% - 12px);
+    opacity: 1;
+  }
+  78%, 100% {
+    right: calc(100% - 12px);
+    opacity: 0;
+  }
+}
+
+@keyframes forkSignalRight {
+  0%, 34% {
+    left: -12px;
+    opacity: 0;
+  }
+  38% {
+    opacity: 1;
+  }
+  72% {
+    left: calc(100% - 12px);
+    opacity: 1;
+  }
+  78%, 100% {
+    left: calc(100% - 12px);
+    opacity: 0;
+  }
+}
+
+@keyframes forkGateArrival {
+  0%, 67% {
+    opacity: 0;
+    transform: scale(.78);
+  }
+  72% {
+    opacity: .72;
+    transform: scale(.92);
+  }
+  82% {
+    opacity: .22;
+  }
+  90%, 100% {
+    opacity: 0;
+    transform: scale(1.42);
+  }
+}
+
+@keyframes forkOutputCurrent {
+  0%, 70%, 100% {
+    filter: drop-shadow(0 0 0 rgba(197,169,255,0));
+    opacity: .72;
+  }
+  76% {
+    filter: drop-shadow(0 0 7px rgba(222,207,255,.46));
+    opacity: 1;
+  }
+  86% {
+    filter: drop-shadow(0 0 4px rgba(121,214,166,.24));
+    opacity: .84;
+  }
+}
