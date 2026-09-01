@@ -74,11 +74,11 @@ export function getProgress(completed: ReadonlySet<GateId>, mode: PortfolioMode,
 export function getDirectionalCopy(compact: boolean) {
   return compact
     ? {
-        intro: "On this layout, the project routes continue top-to-bottom.",
-        list: "Step 1 · Browse more repositories",
-        highlights: "Step 2 · Review featured products",
-        aegis: "Step 3 · Open the Aegis flagship",
-        action: "Open route guide",
+        intro: "Scroll to explore. Tap a route to inspect it.",
+        list: "Scroll · More repositories",
+        highlights: "Scroll · Featured products",
+        aegis: "Continue below · Aegis flagship",
+        action: "Open mobile route guide",
       }
     : {
         intro: "Choose a direction from the project root.",
