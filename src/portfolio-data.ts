@@ -28,6 +28,10 @@ export type Product = {
   description: string;
   detail: string;
   reality: string;
+  architecture: string;
+  engineering: string[];
+  quality: string;
+  tradeoff: string;
   tags: string[];
   live: string;
   source: string;
@@ -168,11 +172,20 @@ export const products: Product[] = [
   {
     name: "Planora",
     category: "STRUCTURED PLANNING",
-    status: "Deployed · cloud sync implemented",
-    description: "A planning workspace that turns goals into plans, milestones, tasks, roadmaps, calendar work, resources, and measurable progress.",
-    detail: "Planora models plan health, milestone dependencies, task workflow, Today-focused execution, roadmap/calendar views, analytics, search, export/reset flows, and responsive themes.",
-    reality: "The client now implements optional Google authentication plus per-user Firestore load/save when Firebase is configured, while preserving a local workspace fallback. The repository README still describes an older local-first boundary, so the portfolio reflects the current source implementation rather than that stale wording.",
-    tags: ["React 19", "TypeScript", "Firestore", "Firebase Auth", "Express 5", "Kanban", "Roadmap", "Analytics"],
+    status: "Deployed · local-first workspace",
+    description: "A planning workspace that turns goals into projects, task workflows, calendar work, roadmaps, analytics, and focused daily execution.",
+    detail: "Planora models project progress from real task state, supports multi-project Kanban workflows, search, calendar and analytics views, persisted themes, destructive-action cleanup, and mobile-specific workflow layouts.",
+    reality: "The deployed product currently persists a typed, versioned workspace in the browser and remains fully usable without credentials. Firebase Authentication is an optional integration seam; hosted per-user persistence such as Firestore remains a documented next boundary rather than something the portfolio claims is already complete.",
+    architecture: "React 19 and TypeScript own the planning domain and derived UI state, with isolated storage/auth/theme modules on the client. An Express 5 production host serves the SPA plus health/config endpoints, while the persistence boundary is intentionally shaped so a hosted per-user store can replace browser storage without a UI rewrite.",
+    engineering: [
+      "Derives completion, workload, priority, and focus metrics from real task and project state instead of static dashboard numbers.",
+      "Recovers gracefully from malformed or unavailable browser storage and provides an intentional sample-workspace reset path.",
+      "Reformats Kanban and calendar interactions for narrow screens rather than shrinking desktop columns until they become unusable.",
+      "Keeps global search, keyboard focus shortcuts, destructive cleanup, and project/task relationships inside a typed domain model.",
+    ],
+    quality: "Strict TypeScript, GitHub Actions, production artifact verification, reduced-motion/focus handling, and a compiled Express smoke test keep local, CI, and deployment checks aligned.",
+    tradeoff: "Local-first persistence makes the public demo immediate and credential-free, but it intentionally does not provide cross-device shared data yet. The code keeps that limitation explicit instead of presenting scaffolded cloud integration as finished functionality.",
+    tags: ["React 19", "TypeScript", "Local-first state", "Firebase Auth seam", "Express 5", "Kanban", "Analytics", "CI"],
     live: "https://planora-zlxv.onrender.com",
     source: "https://github.com/MotherTheresa64/Planora",
   },
@@ -181,8 +194,17 @@ export const products: Product[] = [
     category: "COLLABORATION + KNOWLEDGE",
     status: "Deployed · realtime Firestore mode",
     description: "A team workspace that connects discussions to decisions and durable, versioned knowledge instead of losing context in chat history.",
-    detail: "Threadline includes isolated workspaces, roles, channels, searchable discussions, replies/reactions, resolutions, knowledge documents, version history, notifications, activity, board views, and deep links.",
-    reality: "When Firebase is configured, authenticated members receive shared workspaces through Firestore onSnapshot subscriptions and server-side rules enforce workspace membership/role boundaries. The current portfolio-scale model stores a workspace as one snapshot document, which limits per-record authorization granularity and is documented as an intentional scaling tradeoff.",
+    detail: "Threadline includes isolated workspaces, roles, channels, searchable discussions, replies and reactions, resolutions, knowledge documents, version history, notifications, activity, board views, and deep links.",
+    reality: "When Firebase is configured, authenticated members receive shared workspaces through Firestore onSnapshot subscriptions and server-side rules enforce workspace membership and role boundaries. The current portfolio-scale model stores a workspace as one snapshot document, an intentional simplification whose authorization and scaling limits are documented.",
+    architecture: "A React 19/TypeScript client runs either a credential-free local demo or an authenticated Firebase mode. Firebase Authentication establishes identity, Firestore stores and streams shared workspace snapshots, security rules own the hosted authorization boundary, and Express 5 provides the production host and health surface.",
+    engineering: [
+      "Models the durable workflow Workspace → Channel → Discussion → Resolution → Knowledge so decisions remain connected to their source context.",
+      "Uses Firestore onSnapshot subscriptions for signed-in shared workspaces while preserving a reliable local demo fallback for portfolio review.",
+      "Enforces owner/admin/member/guest boundaries in Firestore rules for workspace management and collaborative access.",
+      "Supports stable deep links, document version restoration, global search, inbox/activity state, mentions, and responsive detail/navigation overlays.",
+    ],
+    quality: "Strict TypeScript, pinned dependencies, GitHub Actions verification, production-server checks, keyboard shortcuts, visible focus treatment, and responsive overlays cover the recruiter-facing critical paths.",
+    tradeoff: "Storing an entire workspace in one Firestore snapshot keeps the portfolio-scale realtime implementation understandable, but increases write contention and prevents perfectly granular nested-record rules. The documented production evolution is subcollections with record-level authorization.",
     tags: ["React 19", "TypeScript", "Firestore", "Firebase Auth", "Realtime", "Security Rules", "Knowledge Base", "Express 5"],
     live: "https://threadline-ga8w.onrender.com",
     source: "https://github.com/MotherTheresa64/Threadline",
@@ -191,9 +213,18 @@ export const products: Product[] = [
     name: "Wanderline",
     category: "GROUP TRAVEL",
     status: "Deployed · local collaboration model",
-    description: "A consumer travel workspace for itinerary planning, ideas and voting, travelers, shared expenses, packing, bookings, places, weather, and maps.",
-    detail: "Wanderline models owner/editor/viewer roles, shared activity history, itinerary workflows, settlement calculations, custom expense splits, packing responsibility, saved places, Open-Meteo weather, and Google Maps handoff.",
-    reality: "The live app is intentionally credential-free and local-first today. Google/Firebase authentication is scaffolded, but shared Firestore persistence and real cross-device collaboration remain a final integration step and are not presented as complete.",
+    description: "A consumer travel workspace for itinerary planning, group ideas and voting, travelers, shared expenses, packing, bookings, places, weather, and maps.",
+    detail: "Wanderline models owner/editor/viewer roles, itinerary and idea workflows, settlement calculations, custom expense splits, packing responsibility, saved places, reservations, Open-Meteo weather, and Google Maps handoff.",
+    reality: "The live app is intentionally credential-free and local-first today. Google/Firebase authentication is scaffolded, while shared Firestore persistence and real cross-device collaboration remain a final integration step and are not presented as complete.",
+    architecture: "React 19 and TypeScript own a typed, versioned collaborative trip workspace in the browser. An Express 5 production host exposes health/config endpoints, Open-Meteo provides keyless weather data, Google Maps universal links handle location actions without billing credentials, and Firebase/Firestore remain an explicit hosted-collaboration seam.",
+    engineering: [
+      "Models solo and group trips with owner/editor/viewer permissions, invitation state, activity history, ideas, votes, and itinerary attendance.",
+      "Calculates equal, personal, and custom expense shares with participant validation, per-traveler balances, and settlement suggestions.",
+      "Integrates destination weather and Google Maps actions without requiring exposed provider secrets or a paid Maps API in the public demo.",
+      "Reformats the itinerary, forms, navigation, and detail surfaces for phone portrait/landscape rather than relying on desktop-width scrolling.",
+    ],
+    quality: "Strict TypeScript, GitHub Actions, compiled-server smoke testing, defensive storage recovery, reduced-motion support, visible keyboard focus, and responsive acceptance checks protect the public demo experience.",
+    tradeoff: "The credential-free local model keeps the product instantly reviewable and avoids fake collaboration, but pending invitations and role changes do not synchronize across devices until the planned authenticated Firestore boundary is connected.",
     tags: ["React 19", "TypeScript", "Travel UX", "Expense Splits", "Open-Meteo", "Google Maps", "Firebase Scaffold", "Express 5"],
     live: "https://wanderline-s1yv.onrender.com",
     source: "https://github.com/MotherTheresa64/Wanderline",
@@ -203,8 +234,17 @@ export const products: Product[] = [
     category: "FULL-STACK PERSONAL FINANCE",
     status: "Consumer v1 scope implemented",
     description: "A full-stack finance application for accounts, transactions, budgets, savings goals, analytics, imports/exports, and user-scoped data.",
-    detail: "Ledgerly combines a React/TypeScript client with Flask, SQLAlchemy, PostgreSQL, pytest coverage, data controls, CSV workflows, responsive themes, and a finance-domain API.",
+    detail: "Ledgerly combines a React/TypeScript client with Flask, SQLAlchemy, PostgreSQL, pytest coverage, CSV workflows, responsive themes, and a finance-domain API.",
     reality: "Firebase Authentication owns credentials. The Flask API verifies Firebase ID tokens, maps Firebase UID to Ledgerly users, requires verified sessions for protected resources, and keeps PostgreSQL authoritative for finance data.",
+    architecture: "The browser authenticates with Firebase and sends its ID token to a Flask API. Firebase Admin verifies identity server-side, the API maps that UID to Ledgerly's user model, and PostgreSQL remains authoritative for transactions, budgets, goals, and account data rather than putting financial records in the identity provider.",
+    engineering: [
+      "Enforces user ownership on protected finance resources after server-side Firebase ID-token verification rather than trusting client identity.",
+      "Supports validated, atomic CSV imports of up to 1,000 transactions plus exports and destructive data-control workflows.",
+      "Keeps signed transaction storage details behind explicit Income/Expense UI so normal users do not need to reason about negative-number conventions.",
+      "Models budget health, savings contributions, cash-flow analytics, account deletion, verification, recovery, and reauthentication as real lifecycle states.",
+    ],
+    quality: "Pytest covers the Flask backend while frontend type/build checks, GitHub Actions, dependency auditing, responsive states, semantic labels, and explicit loading/empty/error/success handling protect finance workflows.",
+    tradeoff: "Using managed Firebase identity avoids owning password storage and reset flows, while PostgreSQL keeps finance data in an application-controlled relational model. The tradeoff is additional deployment configuration and dependence on Firebase availability for authenticated entry.",
     tags: ["React", "TypeScript", "Python", "Flask", "PostgreSQL", "Firebase Auth", "Firebase Admin", "Pytest"],
     live: "https://ledgerly-web-knmt.onrender.com",
     source: "https://github.com/MotherTheresa64/Ledgerly",
@@ -252,9 +292,19 @@ export const aegis = {
   live: "https://aegis-web-jvlk.onrender.com",
   api: "https://aegis-api-l8f8.onrender.com",
   docs: "https://aegis-api-l8f8.onrender.com/docs",
-  source: "https://github.com/MotherTheresa64/Aegis",
+  source: "https://github.com/MotherTherresa64/Aegis".replace("MotherTherresa64", "MotherTheresa64"),
   summary:
     "A production-oriented, multi-tenant incident operations platform for service health, alert ingestion, incident coordination, realtime updates, dependencies, public status communication, audit history, webhooks, analytics, and postmortems.",
+  architecture:
+    "React and TypeScript provide the operator UI over a FastAPI API. PostgreSQL is authoritative domain storage; Redis is reserved for ephemeral state such as realtime tickets, rate limiting, and worker infrastructure; Celery runs asynchronous work such as webhook delivery. The system stays a modular monolith with an independently scalable worker instead of manufacturing microservices without a concrete need.",
+  decisions: [
+    "Tenant membership and RBAC are enforced on the server so changing a client-side organization identifier cannot grant access to another workspace.",
+    "Authenticated WebSockets use short-lived, one-time Redis-backed tickets rather than putting a long-lived bearer token directly into the connection URL.",
+    "PostgreSQL remains the source of truth while Redis handles responsibilities that are intentionally ephemeral and recoverable.",
+    "API keys are hashed, outbound webhooks are signed, security-sensitive actions create audit events, and readiness checks distinguish process health from dependency readiness.",
+  ],
+  quality:
+    "Alembic migrations, Docker Compose, GitHub Actions, API tests/linting, frontend typecheck/build, Prometheus request metrics, structured request logging, and PostgreSQL/Redis readiness checks make the operational story inspectable instead of hiding it behind UI polish.",
   pillars: [
     {
       title: "Incident domain",
