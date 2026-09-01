@@ -69,12 +69,14 @@ test("next challenge is deterministic and reveal-all reports full progress", () 
   assert.equal(getProgress(new Set<GateId>(), "revealed"), 100);
 });
 
-test("mobile guidance uses route steps instead of spatial directions", () => {
+test("mobile guidance describes scroll and tap interaction instead of spatial directions", () => {
   const desktop = getDirectionalCopy(false);
   const mobile = getDirectionalCopy(true);
   assert.match(desktop.list, /Left/);
   assert.match(desktop.aegis, /South/);
-  assert.match(mobile.list, /Step 1/);
-  assert.match(mobile.aegis, /Step 3/);
-  assert.doesNotMatch(mobile.intro, /left|right|south/i);
+  assert.match(mobile.intro, /Scroll/i);
+  assert.match(mobile.intro, /Tap/i);
+  assert.match(mobile.list, /Scroll/i);
+  assert.match(mobile.aegis, /below/i);
+  assert.doesNotMatch(`${mobile.intro} ${mobile.list} ${mobile.highlights} ${mobile.aegis}`, /left|right|south/i);
 });
