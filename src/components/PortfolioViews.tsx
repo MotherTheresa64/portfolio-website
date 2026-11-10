@@ -14,6 +14,28 @@ import { aegis, otherRepos, products, skillGroups } from "../portfolio-data";
 import type { ViewId } from "../portfolio-data";
 import { getDirectionalCopy } from "../challenge-engine";
 
+// Free-tier Render services spin down after inactivity, so a reviewer needs to
+// know the first load can pause before anything appears.
+const FREE_HOST_NOTE = "Free host — the first load can take up to 30 seconds while the service wakes.";
+const SLOW_HOSTS = new Set([
+  "https://planora-zlxv.onrender.com",
+  "https://threadline-ga8w.onrender.com",
+  "https://wanderline-s1yv.onrender.com",
+]);
+
+// The ten systems libraries were built as one deliberate fundamentals drill, and
+// saying so is more credible than presenting them as ten separate products.
+const AEGIS_ARCHITECTURE =
+  "https://github.com/MotherTheresa64/Aegis/blob/main/docs/architecture.md";
+
+const SYSTEMS_DRILL = {
+  title: "Ten systems libraries, built as one deliberate drill",
+  body:
+    "These ten repositories were written in a single focused session on 7 November 2026, and each implements a systems primitive from scratch with no runtime dependencies: token-bucket rate limiting, BM25 full-text search, scrypt and TOTP authentication, HMAC-signed webhook delivery with replay windows, event-sourced documents, a durable job queue, feature-flag bucketing, a metrics registry, a hand-written expression parser, and an immutable double-entry ledger. The goal was to write the algorithms rather than import them — every library has its own tests, a CI run, a deployed demo, and a small enough surface to read end to end. They sit beside the product work rather than competing with it.",
+  link: "https://github.com/MotherTheresa64/ten-demos",
+  linkLabel: "Open the ten-demo index",
+} as const;
+
 export function PortfolioView({ view, compact }: { view: ViewId; compact: boolean }) {
   if (view === "skills") return <SkillsView />;
   if (view === "project-list") return <RepositoryView />;
@@ -39,6 +61,11 @@ function SkillsView() {
 function RepositoryView() {
   return (
     <div>
+      <section className="drill-note">
+        <b>{SYSTEMS_DRILL.title}</b>
+        <p>{SYSTEMS_DRILL.body}</p>
+        <a href={SYSTEMS_DRILL.link} target="_blank" rel="noreferrer">{SYSTEMS_DRILL.linkLabel} <FiExternalLink aria-hidden="true" /></a>
+      </section>
       <div className="repo-summary">
         <div><FiGithub aria-hidden="true" /><span><strong>MotherTheresa64</strong><small>{otherRepos.length} additional public repositories</small></span></div>
         <a href="https://github.com/MotherTheresa64?tab=repositories" target="_blank" rel="noreferrer">Open all on GitHub <FiExternalLink aria-hidden="true" /></a>
@@ -141,6 +168,7 @@ function ProductsView() {
           <div className="card-actions">
             <a href={product.live} target="_blank" rel="noreferrer">Live demo <FiExternalLink aria-hidden="true" /></a>
             <a href={product.source} target="_blank" rel="noreferrer">Source <FiGithub aria-hidden="true" /></a>
+            {SLOW_HOSTS.has(product.live) && <small className="wake-note">{FREE_HOST_NOTE}</small>}
           </div>
         </footer>
       </article>
@@ -187,7 +215,7 @@ function AegisView() {
       <div className="card-actions flagship-actions">
         <a href={aegis.live} target="_blank" rel="noreferrer">Open live Aegis <FiArrowRight aria-hidden="true" /></a>
         <a href={aegis.source} target="_blank" rel="noreferrer">Source <FiGithub aria-hidden="true" /></a>
-        <a href={aegis.docs} target="_blank" rel="noreferrer">API docs <FiExternalLink aria-hidden="true" /></a>
+        <a href={AEGIS_ARCHITECTURE} target="_blank" rel="noreferrer">Architecture notes <FiExternalLink aria-hidden="true" /></a>
       </div>
     </div>
   );
