@@ -1,0 +1,332 @@
+/* Featured product detail view: editorial case-study hierarchy instead of nested cards. */
+
+.products-view {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.product-switcher {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0 0 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.product-switcher button {
+  position: relative;
+  min-width: 0;
+  padding: 15px 14px 17px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  text-align: left;
+  cursor: pointer;
+  transition: color var(--fast) ease, background var(--fast) ease;
+}
+
+.product-switcher button::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: -1px;
+  height: 2px;
+  border-radius: 999px;
+  background: transparent;
+  box-shadow: none;
+  transition: background var(--fast) ease, box-shadow var(--fast) ease;
+}
+
+.product-switcher button:hover {
+  color: var(--text-soft);
+  background: rgba(197,169,255,.025);
+}
+
+.product-switcher button.is-active {
+  color: var(--text);
+}
+
+.product-switcher button.is-active::after {
+  background: var(--accent-bright);
+  box-shadow: 0 0 12px rgba(197,169,255,.3);
+}
+
+.product-switcher span,
+.product-switcher small {
+  display: block;
+  min-width: 0;
+}
+
+.product-switcher span {
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.product-switcher small {
+  margin-top: 5px;
+  overflow: hidden;
+  color: var(--muted-2);
+  font: 700 7px/1.4 "IBM Plex Mono", ui-monospace, monospace;
+  letter-spacing: .08em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.product-case-study {
+  min-width: 0;
+}
+
+.product-case-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: end;
+}
+
+.product-case-header > div > span {
+  color: var(--accent);
+  font: 700 8px/1.4 "IBM Plex Mono", ui-monospace, monospace;
+  letter-spacing: .13em;
+}
+
+.product-case-header h3 {
+  margin: 7px 0 0;
+  font-size: clamp(34px, 4vw, 50px);
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+
+.product-case-header em {
+  align-self: start;
+  padding-top: 3px;
+  color: var(--green);
+  font-size: 10px;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+.product-case-intro {
+  max-width: 960px;
+  padding: 22px 0 24px;
+  border-bottom: 1px solid rgba(236,228,255,.10);
+}
+
+.product-case-intro .product-lead {
+  max-width: 840px;
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.product-case-intro > p:last-child {
+  max-width: 940px;
+  margin: 13px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.72;
+}
+
+.product-reality {
+  margin: 22px 0 30px;
+  padding: 13px 0 13px 16px;
+  border: 0;
+  border-left: 2px solid rgba(121,214,166,.52);
+  border-radius: 0;
+  background: linear-gradient(90deg, rgba(121,214,166,.045), transparent 70%);
+}
+
+.product-reality > svg {
+  margin-top: 2px;
+}
+
+.product-reality span {
+  max-width: 980px;
+}
+
+.product-reality strong {
+  margin-bottom: 4px;
+}
+
+.product-case-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(300px, .82fr);
+  gap: clamp(36px, 5vw, 72px);
+  align-items: start;
+}
+
+.product-engineering,
+.product-context-rail,
+.product-context-rail section {
+  min-width: 0;
+}
+
+.product-engineering h4,
+.product-context-rail h4 {
+  margin: 0 0 11px;
+  color: var(--accent-bright);
+  font-size: 12px;
+}
+
+.product-engineering .engineering-list {
+  margin: 0;
+  padding-left: 19px;
+}
+
+.product-engineering .engineering-list li {
+  margin: 0 0 12px;
+  padding-left: 4px;
+  color: var(--text-soft);
+  font-size: 11px;
+  line-height: 1.68;
+}
+
+.product-context-rail {
+  padding-left: 28px;
+  border-left: 1px solid rgba(236,228,255,.10);
+}
+
+.product-context-rail section {
+  padding: 0 0 20px;
+}
+
+.product-context-rail section + section {
+  padding-top: 20px;
+  border-top: 1px solid rgba(236,228,255,.09);
+}
+
+.product-context-rail section:last-child {
+  padding-bottom: 0;
+}
+
+.product-context-rail p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.product-case-footer {
+  display: flex;
+  gap: 24px;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(236,228,255,.10);
+}
+
+.product-case-footer .tag-row {
+  margin: 0;
+}
+
+.product-case-footer .card-actions {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+/* The focused dialog already has a border; don't draw a second giant focus frame around the whole modal. */
+.detail-dialog:focus-visible {
+  outline: none;
+}
+
+@media (min-width: 861px) and (hover: hover) and (pointer: fine) {
+  .detail-dialog:has(.products-view) {
+    width: min(1180px, calc(100vw - 72px));
+    max-height: min(880px, calc(100vh - 64px));
+    border-color: rgba(197,169,255,.28);
+    box-shadow: 0 28px 90px rgba(0,0,0,.54), 0 0 42px rgba(169,124,255,.055);
+  }
+
+  .detail-dialog:has(.products-view) .dialog-sticky-top {
+    padding: 24px 28px 18px;
+  }
+
+  .detail-dialog:has(.products-view) .dialog-heading h2 {
+    max-width: 900px;
+    font-size: clamp(32px, 3.4vw, 48px);
+    line-height: 1.02;
+    letter-spacing: -.045em;
+  }
+
+  .detail-dialog:has(.products-view) .dialog-heading p {
+    max-width: 860px;
+    margin-top: 9px;
+  }
+
+  .detail-dialog:has(.products-view) .dialog-content {
+    padding: 24px 28px 30px;
+  }
+}
+
+@media (max-width: 860px), (hover: none) and (pointer: coarse) {
+  .product-switcher {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    margin-bottom: 20px;
+    scrollbar-width: none;
+  }
+
+  .product-switcher::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product-switcher button {
+    flex: 0 0 auto;
+    min-width: 128px;
+    padding: 12px 10px 14px;
+  }
+
+  .product-switcher button::after {
+    left: 10px;
+    right: 10px;
+  }
+
+  .product-case-header {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .product-case-header h3 {
+    font-size: clamp(30px, 10vw, 40px);
+  }
+
+  .product-case-header em {
+    white-space: normal;
+  }
+
+  .product-case-intro {
+    padding-top: 16px;
+  }
+
+  .product-case-intro .product-lead {
+    font-size: 14px;
+  }
+
+  .product-case-body {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .product-context-rail {
+    padding: 0;
+    border-left: 0;
+    border-top: 1px solid rgba(236,228,255,.10);
+  }
+
+  .product-context-rail section:first-child {
+    padding-top: 20px;
+  }
+
+  .product-case-footer {
+    display: grid;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .product-case-footer .card-actions {
+    width: 100%;
+  }
+}

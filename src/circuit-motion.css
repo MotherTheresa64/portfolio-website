@@ -1,0 +1,437 @@
+/*
+ * Desktop circuit activity layer.
+ *
+ * This file intentionally contains only motion/decorative behavior for the
+ * desktop circuit-board presentation. Structural layout remains in styles.css
+ * and touch/mobile behavior remains in mobile.css.
+ */
+
+@media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
+  /* Keep the board itself subtly alive instead of leaving a static grid. */
+  body::before {
+    opacity: 0.24;
+    animation:
+      boardGridDrift 26s linear infinite,
+      boardGridBreath 7.5s ease-in-out infinite;
+    will-change: background-position, opacity;
+  }
+
+  .portfolio-shell::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.22;
+    background:
+      radial-gradient(circle at 12% 26%, rgba(197,169,255,.28) 0 2px, transparent 2.5px),
+      radial-gradient(circle at 88% 68%, rgba(121,214,166,.22) 0 2px, transparent 2.5px),
+      linear-gradient(90deg, transparent 0 11.8%, rgba(197,169,255,.07) 11.9% 12%, transparent 12.1% 87.8%, rgba(197,169,255,.055) 87.9% 88%, transparent 88.1%),
+      linear-gradient(0deg, transparent 0 31.8%, rgba(197,169,255,.045) 31.9% 32%, transparent 32.1% 73.8%, rgba(121,214,166,.04) 73.9% 74%, transparent 74.1%);
+    background-size: 420px 420px, 520px 520px, 100% 100%, 100% 100%;
+    animation: ambientTraceShift 32s linear infinite alternate;
+    mask-image: linear-gradient(to bottom, transparent 2%, #000 13%, #000 88%, transparent 100%);
+  }
+
+  /* Hero behaves like the board's powered control module. */
+  .profile-scan {
+    background-position: 0 0;
+    animation: profileRaster 8s linear infinite;
+  }
+
+  .profile-frame::after {
+    content: "";
+    position: absolute;
+    z-index: 4;
+    left: 4%;
+    right: 4%;
+    top: -12%;
+    height: 10%;
+    pointer-events: none;
+    opacity: 0;
+    border-radius: 999px;
+    background: linear-gradient(180deg, transparent, rgba(222,207,255,.12), rgba(197,169,255,.28), transparent);
+    filter: blur(.4px);
+    animation: profileScanline 6.8s ease-in-out infinite;
+  }
+
+  .hero-flagship-callout > svg {
+    transform-origin: 50% 50%;
+    animation: poweredGlyph 3.4s ease-in-out infinite;
+  }
+
+  .profile-terminal p i {
+    display: inline-block;
+    transform-origin: center;
+    animation: terminalLed 3.2s steps(2, end) infinite;
+  }
+
+  .profile-terminal p:nth-of-type(2) i { animation-delay: .42s; }
+  .profile-terminal p:nth-of-type(3) i { animation-delay: .84s; }
+
+  /* Give the map a low-level signal field without changing its geometry. */
+  .map-canvas::before {
+    content: "";
+    position: absolute;
+    inset: -80px -130px;
+    z-index: -3;
+    pointer-events: none;
+    opacity: .22;
+    background:
+      radial-gradient(circle at 18% 12%, rgba(169,124,255,.16), transparent 16%),
+      radial-gradient(circle at 82% 44%, rgba(121,214,166,.08), transparent 15%),
+      radial-gradient(circle at 48% 82%, rgba(169,124,255,.12), transparent 18%);
+    animation: mapFieldDrift 14s ease-in-out infinite alternate;
+  }
+
+  /* Data packets physically travel through the vertical and horizontal traces. */
+  .route-line.vertical,
+  .route-line.horizontal {
+    overflow: visible;
+  }
+
+  .route-line.vertical::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -12px;
+    width: 3px;
+    height: 24px;
+    border-radius: 999px;
+    transform: translateX(-50%);
+    opacity: 0;
+    background: linear-gradient(180deg, transparent, rgba(222,207,255,.75), #fff, rgba(169,124,255,.85), transparent);
+    box-shadow: 0 0 9px rgba(197,169,255,.7), 0 0 20px rgba(169,124,255,.28);
+    animation: verticalSignalTravel 4.8s linear infinite;
+    animation-delay: var(--signal-delay, 0s);
+  }
+
+  .route-line.horizontal::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -16px;
+    width: 30px;
+    height: 3px;
+    border-radius: 999px;
+    transform: translateY(-50%);
+    opacity: 0;
+    background: linear-gradient(90deg, transparent, rgba(222,207,255,.78), #fff, rgba(169,124,255,.82), transparent);
+    box-shadow: 0 0 9px rgba(197,169,255,.65), 0 0 18px rgba(169,124,255,.22);
+    animation: horizontalSignalTravel 5.6s linear infinite;
+    animation-delay: var(--signal-delay, .3s);
+  }
+
+  .branch-right .route-line.horizontal::before {
+    left: auto;
+    right: -16px;
+    animation-name: horizontalSignalTravelReverse;
+  }
+
+  #gate-projects { --signal-delay: .15s; }
+  #gate-list { --signal-delay: .75s; }
+  #gate-highlights { --signal-delay: 1.35s; }
+  #gate-aegis { --signal-delay: 1.95s; }
+  #gate-contact { --signal-delay: 2.55s; }
+
+  /* The branch bus gets its own clocked packet so the fork reads as circuitry. */
+  .branch-grid::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 43px;
+    left: 24%;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    background: var(--accent-bright);
+    box-shadow:
+      0 0 0 4px rgba(197,169,255,.08),
+      0 0 18px rgba(197,169,255,.72),
+      0 0 30px rgba(169,124,255,.25);
+    animation: branchBusPacket 6.3s ease-in-out infinite;
+  }
+
+  /* Logic gates idle, fire, and settle instead of remaining visually inert. */
+  .map-dot {
+    animation: logicGateIdle 3.6s ease-in-out infinite;
+  }
+
+  .map-dot::before {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border: 1px solid rgba(197,169,255,.2);
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(.82);
+    animation: gateRing 3.6s ease-out infinite;
+  }
+
+  .map-dot.is-active {
+    animation: logicGateReady 2.5s ease-in-out infinite;
+  }
+
+  .map-dot.is-active::before {
+    border-color: rgba(222,207,255,.42);
+    animation-duration: 2.5s;
+  }
+
+  .map-dot.is-complete {
+    animation: logicGateComplete 4.2s ease-in-out infinite;
+  }
+
+  .map-dot.is-complete::before {
+    border-color: rgba(121,214,166,.38);
+    animation-duration: 4.2s;
+  }
+
+  /* Small component LEDs make cards feel like connected modules. */
+  .section-icon {
+    position: relative;
+    overflow: visible;
+  }
+
+  .section-icon::after {
+    content: "";
+    position: absolute;
+    right: -4px;
+    top: -4px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: var(--accent-bright);
+    box-shadow: 0 0 11px rgba(197,169,255,.65);
+    animation: componentLed 2.9s steps(2, end) infinite;
+  }
+
+  .destination-card.is-flagship .section-icon::after {
+    background: var(--green);
+    box-shadow: 0 0 12px rgba(121,214,166,.65);
+    animation-duration: 2.2s;
+  }
+
+  /* Connector pins blink at different phases like input/output legs on a chip. */
+  .project-root::before,
+  .destination-card::before {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    left: -3px;
+    top: 25%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: rgba(197,169,255,.72);
+    box-shadow:
+      0 27px 0 rgba(197,169,255,.34),
+      0 54px 0 rgba(197,169,255,.6);
+    animation: connectorPins 3.8s steps(3, end) infinite;
+  }
+
+  .destination-card:nth-of-type(even)::before {
+    animation-delay: .65s;
+  }
+
+  /* Occasional current sweeps across modules; slow enough to avoid noise. */
+  .project-root::after,
+  .destination-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    border-radius: inherit;
+    opacity: 0;
+    background: linear-gradient(105deg, transparent 26%, rgba(197,169,255,.025) 39%, rgba(222,207,255,.10) 50%, rgba(197,169,255,.025) 61%, transparent 74%);
+    transform: translateX(-110%);
+    animation: moduleCurrentSweep 9.5s var(--ease) infinite;
+  }
+
+  .destination-card.is-flagship::after {
+    animation-duration: 6.8s;
+    background: linear-gradient(105deg, transparent 24%, rgba(197,169,255,.04) 39%, rgba(222,207,255,.15) 50%, rgba(121,214,166,.04) 61%, transparent 76%);
+  }
+
+  .branch-right .destination-card::after { animation-delay: 1.6s; }
+  .flagship-path .destination-card::after { animation-delay: 2.8s; }
+
+  /* Progress reads as current flowing through a bus, not just a filled meter. */
+  .progress-track i {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .progress-track i::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 32%;
+    transform: translateX(-150%);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.72), transparent);
+    animation: progressCurrent 2.7s linear infinite;
+  }
+
+  /* Navigation gets one moving status carrier instead of more static chrome. */
+  .desktop-nav::after {
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: 16px;
+    width: 2px;
+    height: 36px;
+    border-radius: 999px;
+    opacity: .35;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent, var(--accent-bright), transparent);
+    box-shadow: 0 0 10px rgba(197,169,255,.42);
+    animation: navCarrier 6.4s ease-in-out infinite;
+  }
+
+  .nav-mode > svg {
+    animation: navPower 3s ease-in-out infinite;
+  }
+
+  .brand-mark {
+    animation: controllerBreath 5.2s ease-in-out infinite;
+  }
+}
+
+@keyframes boardGridDrift {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 48px 48px, 48px 48px; }
+}
+
+@keyframes boardGridBreath {
+  0%, 100% { opacity: .18; }
+  50% { opacity: .27; }
+}
+
+@keyframes ambientTraceShift {
+  0% { transform: translate3d(-10px, -8px, 0); opacity: .14; }
+  45% { opacity: .24; }
+  100% { transform: translate3d(16px, 12px, 0); opacity: .18; }
+}
+
+@keyframes profileRaster {
+  from { background-position: 0 0; }
+  to { background-position: 0 72px; }
+}
+
+@keyframes profileScanline {
+  0%, 8% { top: -12%; opacity: 0; }
+  15% { opacity: .58; }
+  72% { opacity: .24; }
+  82%, 100% { top: 104%; opacity: 0; }
+}
+
+@keyframes poweredGlyph {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(197,169,255,.18)); }
+  48% { transform: scale(1.08); filter: drop-shadow(0 0 18px rgba(222,207,255,.48)); }
+  54% { transform: scale(.98); }
+}
+
+@keyframes terminalLed {
+  0%, 70%, 100% { opacity: .72; text-shadow: none; }
+  72%, 88% { opacity: 1; text-shadow: 0 0 10px rgba(121,214,166,.72); }
+}
+
+@keyframes mapFieldDrift {
+  0% { transform: translate3d(-2%, -1%, 0) scale(.98); opacity: .14; }
+  100% { transform: translate3d(2%, 1.5%, 0) scale(1.04); opacity: .26; }
+}
+
+@keyframes verticalSignalTravel {
+  0%, 8% { top: -16px; opacity: 0; }
+  14% { opacity: 1; }
+  82% { opacity: 1; }
+  92%, 100% { top: calc(100% - 5px); opacity: 0; }
+}
+
+@keyframes horizontalSignalTravel {
+  0%, 8% { left: -20px; opacity: 0; }
+  14% { opacity: 1; }
+  82% { opacity: 1; }
+  92%, 100% { left: calc(100% - 8px); opacity: 0; }
+}
+
+@keyframes horizontalSignalTravelReverse {
+  0%, 8% { right: -20px; opacity: 0; }
+  14% { opacity: 1; }
+  82% { opacity: 1; }
+  92%, 100% { right: calc(100% - 8px); opacity: 0; }
+}
+
+@keyframes branchBusPacket {
+  0%, 6% { left: 24%; opacity: 0; transform: scale(.72); }
+  12% { opacity: 1; transform: scale(1); }
+  50% { opacity: .96; }
+  88% { opacity: 1; transform: scale(1); }
+  94%, 100% { left: 75%; opacity: 0; transform: scale(.72); }
+}
+
+@keyframes logicGateIdle {
+  0%, 100% { box-shadow: 0 0 0 7px rgba(197,169,255,.04), 0 0 22px rgba(169,124,255,.10); }
+  50% { box-shadow: 0 0 0 8px rgba(197,169,255,.06), 0 0 32px rgba(169,124,255,.20); }
+}
+
+@keyframes logicGateReady {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 7px rgba(197,169,255,.05), 0 0 24px rgba(169,124,255,.16); }
+  50% { transform: scale(1.06); box-shadow: 0 0 0 10px rgba(197,169,255,.07), 0 0 38px rgba(222,207,255,.28); }
+}
+
+@keyframes logicGateComplete {
+  0%, 100% { box-shadow: 0 0 0 7px rgba(121,214,166,.035), 0 0 18px rgba(121,214,166,.10); }
+  50% { box-shadow: 0 0 0 9px rgba(121,214,166,.055), 0 0 28px rgba(121,214,166,.20); }
+}
+
+@keyframes gateRing {
+  0%, 38% { opacity: 0; transform: scale(.78); }
+  48% { opacity: .65; }
+  82%, 100% { opacity: 0; transform: scale(1.35); }
+}
+
+@keyframes componentLed {
+  0%, 58%, 100% { opacity: .32; transform: scale(.86); }
+  60%, 82% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes connectorPins {
+  0%, 100% { opacity: .32; filter: none; }
+  34% { opacity: .8; filter: drop-shadow(0 0 6px rgba(197,169,255,.5)); }
+  67% { opacity: .5; filter: none; }
+}
+
+@keyframes moduleCurrentSweep {
+  0%, 54% { transform: translateX(-115%); opacity: 0; }
+  60% { opacity: .85; }
+  76% { opacity: .38; }
+  84%, 100% { transform: translateX(115%); opacity: 0; }
+}
+
+@keyframes progressCurrent {
+  from { transform: translateX(-150%); }
+  to { transform: translateX(390%); }
+}
+
+@keyframes navCarrier {
+  0%, 10% { top: 14px; opacity: 0; }
+  18% { opacity: .52; }
+  78% { opacity: .35; }
+  90%, 100% { top: calc(100% - 50px); opacity: 0; }
+}
+
+@keyframes navPower {
+  0%, 100% { opacity: .7; filter: drop-shadow(0 0 0 rgba(197,169,255,0)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 7px rgba(197,169,255,.5)); }
+}
+
+@keyframes controllerBreath {
+  0%, 100% { box-shadow: inset 0 0 0 rgba(197,169,255,0), 0 0 0 rgba(169,124,255,0); }
+  50% { box-shadow: inset 0 0 18px rgba(197,169,255,.035), 0 0 20px rgba(169,124,255,.08); }
+}

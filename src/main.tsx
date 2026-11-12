@@ -1,13 +1,16 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
 import App from "./App";
-import { ThemeProvider } from "./context/ThemeProvider"; // ✅ Import the provider
+import "./styles.css";
+import "./circuit-motion.css";
+import "./projects-fork.css";
+import "./checkpoint-layout.css";
+import "./product-case-study.css";
+import "./mobile.css";
+import "./refinement.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ThemeProvider> {/* ✅ Wrap App here */}
-      <App />
-    </ThemeProvider>
-  </StrictMode>
+    <App />
+  </StrictMode>,
 );
