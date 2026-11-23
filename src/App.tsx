@@ -52,7 +52,7 @@ const viewMeta: Record<ViewId, { eyebrow: string; title: string; description: st
   },
   "top-projects": {
     eyebrow: "FEATURED PRODUCTS",
-    title: "Four substantial products with distinct engineering identities",
+    title: "Six products with distinct engineering identities",
     description: "The status and implementation notes below deliberately distinguish what is live today from what is still an integration boundary.",
   },
   aegis: {
@@ -322,7 +322,7 @@ function PortfolioMap({
                   icon={<FiFolder />}
                   eyebrow="PRODUCT WORK"
                   title="Featured Products"
-                  description="Planora, Threadline, Wanderline, and Ledgerly — each with a distinct engineering story."
+                  description="Ledgerly, NestWise, Threadline, Planora, Wanderline, and RoleFinder — each with a distinct engineering story."
                   action="Review featured products"
                   onClick={() => onOpenView("top-projects")}
                 />
@@ -461,7 +461,7 @@ function RecruiterPreview({ onChallenge, onReveal, onOpenAegis }: { onChallenge:
     <section className="recruiter-preview" aria-labelledby="preview-title">
       <div className="preview-heading">
         <div><p className="eyebrow">START HERE</p><h2 id="preview-title">The engineering story in 30 seconds</h2></div>
-        <p>No challenge is required to understand the portfolio. Aegis is the capstone; four other applications show product range.</p>
+        <p>No challenge is required to understand the portfolio. Aegis is the capstone; six other applications show product range.</p>
       </div>
       <div className="preview-grid">
         <button className="preview-card flagship-preview" type="button" onClick={onOpenAegis}>
@@ -503,11 +503,11 @@ function DirectPortfolio({ onOpen }: { onOpen: (view: ViewId) => void }) {
         <div className="direct-heading">
           <p className="eyebrow">PROJECT WORK</p>
           <h2>Choose the level of depth you want</h2>
-          <p>Browse the wider archive or inspect the four featured products as engineering case studies.</p>
+          <p>Browse the wider archive or inspect the six featured products as engineering case studies.</p>
         </div>
         <div className="direct-card-grid">
           <DestinationCard id="direct-more-projects" icon={<FiList />} eyebrow="BREADTH" title="More Projects" description="Browse the wider GitHub archive without burying the strongest work." action="Browse repositories" onClick={() => onOpen("project-list")} />
-          <DestinationCard id="direct-featured-products" icon={<FiFolder />} eyebrow="FEATURED PRODUCTS" title="Planora · Threadline · Wanderline · Ledgerly" description="Four distinct product problems with architecture, current implementation, tradeoffs, quality notes, demos, and source." action="Review featured products" onClick={() => onOpen("top-projects")} />
+          <DestinationCard id="direct-featured-products" icon={<FiFolder />} eyebrow="FEATURED PRODUCTS" title="Ledgerly · NestWise · Threadline · Planora · Wanderline · RoleFinder" description="Six distinct product problems with architecture, current implementation, tradeoffs, quality notes, demos, and source." action="Review featured products" onClick={() => onOpen("top-projects")} />
         </div>
       </motion.section>
 

@@ -748,6 +748,7 @@ textarea:focus-visible,
 .nav-mode small {
   margin-top: 2px;
   color: var(--muted-2);
+  font-size: 11px;
 }
 
 .map-canvas {

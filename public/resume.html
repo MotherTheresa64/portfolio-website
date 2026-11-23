@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<style>
+  @page { size: letter; margin: 20mm 22mm 16mm 22mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 9.5pt; color: #1a1a1a; line-height: 1.45; }
+  h1 { font-size: 18pt; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 2px; }
+  .subtitle { font-size: 9.5pt; color: #555; margin-bottom: 10px; }
+  .contact { font-size: 8.5pt; color: #333; margin-bottom: 14px; }
+  h2 { font-size: 10.5pt; text-transform: uppercase; letter-spacing: 1.5px; border-bottom: 1.5px solid #222; padding-bottom: 2px; margin: 12px 0 7px 0; }
+  .skills { column-count: 2; column-gap: 20px; font-size: 9pt; }
+  .skills div { margin-bottom: 3px; }
+  .project { margin-bottom: 10px; }
+  .project h3 { font-size: 10pt; font-weight: 600; }
+  .project .meta { font-size: 8.5pt; color: #444; margin: 2px 0 4px 0; }
+  .project ul { padding-left: 14px; }
+  .project li { margin-bottom: 3px; font-size: 9.5pt; }
+  .exp h3 { font-size: 10pt; font-weight: 600; }
+  .exp .meta { font-size: 8.5pt; color: #444; margin: 1px 0 3px 0; }
+  .exp ul { padding-left: 14px; }
+  .exp li { font-size: 9.5pt; margin-bottom: 2px; }
+  .edu { font-size: 9.5pt; margin-bottom: 3px; }
+</style>
+</head>
+<body>
+
+<h1>Noah Ragan</h1>
+<div class="subtitle">Full-Stack Developer &nbsp;·&nbsp; React &nbsp;·&nbsp; TypeScript &nbsp;·&nbsp; Python/FastAPI &nbsp;·&nbsp; PostgreSQL</div>
+<div class="contact">
+  Willow Springs, MO &nbsp;·&nbsp; Open to remote (US) &nbsp;·&nbsp; 573-418-4299 &nbsp;·&nbsp; noah.j.ragan@gmail.com<br/>
+  noahragan-portfolio.vercel.app &nbsp;·&nbsp; github.com/MotherTheresa64 &nbsp;·&nbsp; linkedin.com/in/njragandev
+</div>
+
+<h2>Summary</h2>
+<p style="font-size:9.5pt;">Bootcamp-trained full-stack developer who ships deployed, end-to-end web applications: React 19 and TypeScript front ends, FastAPI and Flask APIs, PostgreSQL data models, automated test suites, and CI/CD pipelines. Earlier Tier 3 technical support informs a troubleshooting-first approach to unfamiliar systems. Current work spans Aegis, a live multi-tenant incident platform (41-endpoint REST API, 37 Pytest cases), and ten dependency-free TypeScript libraries with 190 tests and a live demo each.</p>
+
+<h2>Technical Skills</h2>
+<div class="skills">
+  <div><strong>Languages:</strong> TypeScript, Python, JavaScript, SQL, HTML5, CSS3</div>
+  <div><strong>Frontend:</strong> React 19, Vite, Tailwind CSS, responsive and mobile-first UI, component architecture</div>
+  <div><strong>Backend:</strong> FastAPI, Flask, Express, Node.js (node:http, node:sqlite), SQLAlchemy, Alembic, Celery, REST API design, WebSockets, JWT authentication, role-based access control</div>
+  <div><strong>Data &amp; Delivery:</strong> PostgreSQL, Redis, Firebase, Docker Compose, Nginx, GitHub Actions, Prometheus, Render, Vercel</div>
+  <div><strong>Testing:</strong> Pytest (80 cases across Aegis and Ledgerly), Vitest, Node's built-in test runner (190 tests across 10 libraries), integration, permission, and failure-path testing</div>
+</div>
+
+<h2>Projects</h2>
+
+<div class="project">
+  <h3>Aegis — Incident Operations Platform</h3>
+  <div class="meta">LIVE · 2026 &nbsp;·&nbsp; aegis-web-jvlk.onrender.com &nbsp;·&nbsp; github.com/MotherTheresa64/Aegis &nbsp;—&nbsp; React 19, TypeScript, FastAPI, PostgreSQL, Redis, Celery</div>
+  <ul>
+    <li>Designed a 41-endpoint versioned FastAPI API across 15 routers on PostgreSQL with SQLAlchemy and Alembic migrations, enforcing tenant isolation and five-role RBAC so no request can cross an organization boundary.</li>
+    <li>Serialized competing alert deliveries with PostgreSQL advisory locks over a composite organization, service, source, and fingerprint identity, so retries attach to one incident instead of opening duplicates.</li>
+    <li>Delivered realtime incident state over organization-scoped WebSockets using single-use tickets, revalidating membership on connected clients and notifying only after commit.</li>
+    <li>Committed webhook delivery intent in the same transaction as the domain change before Celery dispatch, keeping HMAC-signed, SSRF-guarded retries from corrupting state. The 37-case Pytest suite covers auth, tenant isolation, realtime, broker-failure, and PostgreSQL concurrency paths in GitHub Actions.</li>
+  </ul>
+</div>
+
+<div class="project">
+  <h3>Systems libraries — ten packages, TypeScript, zero dependencies</h3>
+  <div class="meta">2026 &nbsp;·&nbsp; all ten live: mothertheresa64.github.io/ten-demos &nbsp;·&nbsp; github.com/MotherTheresa64</div>
+  <ul>
+    <li>Wrote ten libraries from scratch — flags (Quorum), webhooks (Relay), auth (Aperture), event-sourced documents (Atlas), double-entry ledger on SQLite (Ledger), job queue (Ratchet), search (Sift), rate limiting (Cordon), metrics (Beacon), expressions (Crucible) — each with a live browser demo, strict types and 190 tests on Node's built-in runner.</li>
+    <li>Hashed flag and subject into a fixed 100,000-point space so raising a rollout can only add subjects, proved monotonicity over 2,000 subjects, and signed webhook attempts with HMAC over timestamp and body after refusing loopback and cloud-metadata addresses.</li>
+    <li>Rejected stale document writes with typed conflicts instead of lost updates, kept debits equal to credits on integer minor units with closed periods, and consumed a job attempt at claim so a poisoned job is buried.</li>
+  </ul>
+</div>
+
+<div class="project">
+  <h3>Ledgerly — Personal finance</h3>
+  <div class="meta">2026 &nbsp;·&nbsp; github.com/MotherTheresa64/Ledgerly</div>
+  <ul>
+    <li>Flask 3 and PostgreSQL finance API with strict per-user ownership checks, Firebase-verified ID tokens, exact-decimal money and CSV import, covered by 43 Pytest tests spanning transfers, budgets, migrations and auth security.</li>
+  </ul>
+</div>
+
+<div class="project">
+  <h3>Threadline — Collaborative knowledge workspace</h3>
+  <div class="meta">2026 &nbsp;·&nbsp; threadline-ga8w.onrender.com</div>
+  <ul>
+    <li>Team workspace where discussions resolve into decisions and versioned documents, with Firestore security rules (owner protection, bounded writes) and transactional saves covered by 9 emulator tests — React 19, TypeScript, Express 5.</li>
+  </ul>
+</div>
+
+<div class="project">
+  <h3>Wanderline — Collaborative travel</h3>
+  <div class="meta">2026 &nbsp;·&nbsp; wanderline-s1yv.onrender.com</div>
+  <ul>
+  <li>Group travel planner with idea voting, itineraries, travelers, shared expenses and live weather, with owner, editor and viewer roles, on React 19 and Express 5.</li>
+  </ul>
+</div>
+
+<div class="project">
+  <h3>Planora — Planning workspace</h3>
+  <div class="meta">2026 &nbsp;·&nbsp; planora-zlxv.onrender.com</div>
+  <ul>
+    <li>Goal, plan, milestone and task hierarchy with a five-stage workflow, drag-and-drop Kanban and a Today view grouping overdue and upcoming work, on React 19 and Express 5.</li>
+  </ul>
+</div>
+
+<h2>Experience</h2>
+
+<div class="exp">
+  <h3>Tractor Supply Company — Team Member</h3>
+  <div class="meta">Willow Springs, MO · May 2026 – Aug 2026</div>
+  <ul>
+    <li>Handled customer questions, inventory, and point-of-sale transactions, keeping records accurate during high-volume shifts.</li>
+  </ul>
+</div>
+
+<div class="exp">
+  <h3>Coding Temple — Full Stack Software Engineering Apprentice (Bootcamp)</h3>
+  <div class="meta">Remote · Aug 2024 – Jul 2025</div>
+  <ul>
+    <li>Completed a remote, deadline-driven full-stack program, building and deploying applications with React, TypeScript, Python, Flask, SQL and Git, including auth, data modeling and deployment.</li>
+  </ul>
+</div>
+
+<div class="exp">
+  <h3>Enterprise Mobility — Reservation Specialist</h3>
+  <div class="meta">Remote · Sep 2024 – Mar 2025</div>
+  <ul>
+    <li>Resolved high-volume reservation and account issues across multiple internal systems, documenting each case and communicating the resolution clearly in time-sensitive remote workflows.</li>
+  </ul>
+</div>
+
+<div class="exp">
+  <h3>Vivint — Tier 3 Technical Support / Upgrades Specialist</h3>
+  <div class="meta">Remote · Nov 2022 – Aug 2023</div>
+  <ul>
+    <li>Diagnosed escalated network and hardware failures on connected home-security systems that Tier 1 and Tier 2 could not resolve, coordinating with field technicians to restore service.</li>
+  </ul>
+</div>
+
+<h2>Education</h2>
+<div class="edu">Coding Temple — Certificate, Full Stack Software Engineering &nbsp;·&nbsp; Aug 2024 – Jul 2025</div>
+<div class="edu">Union Adventist University — Coursework, Computer Science and Mathematics &nbsp;·&nbsp; Aug 2020 – Jun 2022</div>
+
+</body>
+</html>

@@ -30,10 +30,14 @@ Challenge state lives in `src/challenge-engine.ts`; the UI lives in `src/compone
 ## Portfolio hierarchy
 
 - **Aegis** is the flagship/capstone and receives the strongest visual and content hierarchy, including architecture, engineering decisions, operations, source, live deployment, and API documentation.
-- **Planora** emphasizes structured planning, derived application state, local-first versioned persistence, production hosting, responsive workflow design, and an explicit future hosted-data boundary rather than claiming cloud sync that is not currently implemented.
-- **Threadline** emphasizes real-time shared Firestore workspaces, roles, discussions, decisions, and versioned knowledge with documented snapshot-model tradeoffs.
+- **Planora** emphasizes structured planning, derived application state, local-first versioned persistence with optional per-user Firestore sync, and responsive workflow design. The public deployment has no Firebase configured, which the case study states.
+- **Threadline** emphasizes real-time shared Firestore workspaces, tested security rules, transactional saves, roles, discussions, decisions, and versioned knowledge with documented single-document tradeoffs.
 - **Wanderline** emphasizes consumer group-travel workflows, expense calculations, maps/weather integration, and responsive UX while clearly identifying cloud collaboration as a remaining integration boundary.
-- **Ledgerly** emphasizes a full-stack finance domain with Firebase identity, Flask token verification, PostgreSQL data ownership, CSV workflows, lifecycle controls, and tests.
+- **Ledgerly** emphasizes a full-stack finance domain with Firebase identity, Flask token verification, exact decimal money in PostgreSQL, CSV workflows, lifecycle controls, and tests.
+- **NestWise** emphasizes offline-first sync with versioned conflicts, PostgreSQL transactions, realtime WebSockets, and verified-email invitations. It is not deployed, and the case study says so.
+- **RoleFinder** emphasizes a dependency-free Node tool: job-board ingestion, whole-word scoring, safe external links, and a daily static rebuild.
+
+Every case study shows a real screenshot of the running app (`public/projects/`), taken from the live demo or, for Ledgerly and NestWise, a local run with fictional data.
 
 Featured products are presented as compact engineering case studies with current implementation status, architecture, engineering highlights, quality signals, important tradeoffs, source, and live-demo links. Project wording is intentionally implementation-specific instead of repeating generic completion labels or fabricated metrics.
 

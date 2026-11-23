@@ -17,11 +17,7 @@ import { getDirectionalCopy } from "../challenge-engine";
 // Free-tier Render services spin down after inactivity, so a reviewer needs to
 // know the first load can pause before anything appears.
 const FREE_HOST_NOTE = "Free host — the first load can take up to 30 seconds while the service wakes.";
-const SLOW_HOSTS = new Set([
-  "https://planora-zlxv.onrender.com",
-  "https://threadline-ga8w.onrender.com",
-  "https://wanderline-s1yv.onrender.com",
-]);
+const isSlowHost = (url?: string) => Boolean(url?.includes(".onrender.com"));
 
 // The ten systems libraries were built as one deliberate fundamentals drill, and
 // saying so is more credible than presenting them as ten separate products.
@@ -32,8 +28,8 @@ const SYSTEMS_DRILL = {
   title: "Ten systems libraries, built as one deliberate drill",
   body:
     "These ten repositories were written in a single focused session on 7 November 2026, and each implements a systems primitive from scratch with no runtime dependencies: token-bucket rate limiting, BM25 full-text search, scrypt and TOTP authentication, HMAC-signed webhook delivery with replay windows, event-sourced documents, a durable job queue, feature-flag bucketing, a metrics registry, a hand-written expression parser, and an immutable double-entry ledger. The goal was to write the algorithms rather than import them — every library has its own tests, a CI run, a deployed demo, and a small enough surface to read end to end. They sit beside the product work rather than competing with it.",
-  link: "https://github.com/MotherTheresa64/ten-demos",
-  linkLabel: "Open the ten-demo index",
+  link: "https://mothertheresa64.github.io/ten-demos/",
+  linkLabel: "Open the ten live demos",
 } as const;
 
 export function PortfolioView({ view, compact }: { view: ViewId; compact: boolean }) {
@@ -87,7 +83,7 @@ function ProjectsRootView({ compact }: { compact: boolean }) {
   return (
     <div className="root-guide-grid">
       <article><span>{directions.list}</span><h3>More repositories</h3><p>Browse the wider public project and coursework archive without mixing it into the strongest recruiter-facing work.</p></article>
-      <article><span>{directions.highlights}</span><h3>Featured products</h3><p>Planora, Threadline, Wanderline, and Ledgerly each demonstrate a different product and engineering problem.</p></article>
+      <article><span>{directions.highlights}</span><h3>Featured products</h3><p>Ledgerly, NestWise, Threadline, Planora, Wanderline, and RoleFinder each demonstrate a different product and engineering problem.</p></article>
       <article className="flagship-guide"><span>{directions.aegis}</span><h3>Aegis flagship</h3><p>The deepest systems project gets its own path and hierarchy rather than competing with smaller applications in a generic grid.</p></article>
     </div>
   );
@@ -134,6 +130,12 @@ function ProductsView() {
           <p>{product.detail}</p>
         </div>
 
+        {product.image && (
+          <figure className="product-shot">
+            <img src={product.image} alt={product.imageAlt ?? `${product.name} screenshot`} width="1280" height="800" loading="lazy" decoding="async" />
+          </figure>
+        )}
+
         <div className="reality-note product-reality">
           <FiCheckCircle aria-hidden="true" />
           <span><strong>Current implementation</strong>{product.reality}</span>
@@ -166,9 +168,10 @@ function ProductsView() {
         <footer className="product-case-footer">
           <div className="tag-row">{product.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
           <div className="card-actions">
-            <a href={product.live} target="_blank" rel="noreferrer">Live demo <FiExternalLink aria-hidden="true" /></a>
+            {product.live && <a href={product.live} target="_blank" rel="noreferrer">Live demo <FiExternalLink aria-hidden="true" /></a>}
             <a href={product.source} target="_blank" rel="noreferrer">Source <FiGithub aria-hidden="true" /></a>
-            {SLOW_HOSTS.has(product.live) && <small className="wake-note">{FREE_HOST_NOTE}</small>}
+            {isSlowHost(product.live) && <small className="wake-note">{FREE_HOST_NOTE}</small>}
+            {product.liveNote && <small className="wake-note">{product.liveNote}</small>}
           </div>
         </footer>
       </article>
@@ -185,6 +188,10 @@ function AegisView() {
         <strong>{aegis.status}</strong>
         <p>{aegis.summary}</p>
       </div>
+
+      <figure className="product-shot">
+        <img src="/projects/aegis.jpg" alt="Aegis demo workspace: overview with an active SEV1 incident, service health and the guided response flow" width="1280" height="800" loading="lazy" decoding="async" />
+      </figure>
 
       <div className="aegis-pillars">
         {aegis.pillars.map((pillar, index) => {
@@ -216,6 +223,7 @@ function AegisView() {
         <a href={aegis.live} target="_blank" rel="noreferrer">Open live Aegis <FiArrowRight aria-hidden="true" /></a>
         <a href={aegis.source} target="_blank" rel="noreferrer">Source <FiGithub aria-hidden="true" /></a>
         <a href={AEGIS_ARCHITECTURE} target="_blank" rel="noreferrer">Architecture notes <FiExternalLink aria-hidden="true" /></a>
+        <small className="wake-note">{FREE_HOST_NOTE}</small>
       </div>
     </div>
   );

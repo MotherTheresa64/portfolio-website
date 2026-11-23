@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { existsSync } from "node:fs";
 import test from "node:test";
 import { aegis, challenges, otherRepos, products } from "../src/portfolio-data.ts";
 
@@ -15,7 +16,9 @@ test("every challenge has four unique choices containing exactly one correct ans
 test("featured projects have distinct categories, case-study substance, and https links", () => {
   assert.equal(new Set(products.map((product) => product.category)).size, products.length);
   for (const product of products) {
-    assert.match(product.live, /^https:\/\//);
+    // A project either links a live demo or says plainly why there is none.
+    assert.ok(product.live ? /^https:\/\//.test(product.live) : (product.liveNote ?? "").length > 20, `${product.name} live`);
+    assert.ok(product.image && existsSync(new URL(`../public${product.image}`, import.meta.url)), `${product.name} screenshot`);
     assert.match(product.source, /^https:\/\/github\.com\/MotherTheresa64\//);
     assert.doesNotMatch(product.status, /product complete/i);
     assert.ok(product.reality.length > 80, `${product.name} reality`);
@@ -33,13 +36,19 @@ test("project copy preserves important implementation boundaries without exagger
   const wanderline = products.find((product) => product.name === "Wanderline");
   const ledgerly = products.find((product) => product.name === "Ledgerly");
 
-  assert.match(planora?.reality ?? "", /typed, versioned workspace|local-first/i);
-  assert.match(planora?.tradeoff ?? "", /does not provide cross-device shared data yet/i);
-  assert.doesNotMatch(`${planora?.status} ${planora?.reality}`, /cloud sync implemented|Firestore load\/save/i);
+  const nestwise = products.find((product) => product.name === "NestWise");
+
+  // The public deployments have no Firebase project, so copy must not imply live sign-in works.
+  assert.match(planora?.reality ?? "", /typed, versioned document/i);
+  assert.match(planora?.reality ?? "", /no Firebase project configured/i);
+  assert.match(planora?.tradeoff ?? "", /last write wins/i);
 
   assert.match(threadline?.reality ?? "", /onSnapshot/i);
+  assert.match(threadline?.reality ?? "", /no Firebase project configured/i);
   assert.match(threadline?.tradeoff ?? "", /subcollections/i);
-  assert.match(wanderline?.reality ?? "", /remain a final integration step/i);
+  assert.match(wanderline?.reality ?? "", /no shared database yet/i);
+  assert.match(nestwise?.reality ?? "", /not deployed/i);
+  assert.equal(nestwise?.live, undefined);
   assert.match(ledgerly?.reality ?? "", /verifies Firebase ID tokens/i);
 });
 
