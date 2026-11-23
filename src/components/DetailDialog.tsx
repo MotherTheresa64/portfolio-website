@@ -31,6 +31,10 @@ export function DetailDialog({
   const returnFocusRef = useRef<HTMLElement | null>(null);
   const scrollPositionRef = useRef(0);
   const reduceMotion = useReducedMotion();
+  // Parents pass a fresh onClose each render; reading it through a ref keeps the
+  // open/close effect from re-running and stealing focus while the dialog is open.
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
 
   useEffect(() => {
     returnFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
@@ -44,7 +48,7 @@ export function DetailDialog({
     (firstFocusable ?? panel)?.focus();
 
     const escape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") onCloseRef.current();
     };
     document.addEventListener("keydown", escape);
 
@@ -57,7 +61,7 @@ export function DetailDialog({
         returnFocusRef.current?.focus({ preventScroll: true });
       });
     };
-  }, [onClose]);
+  }, []);
 
   const trapFocus = (event: ReactKeyboardEvent<HTMLElement>) => {
     if (event.key !== "Tab") return;

@@ -252,7 +252,7 @@ export const products: Product[] = [
 ];
 
 const repoCatalog: Array<[string, string]> = [
-  ["bottom-dollar", "Mobile savings app"],
+  ["bottom-dollar", "Mobile life-sim money game"],
   ["Advanced-API-Final", "Flask API project"],
   ["Achievements", "GitHub achievement lab"],
   ["Advanced-Ecommerce-App-Firebase", "Firebase ecommerce"],
