@@ -66,7 +66,7 @@
   margin-top: 5px;
   overflow: hidden;
   color: var(--muted-2);
-  font: 700 7px/1.4 "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 11px/1.4 "IBM Plex Mono", ui-monospace, monospace;
   letter-spacing: .08em;
   text-overflow: ellipsis;
   text-transform: uppercase;
@@ -86,7 +86,7 @@
 
 .product-case-header > div > span {
   color: var(--accent);
-  font: 700 8px/1.4 "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 11px/1.4 "IBM Plex Mono", ui-monospace, monospace;
   letter-spacing: .13em;
 }
 
@@ -101,7 +101,7 @@
   align-self: start;
   padding-top: 3px;
   color: var(--green);
-  font-size: 10px;
+  font-size: 12px;
   font-style: normal;
   white-space: nowrap;
 }
@@ -178,7 +178,7 @@
   margin: 0 0 12px;
   padding-left: 4px;
   color: var(--text-soft);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.68;
 }
 
@@ -203,7 +203,7 @@
 .product-context-rail p {
   margin: 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.7;
 }
 

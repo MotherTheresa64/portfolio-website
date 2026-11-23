@@ -232,7 +232,7 @@ textarea:focus-visible,
   color: var(--accent-bright);
   backdrop-filter: blur(16px) saturate(130%);
   box-shadow: 0 12px 38px rgba(0,0,0,.28), inset 0 1px rgba(255,255,255,.04);
-  font: 700 11px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 12px "IBM Plex Mono", ui-monospace, monospace;
   transition: transform var(--fast) var(--ease), border-color var(--fast) ease, background var(--fast) ease, box-shadow var(--fast) ease;
 }
 
@@ -316,7 +316,7 @@ textarea:focus-visible,
   display: block;
   margin-bottom: 4px;
   color: var(--accent);
-  font: 700 9px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 12px "IBM Plex Mono", ui-monospace, monospace;
   letter-spacing: 0.13em;
 }
 
@@ -328,7 +328,7 @@ textarea:focus-visible,
 .hero-flagship-callout p {
   margin: 5px 0 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.55;
 }
 
@@ -356,7 +356,7 @@ textarea:focus-visible,
   gap: 7px;
   border-radius: 10px;
   white-space: nowrap;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .hero-choice {
@@ -403,7 +403,7 @@ textarea:focus-visible,
 .choice-note {
   margin: 11px 0 0;
   color: var(--muted-2);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .hero-links {
@@ -421,7 +421,7 @@ textarea:focus-visible,
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .hero-profile {
@@ -494,7 +494,7 @@ textarea:focus-visible,
   display: block;
   margin-top: 3px;
   color: var(--muted-2);
-  font-size: 8px;
+  font-size: 12px;
   line-height: 1.3;
 }
 
@@ -505,7 +505,7 @@ textarea:focus-visible,
   border-radius: 11px;
   background: rgba(11,9,16,.92);
   box-shadow: inset 0 1px rgba(255,255,255,.02);
-  font: 500 9px/1.55 "IBM Plex Mono", ui-monospace, monospace;
+  font: 500 11px/1.55 "IBM Plex Mono", ui-monospace, monospace;
 }
 
 .profile-terminal > span {
@@ -586,7 +586,7 @@ textarea:focus-visible,
 .preview-card small {
   display: block;
   color: var(--accent);
-  font: 700 8px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 11px "IBM Plex Mono", ui-monospace, monospace;
   letter-spacing: 0.13em;
 }
 
@@ -599,7 +599,7 @@ textarea:focus-visible,
 .preview-card p {
   margin: 6px 0 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.58;
 }
 
@@ -620,7 +620,7 @@ textarea:focus-visible,
 .preview-products span {
   display: block;
   color: var(--muted-2);
-  font: 700 7px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 11px "IBM Plex Mono", ui-monospace, monospace;
   letter-spacing: 0.09em;
 }
 
@@ -632,7 +632,7 @@ textarea:focus-visible,
 
 .preview-products small {
   color: var(--green);
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.4;
 }
 
@@ -714,7 +714,7 @@ textarea:focus-visible,
   color: var(--text);
   box-shadow: var(--shadow-sm);
   white-space: nowrap;
-  font-size: 9px;
+  font-size: 12px;
 }
 
 .nav-lock {
@@ -742,7 +742,7 @@ textarea:focus-visible,
 .nav-mode span {
   display: flex;
   flex-direction: column;
-  font: 700 7px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 11px "IBM Plex Mono", ui-monospace, monospace;
 }
 
 .nav-mode small {
@@ -774,7 +774,7 @@ textarea:focus-visible,
   gap: 11px;
   align-items: center;
   color: var(--muted);
-  font: 700 8px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 11px "IBM Plex Mono", ui-monospace, monospace;
 }
 
 .progress-track {
@@ -864,7 +864,7 @@ textarea:focus-visible,
 .node-heading small {
   margin-top: 3px;
   color: var(--muted-2);
-  font-size: 9px;
+  font-size: 12px;
 }
 
 .skills-mini {
@@ -883,7 +883,7 @@ textarea:focus-visible,
 .skills-mini strong {
   display: block;
   color: var(--accent-bright);
-  font: 700 8px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 11px "IBM Plex Mono", ui-monospace, monospace;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
@@ -891,7 +891,7 @@ textarea:focus-visible,
 .skills-mini p {
   margin: 5px 0 0;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.6;
   overflow-wrap: anywhere;
 }
@@ -920,7 +920,7 @@ textarea:focus-visible,
 .skills-lock span {
   max-width: 280px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.5;
 }
 
@@ -932,7 +932,7 @@ textarea:focus-visible,
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .skills-challenge {
@@ -1050,7 +1050,7 @@ textarea:focus-visible,
 .project-root p:not(.eyebrow) {
   margin: 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.55;
 }
 
@@ -1063,7 +1063,7 @@ textarea:focus-visible,
 .root-route-labels span {
   display: block;
   color: var(--muted-2);
-  font: 700 8px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 11px "IBM Plex Mono", ui-monospace, monospace;
   white-space: nowrap;
 }
 
@@ -1074,7 +1074,7 @@ textarea:focus-visible,
   align-items: center;
   gap: 6px;
   color: var(--accent);
-  font: 700 9px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 12px "IBM Plex Mono", ui-monospace, monospace;
   font-style: normal;
 }
 
@@ -1109,7 +1109,7 @@ textarea:focus-visible,
   position: absolute;
   top: 0;
   color: var(--muted-2);
-  font: 700 8px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 11px "IBM Plex Mono", ui-monospace, monospace;
   letter-spacing: .04em;
 }
 
@@ -1160,7 +1160,7 @@ textarea:focus-visible,
 .destination-card small {
   display: block;
   color: var(--accent);
-  font: 700 8px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 11px "IBM Plex Mono", ui-monospace, monospace;
   letter-spacing: .12em;
 }
 
@@ -1173,7 +1173,7 @@ textarea:focus-visible,
 .destination-card p {
   margin: 7px 0 12px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.62;
 }
 
@@ -1182,7 +1182,7 @@ textarea:focus-visible,
   align-items: center;
   gap: 6px;
   color: var(--text-soft);
-  font: 700 9px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 12px "IBM Plex Mono", ui-monospace, monospace;
   font-style: normal;
 }
 
@@ -1251,7 +1251,7 @@ textarea:focus-visible,
 .challenge-complete strong,
 .challenge-launcher strong {
   color: var(--text-soft);
-  font: 700 10px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 12px "IBM Plex Mono", ui-monospace, monospace;
   overflow-wrap: anywhere;
 }
 
@@ -1259,7 +1259,7 @@ textarea:focus-visible,
 .challenge-launcher small {
   margin-top: 2px;
   color: var(--muted-2);
-  font-size: 9px;
+  font-size: 12px;
 }
 
 .challenge-card {
@@ -1310,13 +1310,13 @@ textarea:focus-visible,
   align-items: center;
   gap: 7px;
   color: var(--text-soft);
-  font: 700 9px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 12px "IBM Plex Mono", ui-monospace, monospace;
   overflow-wrap: anywhere;
 }
 
 .challenge-language {
   color: var(--accent);
-  font: 700 7px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 11px "IBM Plex Mono", ui-monospace, monospace;
   letter-spacing: .08em;
 }
 
@@ -1361,7 +1361,7 @@ textarea:focus-visible,
   align-items: center;
   color: var(--muted);
   background: rgba(255,255,255,.02);
-  font: 700 8px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 11px "IBM Plex Mono", ui-monospace, monospace;
 }
 
 .strike-badge.strikes-1 {
@@ -1391,7 +1391,7 @@ textarea:focus-visible,
   border-radius: 11px;
   background: #09070d;
   color: #dcd3eb;
-  font: 500 10px/1.65 "IBM Plex Mono", ui-monospace, monospace;
+  font: 500 11px/1.65 "IBM Plex Mono", ui-monospace, monospace;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
@@ -1406,7 +1406,7 @@ textarea:focus-visible,
 .choice-fieldset legend {
   margin-bottom: 8px;
   color: var(--muted-2);
-  font: 700 8px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 11px "IBM Plex Mono", ui-monospace, monospace;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
@@ -1437,13 +1437,13 @@ textarea:focus-visible,
 .choice-button code {
   min-width: 0;
   color: inherit;
-  font: 600 10px "IBM Plex Mono", ui-monospace, monospace;
+  font: 600 12px "IBM Plex Mono", ui-monospace, monospace;
   overflow-wrap: anywhere;
 }
 
 .choice-button span {
   flex: 0 0 auto;
-  font-size: 8px;
+  font-size: 12px;
   font-weight: 800;
 }
 
@@ -1472,7 +1472,7 @@ textarea:focus-visible,
   min-height: 19px;
   margin: 12px 0 0;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.5;
 }
 
@@ -1492,7 +1492,7 @@ textarea:focus-visible,
   align-items: flex-start;
   gap: 9px;
   color: var(--text-soft);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.55;
 }
 
@@ -1517,7 +1517,7 @@ textarea:focus-visible,
   gap: 5px 10px;
   align-items: center;
   color: var(--text-soft);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.5;
 }
 
@@ -1528,7 +1528,7 @@ textarea:focus-visible,
 .challenge-answer code {
   justify-self: end;
   color: #b8f3d1;
-  font: 700 10px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 12px "IBM Plex Mono", ui-monospace, monospace;
 }
 
 .challenge-answer span {
@@ -1590,7 +1590,7 @@ textarea:focus-visible,
 
 .dialog-heading span {
   color: var(--accent);
-  font: 700 9px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 12px "IBM Plex Mono", ui-monospace, monospace;
   letter-spacing: .12em;
 }
 
@@ -1605,7 +1605,7 @@ textarea:focus-visible,
   max-width: 800px;
   margin: 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.55;
 }
 
@@ -1666,7 +1666,7 @@ textarea:focus-visible,
   border-radius: 999px;
   background: rgba(197,169,255,.05);
   color: #c8bed8;
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.2;
 }
 
@@ -1706,7 +1706,7 @@ textarea:focus-visible,
 .repo-title small {
   margin-top: 3px;
   color: var(--muted-2);
-  font-size: 9px;
+  font-size: 12px;
 }
 
 .repo-summary a,
@@ -1720,7 +1720,7 @@ textarea:focus-visible,
   align-items: center;
   justify-content: center;
   gap: 7px;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .repo-grid {
@@ -1755,7 +1755,7 @@ textarea:focus-visible,
   display: block;
   min-height: 30px;
   color: var(--accent);
-  font: 700 8px/1.45 "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 11px/1.45 "IBM Plex Mono", ui-monospace, monospace;
 }
 
 .root-guide-grid h3 {
@@ -1766,7 +1766,7 @@ textarea:focus-visible,
 .root-guide-grid p {
   margin: 8px 0 0;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.62;
 }
 
@@ -1813,13 +1813,13 @@ textarea:focus-visible,
 
 .product-card-top span {
   color: var(--accent);
-  font: 700 8px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 11px "IBM Plex Mono", ui-monospace, monospace;
   letter-spacing: .11em;
 }
 
 .product-card-top em {
   color: var(--green);
-  font-size: 9px;
+  font-size: 12px;
   font-style: normal;
 }
 
@@ -1831,7 +1831,7 @@ textarea:focus-visible,
 
 .product-card p {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.64;
 }
 
@@ -1848,7 +1848,7 @@ textarea:focus-visible,
   align-items: flex-start;
   gap: 9px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.58;
 }
 
@@ -1877,19 +1877,19 @@ textarea:focus-visible,
 
 .case-study-section h4 {
   color: var(--accent-bright);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .case-study-section p {
   margin: 6px 0 0;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .engineering-list {
   margin: 7px 0 0;
   padding-left: 17px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.58;
 }
 
@@ -1906,13 +1906,13 @@ textarea:focus-visible,
 .architecture-callout strong {
   display: block;
   color: var(--accent-bright);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .architecture-callout p {
   margin: 5px 0 0;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.58;
 }
 
@@ -1963,7 +1963,7 @@ textarea:focus-visible,
 .flagship-banner > span {
   display: block;
   color: var(--accent);
-  font: 700 8px "IBM Plex Mono", ui-monospace, monospace;
+  font: 700 11px "IBM Plex Mono", ui-monospace, monospace;
   letter-spacing: .12em;
 }
 
@@ -2005,7 +2005,7 @@ textarea:focus-visible,
 .aegis-pillars p {
   margin: 6px 0 0;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.6;
 }
 
@@ -2024,7 +2024,7 @@ textarea:focus-visible,
 .contact-direct > p {
   margin: 0 0 12px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.62;
 }
 
@@ -2062,13 +2062,13 @@ textarea:focus-visible,
 }
 
 .contact-link-grid strong {
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .contact-link-grid small {
   margin-top: 3px;
   color: var(--muted-2);
-  font-size: 8px;
+  font-size: 12px;
   overflow-wrap: anywhere;
 }
 
@@ -2086,7 +2086,7 @@ textarea:focus-visible,
   display: grid;
   gap: 6px;
   color: var(--text-soft);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
 }
 
@@ -2133,7 +2133,7 @@ textarea:focus-visible,
 .form-status {
   min-height: 20px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.5;
 }
 
@@ -2469,7 +2469,7 @@ textarea:focus-visible,
   .mobile-dock > button small {
     max-width: 100%;
     color: inherit;
-    font-size: 8px;
+    font-size: 12px;
     line-height: 1;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -2715,7 +2715,7 @@ textarea:focus-visible,
   }
 
   .hero-profile {
-    width: min(320px, 86vw);
+    width: min(240px, 64vw); /* keeps the name on the first phone screen */
   }
 
   .hero-copy h1 {
@@ -2752,7 +2752,7 @@ textarea:focus-visible,
   }
 
   .skills-mini p {
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .challenge-card {

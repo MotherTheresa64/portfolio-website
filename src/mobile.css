@@ -170,7 +170,7 @@
     border-radius: 999px;
     background: rgba(197,169,255,.05);
     color: #cfc5de;
-    font-size: 9px;
+    font-size: 12px;
     line-height: 1.2;
   }
 
@@ -236,7 +236,7 @@
   }
 
   .dialog-heading p {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .dialog-close {
@@ -251,7 +251,7 @@
     gap: 7px;
     background: rgba(197,169,255,.06);
     color: var(--accent-bright);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 800;
   }
 
@@ -337,7 +337,7 @@
 
   .mobile-dock > button span,
   .mobile-dock > button small {
-    font-size: 8px;
+    font-size: 12px;
   }
 }
 

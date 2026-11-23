@@ -109,13 +109,13 @@
 
   .challenge-complete strong,
   .challenge-launcher strong {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .challenge-complete small,
   .challenge-launcher small {
     margin-top: 2px;
-    font-size: 8px;
+    font-size: 12px;
   }
 
   /* Give Projects Root enough separation from the projects gate/status module. */
